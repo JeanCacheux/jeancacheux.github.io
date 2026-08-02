@@ -156,3 +156,12 @@ The collaboration section is now organised in two clearly separated stages:
 - no “People I work with” or collaborator headings;
 - Aurélien Bancaud spelling corrected;
 - Aurélie Gomes listed as Research Engineer.
+
+
+## Portrait placement correction
+
+- the supplied portrait is now converted to a transparent-background PNG;
+- the portrait appears next to the name and position at the top of the homepage;
+- no visible white rectangle;
+- no shadow;
+- the portrait remains small and secondary to the research title.
