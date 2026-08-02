@@ -38,3 +38,18 @@ Then press **Commit changes**.
 
 The automatic publication section depends on OpenAlex. If the service is temporarily
 unavailable, the site displays a direct link to Google Scholar instead.
+
+
+## Static publications version
+
+The publication list is now written directly into `index.html`, so it appears
+immediately and does not wait for OpenAlex or another external API.
+
+It currently contains six peer-reviewed journal articles from 2023–2025, plus a
+button linking to the complete Google Scholar profile.
+
+
+## Four manually curated recent publications
+
+The site now contains only four recent peer-reviewed journal articles (2024–2025).
+There is no publication API or automatic loading, so the page appears immediately.
