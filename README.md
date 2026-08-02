@@ -145,3 +145,14 @@ The collaboration section is now organised in two clearly separated stages:
 - Secondary research tagline removed.
 - Aurélie Gomes listed as Research Engineer.
 - Team name standardised everywhere as **MechaBioFluidics**.
+
+
+## Final integrated version
+
+- new supplied portrait used directly;
+- exact team name: MechaBioFluidics;
+- LAAS–CNRS team shown first;
+- CRCT team shown second;
+- no “People I work with” or collaborator headings;
+- Aurélien Bancaud spelling corrected;
+- Aurélie Gomes listed as Research Engineer.
