@@ -288,14 +288,14 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         render(chosen);
         if (status) {
           status.textContent =
-            "Automatically refreshed from OpenAlex. Full publication record available on Google Scholar.";
+            "Automatically updated from OpenAlex.";
         }
       }
     } catch (error) {
       console.warn("Automatic publication refresh unavailable; keeping fallback list.", error);
       if (status) {
         status.textContent =
-          "Curated publications shown. Automatic refresh is temporarily unavailable.";
+          "The publication service is temporarily unavailable. The last saved list is shown.";
       }
     } finally {
       window.clearTimeout(timeout);

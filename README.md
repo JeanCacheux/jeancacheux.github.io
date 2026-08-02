@@ -89,3 +89,31 @@ Selection rules:
 6. if the API is slow or unavailable after four seconds, the static list remains visible.
 
 This avoids an empty or permanently loading Publications section.
+
+
+## Final wording corrections
+
+- no portrait on the homepage
+- header now reads exactly:
+  - Jean Cacheux
+  - CNRS Researcher
+- publication section presented as automatically updated
+- no “manually curated” wording in the visible page
+
+
+## Collaboration section update
+
+The collaboration section is now organised in two clearly separated stages:
+
+1. **LAAS–CNRS · Meca, Bio, Fluidix**
+   - primary affiliation
+   - Aurélien Abancaud
+   - Thomas Quenan
+   - Adélie Barnetche
+   - Amélie Albon
+
+2. **CRCT · ImPACT**
+   - major research collaboration
+   - Pierre Cordelier
+   - Aurélie Gomes
+   - Silvia Ferrer Royo
