@@ -4,87 +4,58 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Jean Cacheux — Mechanics of fluid transport in living tissues at LAAS-CNRS.">
-  <title>Jean Cacheux — Living Tissue Transport</title>
+  <title>Jean Cacheux — Fluid Transport in Living Tissues</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <canvas id="particles" aria-hidden="true"></canvas>
 
   <header class="topbar">
-    <a class="logo" href="#home">
+    <a class="brand" href="#home" aria-label="Back to home">
       <img src="laas-cnrs-logo.jpg" alt="LAAS-CNRS">
+      <span>
+        <strong>Jean Cacheux</strong>
+        <small>CNRS Researcher · Toulouse</small>
+      </span>
     </a>
+
     <button class="menu-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+
     <nav id="nav">
-      <a href="#about">About</a>
       <a href="#research">Research</a>
       <a href="#publications">Publications</a>
-      <a href="#team">Team</a>
+      <a href="#collaborations">Collaborations</a>
+      <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <main>
     <section id="home" class="hero">
-      <div class="hero-kicker reveal">Jean Cacheux · CNRS Researcher</div>
-
-      <h1 class="reveal">
-        Mechanics<br>
-        of Fluid Transport<br>
-        <span>in Living Tissues</span>
-      </h1>
-
-      <div class="hero-bottom reveal">
-        <p>
-          Understanding how living matter organises, regulates and adapts
-          fluid transport across scales.
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Fluid transport in living tissues</p>
+        <h1>Mechanics of Fluid Transport in Living Tissues</h1>
+        <p class="intro">
+          Understanding how biological tissues organise, regulate and adapt fluid
+          transport across scales.
         </p>
-        <a href="#research">Enter the research ↓</a>
+        <a class="scroll-link" href="#research">Scroll to explore ↓</a>
       </div>
-    </section>
 
-    <section id="about" class="chapter about">
-      <div class="chapter-label">01 — About</div>
-
-      <div class="about-grid">
-        <div class="portrait-panel reveal">
-          <img src="portrait-placeholder.svg" alt="Portrait placeholder for Jean Cacheux">
-          <p>Replace this placeholder with your professional portrait when ready.</p>
-        </div>
-
-        <div class="about-copy reveal">
-          <h2>Jean Cacheux</h2>
-          <p class="about-role">CNRS Researcher at LAAS–CNRS, Toulouse</p>
-          <p>
-            I study the mechanics of fluid transport in living tissues, with a particular
-            interest in fluid–structure interactions, poromechanics and multiscale transport.
-            My work connects physical modelling with experimental collaborations in biology
-            and cancer research.
-          </p>
-          <p>
-            I collaborate closely with colleagues at LAAS–CNRS and with the ImPACT team at
-            the Toulouse Cancer Research Center (CRCT).
-          </p>
-
-          <div class="about-links">
-            <a href="https://scholar.google.com/citations?user=5zyfPC8AAAAJ" target="_blank" rel="noreferrer">Google Scholar ↗</a>
-            <a href="https://cv.hal.science/jean-cacheux" target="_blank" rel="noreferrer">HAL ↗</a>
-            <a href="https://orcid.org/0000-0001-6671-5533" target="_blank" rel="noreferrer">ORCID ↗</a>
-            <span class="cv-note">Add <strong>cv.pdf</strong> later to enable a CV button.</span>
-          </div>
-        </div>
-      </div>
+      <figure class="hero-portrait reveal">
+        <img src="portrait-jean-cacheux.jpg" alt="Portrait of Jean Cacheux">
+      </figure>
     </section>
 
     <section id="research" class="chapter">
-      <div class="chapter-label">02 — Research</div>
+      <div class="chapter-label">01 — Research</div>
       <div class="chapter-grid">
         <h2 class="reveal">Flows are shaped by matter.<br>Matter is reshaped by flows.</h2>
         <div class="body-copy reveal">
           <p>
-            Biological tissues are permeated by water, solutes, cells and
-            signalling molecules. Their movement depends on the coupling between
-            pressure, deformation, geometry and active biological processes.
+            Biological tissues are permeated by water, solutes, cells and signalling
+            molecules. Their movement depends on the coupling between pressure,
+            deformation, geometry and active biological processes.
           </p>
           <p>
             My research combines mechanics, fluid physics and quantitative biology
@@ -113,35 +84,33 @@
     </section>
 
     <section id="publications" class="chapter dark">
-      <div class="chapter-label">03 — Selected publications</div>
-      <div class="publication-list">
-        <article class="publication reveal">
-          <div class="pub-year">2026</div>
-          <div>
-            <h3>Title of your most recent publication</h3>
-            <p>Jean Cacheux, Co-author A., Co-author B. · <em>Journal name</em></p>
-          </div>
-          <a href="#">↗</a>
-        </article>
+      <div class="chapter-label">02 — Publications</div>
 
-        <article class="publication reveal">
-          <div class="pub-year">2025</div>
-          <div>
-            <h3>Title of an important publication</h3>
-            <p>Jean Cacheux, Co-author A. · <em>Journal name</em></p>
-          </div>
-          <a href="#">↗</a>
-        </article>
-
-        <article class="publication reveal">
-          <div class="pub-year">2024</div>
-          <div>
-            <h3>Title of an important publication</h3>
-            <p>Jean Cacheux et al. · <em>Journal name</em></p>
-          </div>
-          <a href="#">↗</a>
-        </article>
+      <div class="publication-intro reveal">
+        <h2>Recent journal articles and leading-author work.</h2>
+        <p>
+          Publications are loaded automatically from OpenAlex through my ORCID.
+          Conference papers, proceedings, posters, books and non-journal preprints are excluded.
+        </p>
       </div>
+
+      <div class="publication-tabs reveal" role="tablist" aria-label="Publication selection">
+        <button class="publication-tab active" type="button" data-publication-mode="recent" role="tab" aria-selected="true">
+          Most recent
+        </button>
+        <button class="publication-tab" type="button" data-publication-mode="lead" role="tab" aria-selected="false">
+          First / last / penultimate author
+        </button>
+      </div>
+
+      <div id="publication-status" class="publication-status" aria-live="polite">
+        Loading publications…
+      </div>
+      <div id="publication-list" class="publication-list" aria-live="polite"></div>
+
+      <p class="publication-source">
+        Metadata are supplied by OpenAlex and may occasionally differ from Google Scholar.
+      </p>
 
       <div class="profile-links reveal">
         <a href="https://cv.hal.science/jean-cacheux" target="_blank" rel="noreferrer">HAL ↗</a>
@@ -150,86 +119,118 @@
       </div>
     </section>
 
-    <section id="team" class="chapter">
-      <div class="chapter-label">04 — Team & collaborations</div>
-      <div class="team-intro reveal">
-        <h2>Research at the interface of mechanics, physics and cancer biology.</h2>
+    <section id="collaborations" class="chapter">
+      <div class="chapter-label">03 — Collaborations</div>
+      <div class="collaboration-intro reveal">
+        <h2>Mechanics, physics and cancer biology.</h2>
         <p>
-          My work is developed through close collaborations within CNRS and with the
-          Toulouse Cancer Research Center (CRCT).
+          My research is developed through close collaborations within CNRS and with
+          the Toulouse Cancer Research Center.
         </p>
       </div>
 
-      <div class="collaboration-group">
-        <div class="group-heading reveal">
-          <span>LAAS–CNRS</span>
-          <h3>CNRS collaborators</h3>
+      <div class="institution-block reveal">
+        <div class="institution-logo">
+          <img src="laas-cnrs-logo.jpg" alt="LAAS-CNRS">
+        </div>
+        <div>
+          <p class="institution-kicker">Primary affiliation</p>
+          <h3>LAAS–CNRS</h3>
           <p>
             Collaborations in mechanics, robotics, modelling and the physics of living systems.
           </p>
         </div>
+      </div>
 
-        <div class="team-grid">
-          <article class="member reveal">
-            <div class="portrait">JC</div>
-            <h3>Jean Cacheux</h3>
-            <p>CNRS Researcher · LAAS–CNRS</p>
-            <span>Mechanics of living systems</span>
-          </article>
-
-          <article class="member ghost reveal">
-            <div class="portrait">+</div>
-            <h3>CNRS collaborator</h3>
-            <p>Name and position to add</p>
-            <span>Research topic</span>
-          </article>
-
-          <article class="member ghost reveal">
-            <div class="portrait">+</div>
-            <h3>CNRS collaborator</h3>
-            <p>Name and position to add</p>
-            <span>Research topic</span>
-          </article>
+      <div class="institution-block crct-block reveal">
+        <div class="institution-logo crct-logo">
+          <img src="crct-logo.jpg" alt="Centre de Recherches en Cancérologie de Toulouse">
+        </div>
+        <div>
+          <p class="institution-kicker">Major research collaboration</p>
+          <h3>CRCT · ImPACT team</h3>
+          <p>
+            A close collaboration connecting tissue mechanics and transport phenomena
+            with pancreatic cancer biology.
+          </p>
+          <a href="https://www.crct-inserm.fr/en/impact_en/" target="_blank" rel="noreferrer">Discover the ImPACT team ↗</a>
         </div>
       </div>
 
-      <div class="collaboration-group crct-group">
-        <div class="group-heading reveal">
-          <span>CRCT · ImPACT team</span>
-          <h3>Major collaboration in cancer research</h3>
+      <div class="team-grid">
+        <article class="member reveal">
+          <div class="portrait-badge">AB</div>
+          <h3>Aurélien Abancaud</h3>
+          <p>CNRS Research Director · LAAS–CNRS</p>
+          <span>Mechanics and modelling</span>
+        </article>
+
+        <article class="member reveal">
+          <div class="portrait-badge">TK</div>
+          <h3>Thomas Quenan</h3>
+          <p>PhD Student · LAAS–CNRS</p>
+          <span>Fluid mechanics</span>
+        </article>
+
+        <article class="member reveal">
+          <div class="portrait-badge">Ad</div>
+          <h3>Adélie Barnetche</h3>
+          <p>PhD Student · LAAS–CNRS</p>
+          <span>Living tissues</span>
+        </article>
+
+        
+
+        <article class="member reveal">
+          <div class="portrait-badge">AA</div>
+          <h3>Amélie Alban</h3>
+          <p>Research Engineer · LAAS–CNRS</p>
+          <span>Experimental platforms</span>
+        </article>
+
+        <article class="member reveal">
+          <div class="portrait-badge">PC</div>
+          <h3>Pierre Cordelier</h3>
+          <p>INSERM Research Director · Head of the ImPACT team</p>
+          <span>Pancreatic cancer · Translational research</span>
+        </article>
+
+        <article class="member reveal">
+          <div class="portrait-badge">AG</div>
+          <h3>Aurélie Gomes</h3>
+          <p>Laboratory Engineer · ImPACT team</p>
+          <span>Experimental cancer research</span>
+        </article>
+
+        <article class="member reveal">
+          <div class="portrait-badge">SF</div>
+          <h3>Silvia Ferrer Royo</h3>
+          <p>PhD Candidate · ImPACT team</p>
+          <span>Pancreatic cancer research</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="chapter about">
+      <div class="chapter-label">04 — About</div>
+      <div class="about-grid">
+        <figure class="about-portrait reveal">
+          <img src="portrait-jean-cacheux.jpg" alt="Jean Cacheux">
+        </figure>
+
+        <div class="about-copy reveal">
+          <h2>Jean Cacheux</h2>
+          <p class="about-role">CNRS Researcher at LAAS–CNRS, Toulouse</p>
           <p>
-            A close collaboration with the Toulouse Cancer Research Center, focused on
-            connecting tissue mechanics and transport phenomena with pancreatic cancer biology.
+            I study the mechanics of fluid transport in living tissues, with a particular
+            interest in fluid–structure interactions, poromechanics and multiscale transport.
+            My work connects physical modelling with experimental collaborations in biology
+            and cancer research.
           </p>
-          <a href="https://www.crct-inserm.fr/en/impact_en/" target="_blank" rel="noreferrer">
-            Discover the ImPACT team ↗
-          </a>
-        </div>
-
-        <div class="team-grid">
-          <article class="member collaborator reveal">
-            <div class="portrait portrait-crct">PC</div>
-            <h3>Pierre Cordelier</h3>
-            <p>INSERM Research Director · Head of the ImPACT team</p>
-            <span>Pancreatic cancer · Translational research</span>
-            <a class="member-link" href="https://www.crct-inserm.fr/annuaire/cordelier-pierre/" target="_blank" rel="noreferrer">CRCT profile ↗</a>
-          </article>
-
-          <article class="member collaborator reveal">
-            <div class="portrait portrait-crct">AG</div>
-            <h3>Aurélie Gomes</h3>
-            <p>Laboratory Engineer · ImPACT team</p>
-            <span>Experimental cancer research</span>
-            <a class="member-link" href="https://www.crct-inserm.fr/annuaire/aurelie-gomes/" target="_blank" rel="noreferrer">CRCT profile ↗</a>
-          </article>
-
-          <article class="member collaborator reveal">
-            <div class="portrait portrait-crct">SF</div>
-            <h3>Silvia Ferrer Royo</h3>
-            <p>PhD Candidate · ImPACT team</p>
-            <span>Pancreatic cancer research</span>
-            <a class="member-link" href="https://www.crct-inserm.fr/annuaire/silvia-ferrer-royo/" target="_blank" rel="noreferrer">CRCT profile ↗</a>
-          </article>
+          <p>
+            I collaborate closely with colleagues at LAAS–CNRS and with the ImPACT team
+            at the Toulouse Cancer Research Center.
+          </p>
         </div>
       </div>
     </section>

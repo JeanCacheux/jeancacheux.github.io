@@ -1,85 +1,40 @@
-# Jean Cacheux — website v2
+# Jean Cacheux — definitive GitHub Pages website
 
-A completely redesigned English-language website for GitHub Pages.
+## Upload these files
 
-## What changed
-
-- no green palette
-- white, navy, cyan and red LAAS-CNRS visual language
-- much larger editorial typography
-- full-screen opening section
-- animated particles inspired by fluid transport
-- particles react gently to mouse or touch movement
-- sections appear gradually while scrolling
-- official LAAS-CNRS image supplied in the package
-
-## Upload to GitHub
-
-Upload these four files to the root of the `jeancacheux.github.io` repository:
+Upload all of the following files to the root of the `jeancacheux.github.io` repository:
 
 - `index.html`
 - `styles.css`
 - `script.js`
 - `laas-cnrs-logo.jpg`
+- `crct-logo.jpg`
+- `portrait-jean-cacheux.jpg`
 
-Replace the previous files, then press **Commit changes**.
+Then press **Commit changes**.
 
-## Personal details to replace
+## What is included
 
-Open `index.html` and update:
+- English-language design
+- full-width transparent header
+- LAAS-CNRS branding
+- CRCT logo and collaboration section
+- filtered portrait using the uploaded photograph
+- smaller portrait on the home page
+- animated particles inspired by fluid transport
+- automatic publication loading via OpenAlex and ORCID
+- two publication modes:
+  - newest journal articles
+  - papers where Jean Cacheux is first, last or penultimate author
+- conference papers, proceedings, posters, books and non-journal preprints excluded
 
-- `firstname.lastname@laas.fr`
-- publication titles, authors and links
-- HAL / Google Scholar / ORCID links
-- team members
-- any research wording you wish to refine
+## Profile identifiers
 
+- Google Scholar: `5zyfPC8AAAAJ`
+- HAL: `jean-cacheux`
+- ORCID: `0000-0001-6671-5533`
 
-## Version 3 changes
+## Notes
 
-- larger header spanning the full browser width
-- more transparent glass effect
-- larger LAAS-CNRS logo
-- verified public profile links:
-  - Google Scholar: https://scholar.google.com/citations?user=5zyfPC8AAAAJ
-  - HAL ID: jean-cacheux
-  - ORCID: 0000-0001-6671-5533
-- contact email: jean.cacheux@laas.fr
-
-
-## Version 4 changes
-
-- Team section renamed “Team & collaborations”
-- separate LAAS-CNRS and CRCT collaboration groups
-- CRCT ImPACT collaborators added:
-  - Pierre Cordelier
-  - Aurélie Gomes
-  - Silvia Ferrer Royo
-- links to official CRCT profiles and the ImPACT team page
-
-
-## Version 5 changes
-
-- new **About** section
-- professional portrait placeholder added
-- short academic biography included
-- direct links to Google Scholar, HAL and ORCID
-- note explaining how to add a CV later
-
-## Add your portrait
-
-Replace `portrait-placeholder.svg` with your own image, ideally named `portrait.jpg`,
-then change this line in `index.html`:
-
-`src="portrait-placeholder.svg"`
-
-to:
-
-`src="portrait.jpg"`
-
-## Add your CV later
-
-Place a file named `cv.pdf` in the repository. You can then replace the CV note in
-`index.html` with:
-
-`<a href="cv.pdf" target="_blank">Download CV ↓</a>`
+The automatic publication section depends on OpenAlex. If the service is temporarily
+unavailable, the site displays a direct link to Google Scholar instead.
