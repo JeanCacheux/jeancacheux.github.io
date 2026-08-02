@@ -117,3 +117,12 @@ The collaboration section is now organised in two clearly separated stages:
    - Pierre Cordelier
    - Aurélie Gomes
    - Silvia Ferrer Royo
+
+
+## Final collaboration layout correction
+
+- Jean Cacheux and “CNRS Researcher” now appear prominently on the homepage.
+- Team name corrected to **Mecha Biofluidics**.
+- LAAS–CNRS appears first with its four collaborators.
+- The CRCT logo and CRCT collaborators appear only after the complete LAAS–CNRS list.
+- LAAS–CNRS and CRCT are visually separated into two sequential blocks.
