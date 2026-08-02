@@ -1,28 +1,40 @@
-const menuButton = document.querySelector(".menu-button");
-const menu = document.querySelector(".menu");
+const menuButton = document.querySelector(".menu-toggle");
+const nav = document.getElementById("nav");
 
 menuButton?.addEventListener("click", () => {
-  const open = menu.classList.toggle("is-open");
+  const open = nav.classList.toggle("open");
   menuButton.setAttribute("aria-expanded", String(open));
 });
 
-menu?.querySelectorAll("a").forEach((link) => {
+nav?.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", () => {
-    menu.classList.remove("is-open");
+    nav.classList.remove("open");
     menuButton?.setAttribute("aria-expanded", "false");
   });
 });
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
-const canvas = document.getElementById("flow-field");
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) entry.target.classList.add("visible");
+    });
+  },
+  { threshold: 0.16 }
+);
+
+document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
 let width = 0;
 let height = 0;
 let dpr = Math.min(window.devicePixelRatio || 1, 2);
-let time = 0;
+let particles = [];
+let pointer = { x: -9999, y: -9999 };
 
-function resizeCanvas() {
+function resize() {
   width = window.innerWidth;
   height = window.innerHeight;
   canvas.width = width * dpr;
@@ -30,42 +42,71 @@ function resizeCanvas() {
   canvas.style.width = `${width}px`;
   canvas.style.height = `${height}px`;
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  const count = Math.min(180, Math.floor((width * height) / 9000));
+  particles = Array.from({ length: count }, () => ({
+    x: Math.random() * width,
+    y: Math.random() * height,
+    speed: 0.25 + Math.random() * 0.5,
+    phase: Math.random() * Math.PI * 2,
+    size: 0.8 + Math.random() * 1.8
+  }));
 }
 
-function drawFlow() {
+function updatePointer(x, y) {
+  pointer.x = x;
+  pointer.y = y;
+}
+
+window.addEventListener("pointermove", (e) => updatePointer(e.clientX, e.clientY));
+window.addEventListener("pointerleave", () => updatePointer(-9999, -9999));
+window.addEventListener("touchmove", (e) => {
+  const t = e.touches[0];
+  if (t) updatePointer(t.clientX, t.clientY);
+}, { passive: true });
+
+function animate(time) {
   ctx.clearRect(0, 0, width, height);
 
-  const lines = 16;
-  for (let i = 0; i < lines; i++) {
-    const baseY = (height / (lines + 1)) * (i + 1);
-    const amp = 18 + (i % 4) * 6;
-    const phase = time * 0.002 + i * 0.55;
+  particles.forEach((p, i) => {
+    const field =
+      Math.sin((p.y + time * 0.03) * 0.008 + p.phase) +
+      Math.cos((p.x - time * 0.02) * 0.006);
 
-    ctx.beginPath();
-    for (let x = -40; x <= width + 40; x += 12) {
-      const y =
-        baseY +
-        Math.sin(x * 0.006 + phase) * amp +
-        Math.sin(x * 0.014 - phase * 0.65) * amp * 0.35;
+    p.x += Math.cos(field) * p.speed;
+    p.y += Math.sin(field) * p.speed;
 
-      if (x === -40) ctx.moveTo(x, y);
-      else ctx.lineTo(x, y);
+    const dx = p.x - pointer.x;
+    const dy = p.y - pointer.y;
+    const dist = Math.hypot(dx, dy);
+
+    if (dist < 130) {
+      const force = (130 - dist) / 130;
+      p.x += (dx / (dist || 1)) * force * 1.8;
+      p.y += (dy / (dist || 1)) * force * 1.8;
     }
 
-    ctx.strokeStyle = i % 5 === 0
-      ? "rgba(239, 51, 78, 0.14)"
-      : "rgba(80, 186, 209, 0.13)";
-    ctx.lineWidth = i % 5 === 0 ? 1.2 : 1;
-    ctx.stroke();
-  }
+    if (p.x < -10) p.x = width + 10;
+    if (p.x > width + 10) p.x = -10;
+    if (p.y < -10) p.y = height + 10;
+    if (p.y > height + 10) p.y = -10;
 
-  time += 1;
-  requestAnimationFrame(drawFlow);
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fillStyle = i % 13 === 0
+      ? "rgba(239, 51, 78, 0.28)"
+      : "rgba(80, 189, 211, 0.22)";
+    ctx.fill();
+  });
+
+  requestAnimationFrame(animate);
 }
 
-resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
+resize();
+window.addEventListener("resize", resize);
 
 if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  drawFlow();
+  requestAnimationFrame(animate);
+} else {
+  document.querySelectorAll(".reveal").forEach((el) => el.classList.add("visible"));
 }

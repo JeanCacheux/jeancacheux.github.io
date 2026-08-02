@@ -1,36 +1,35 @@
-# Site personnel de Jean Cacheux
+# Jean Cacheux — website v2
 
-Site statique conçu pour GitHub Pages.
+A completely redesigned English-language website for GitHub Pages.
 
-## Mise en ligne depuis un iPad
+## What changed
 
-1. Ouvrez le dépôt `jeancacheux.github.io` dans Safari.
-2. Passez le dépôt en **Public** dans `Settings > General > Danger Zone > Change repository visibility`.
-3. Revenez à l'onglet **Code**.
-4. Appuyez sur **Add file**, puis **Upload files**.
-5. Décompressez d'abord le fichier ZIP dans l'application **Fichiers** de l'iPad.
-6. Téléversez à la racine du dépôt :
-   - `index.html`
-   - `styles.css`
-   - `script.js`
-7. Validez avec **Commit changes**.
-8. Dans `Settings > Pages`, choisissez :
-   - Source : `Deploy from a branch`
-   - Branch : `main`
-   - Folder : `/ (root)`
-9. Le site sera disponible à l'adresse :
-   `https://jeancacheux.github.io`
+- no green palette
+- white, navy, cyan and red LAAS-CNRS visual language
+- much larger editorial typography
+- full-screen opening section
+- animated particles inspired by fluid transport
+- particles react gently to mouse or touch movement
+- sections appear gradually while scrolling
+- official LAAS-CNRS image supplied in the package
 
-## Personnalisation
+## Upload to GitHub
 
-Dans `index.html`, remplacez notamment :
+Upload these four files to the root of the `jeancacheux.github.io` repository:
 
-- `prenom.nom@cnrs.fr`
-- `Nom du laboratoire`
-- `Adresse du laboratoire`
-- les titres et liens des publications
-- les liens HAL, Google Scholar et ORCID
-- les membres de l'équipe
-- les projets publics
+- `index.html`
+- `styles.css`
+- `script.js`
+- `laas-cnrs-logo.jpg`
 
-Les couleurs et la mise en page se trouvent dans `styles.css`.
+Replace the previous files, then press **Commit changes**.
+
+## Personal details to replace
+
+Open `index.html` and update:
+
+- `firstname.lastname@laas.fr`
+- publication titles, authors and links
+- HAL / Google Scholar / ORCID links
+- team members
+- any research wording you wish to refine
