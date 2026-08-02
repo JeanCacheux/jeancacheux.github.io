@@ -1,4 +1,4 @@
-\
+document.documentElement.classList.add("js-animations");
 const menuButton = document.querySelector(".menu-toggle");
 const nav = document.getElementById("nav");
 

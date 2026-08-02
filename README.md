@@ -53,3 +53,13 @@ button linking to the complete Google Scholar profile.
 
 The site now contains only four recent peer-reviewed journal articles (2024–2025).
 There is no publication API or automatic loading, so the page appears immediately.
+
+
+## Display bug fixed
+
+A stray character at the beginning of `script.js` caused a JavaScript syntax error.
+Because the page used JavaScript to reveal section content, headings appeared but the
+section contents stayed invisible.
+
+This version removes that error and makes all content visible by default, even if
+JavaScript is disabled or fails to load.
