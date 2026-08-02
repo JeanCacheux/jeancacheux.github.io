@@ -46,17 +46,21 @@ a { color: inherit; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: min(calc(100% - 3rem), var(--max));
-  margin: 0 auto;
-  padding: 1rem 0;
-  background: rgba(248, 250, 252, .82);
-  backdrop-filter: blur(18px);
+  width: 100%;
+  min-height: 104px;
+  margin: 0;
+  padding:
+    1rem max(1.5rem, calc((100vw - var(--max)) / 2));
+  background: rgba(248, 250, 252, .48);
+  border-bottom: 1px solid rgba(8, 17, 31, .07);
+  backdrop-filter: blur(24px) saturate(125%);
+  -webkit-backdrop-filter: blur(24px) saturate(125%);
 }
 
 .logo img {
   display: block;
-  width: 132px;
-  height: 58px;
+  width: 172px;
+  height: 76px;
   object-fit: contain;
   object-position: left center;
   mix-blend-mode: multiply;
@@ -359,19 +363,23 @@ footer {
 }
 
 @media (max-width: 800px) {
-  .topbar,
   main,
   footer {
     width: min(calc(100% - 2rem), var(--max));
   }
 
-  .logo img { width: 110px; height: 52px; }
+  .topbar {
+    min-height: 88px;
+    padding-inline: 1rem;
+  }
+
+  .logo img { width: 138px; height: 62px; }
 
   .menu-toggle { display: block; }
 
   nav {
     position: absolute;
-    top: 73px;
+    top: 88px;
     right: 0;
     left: 0;
     display: none;
@@ -418,5 +426,181 @@ footer {
   footer {
     flex-direction: column;
     gap: .3rem;
+  }
+}
+
+
+.team-intro p {
+  max-width: 700px;
+  margin: 1.4rem 0 0;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+.collaboration-group {
+  margin-top: 5rem;
+}
+
+.group-heading {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: .4rem 2rem;
+  align-items: baseline;
+  margin-bottom: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.group-heading > span {
+  grid-row: 1 / span 3;
+  color: var(--red);
+  font-size: .76rem;
+  font-weight: 750;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.group-heading h3 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.9rem, 3.5vw, 3.2rem);
+  font-weight: 500;
+  letter-spacing: -.035em;
+}
+
+.group-heading p {
+  max-width: 720px;
+  margin: .35rem 0 0;
+  color: var(--muted);
+}
+
+.group-heading a {
+  margin-top: .5rem;
+  color: var(--red);
+}
+
+.crct-group {
+  margin-top: 7rem;
+  padding: 2rem;
+  border: 1px solid rgba(80, 189, 211, .28);
+  background:
+    linear-gradient(135deg, rgba(80, 189, 211, .08), rgba(255, 255, 255, .5));
+}
+
+.collaborator {
+  background: rgba(255, 255, 255, .8);
+}
+
+.portrait-crct {
+  background: linear-gradient(135deg, var(--red), var(--blue));
+}
+
+.member-link {
+  display: inline-block;
+  margin-top: 1.2rem;
+  color: var(--red);
+  font-size: .86rem;
+  text-decoration: none;
+}
+
+.member-link:hover {
+  text-decoration: underline;
+  text-underline-offset: .2rem;
+}
+
+@media (max-width: 800px) {
+  .group-heading {
+    grid-template-columns: 1fr;
+  }
+
+  .group-heading > span {
+    grid-row: auto;
+  }
+
+  .crct-group {
+    padding: 1.25rem;
+  }
+}
+
+
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, .72fr) minmax(0, 1.28fr);
+  gap: clamp(2.5rem, 8vw, 8rem);
+  align-items: center;
+}
+
+.portrait-panel {
+  max-width: 460px;
+}
+
+.portrait-panel img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  background: #eef3f6;
+}
+
+.portrait-panel p {
+  margin: .8rem 0 0;
+  color: var(--muted);
+  font-size: .8rem;
+}
+
+.about-copy h2 {
+  margin-bottom: .6rem;
+}
+
+.about-role {
+  margin: 0 0 1.8rem;
+  color: var(--red);
+  font-size: .86rem;
+  font-weight: 750;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.about-copy > p:not(.about-role) {
+  max-width: 760px;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+.about-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.about-links a {
+  padding: .7rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+.about-links a:hover {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.cv-note {
+  width: 100%;
+  margin-top: .5rem;
+  color: var(--muted);
+  font-size: .82rem;
+}
+
+@media (max-width: 800px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portrait-panel {
+    max-width: 360px;
   }
 }
