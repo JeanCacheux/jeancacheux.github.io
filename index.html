@@ -1,75 +1,91 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Jean Cacheux — Recherche sur la mécanique du transport des fluides dans les tissus biologiques.">
-  <title>Jean Cacheux — Recherche</title>
+  <meta name="description" content="Jean Cacheux — Mechanics of fluid transport in living tissues at LAAS-CNRS.">
+  <title>Jean Cacheux — Fluid Transport in Living Tissues</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="flow flow-a" aria-hidden="true"></div>
-  <div class="flow flow-b" aria-hidden="true"></div>
+  <canvas id="flow-field" aria-hidden="true"></canvas>
 
   <header class="site-header">
-    <a class="brand" href="#accueil" aria-label="Retour à l'accueil">Jean Cacheux</a>
+    <a class="brand" href="#home" aria-label="Back to home">
+      <img src="laas-cnrs-logo.jpg" alt="LAAS-CNRS">
+    </a>
+
     <button class="menu-button" aria-expanded="false" aria-controls="menu">Menu</button>
-    <nav id="menu" class="menu" aria-label="Navigation principale">
-      <a href="#recherche">Recherche</a>
+
+    <nav id="menu" class="menu" aria-label="Main navigation">
+      <a href="#research">Research</a>
       <a href="#publications">Publications</a>
-      <a href="#equipe">Équipe</a>
-      <a href="#projets">Projets</a>
+      <a href="#team">Team</a>
+      <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <main>
-    <section id="accueil" class="hero">
-      <p class="eyebrow">Chercheur au CNRS · France</p>
-      <h1>Comprendre comment les fluides se déplacent dans les tissus biologiques.</h1>
-      <p class="intro">
-        Mes recherches explorent les principes mécaniques qui organisent le transport
-        de fluides dans la matière vivante, des échelles microscopiques aux structures
-        tissulaires.
-      </p>
-      <div class="hero-links">
-        <a class="button" href="#recherche">Découvrir mes recherches</a>
-        <a class="text-link" href="#publications">Voir les publications →</a>
+    <section id="home" class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Jean Cacheux · Researcher at LAAS-CNRS</p>
+        <h1>Mechanics of Fluid Transport in Living Tissues</h1>
+        <p class="intro">
+          Understanding how biological tissues organise, regulate and adapt fluid
+          transport across scales.
+        </p>
+        <div class="hero-links">
+          <a class="button" href="#research">Explore the research</a>
+          <a class="text-link" href="#publications">Selected publications →</a>
+        </div>
       </div>
+
+      <aside class="research-note" aria-label="Research focus">
+        <p>Research focus</p>
+        <strong>Fluid–structure interactions</strong>
+        <strong>Poromechanics</strong>
+        <strong>Multiscale transport</strong>
+        <strong>Mechanics of living systems</strong>
+      </aside>
     </section>
 
-    <section id="recherche" class="section">
+    <section id="research" class="section">
       <div class="section-heading">
-        <p class="section-number">01</p>
-        <h2>Recherche</h2>
+        <span>01</span>
+        <h2>Research</h2>
       </div>
+
       <div class="research-grid">
         <div class="lead-text">
           <p>
-            Les tissus biologiques transportent en permanence de l'eau, des nutriments,
-            des molécules et des cellules. Pourtant, les mécanismes physiques qui
-            contrôlent ces mouvements restent encore partiellement compris.
+            Biological tissues continuously transport water, nutrients, signalling
+            molecules and cells. The physical mechanisms that control these movements
+            emerge from a subtle interplay between tissue architecture, pressure,
+            deformation and active biological processes.
           </p>
           <p>
-            Mon travail combine mécanique, physique des fluides et biologie pour relier
-            l'architecture des tissus à leurs fonctions de transport.
+            My work combines mechanics, fluid physics and quantitative biology to
+            uncover the principles linking structure and transport function in living
+            matter.
           </p>
         </div>
+
         <div class="topics">
           <article>
-            <span>Échelles</span>
-            <h3>Du pore au tissu</h3>
-            <p>Relier les écoulements locaux à la dynamique globale des structures vivantes.</p>
+            <span>Scales</span>
+            <h3>From pores to tissues</h3>
+            <p>Connecting microscopic flows to collective transport at tissue scale.</p>
           </article>
           <article>
-            <span>Mécanique</span>
-            <h3>Couplages fluide–structure</h3>
-            <p>Comprendre comment déformation, pression et transport s'influencent mutuellement.</p>
+            <span>Mechanics</span>
+            <h3>Fluid–structure coupling</h3>
+            <p>Understanding how deformation and pressure reshape transport pathways.</p>
           </article>
           <article>
             <span>Organisation</span>
-            <h3>Réseaux biologiques</h3>
-            <p>Étudier comment la géométrie et la topologie façonnent les flux.</p>
+            <h3>Biological networks</h3>
+            <p>Investigating how geometry and topology control the distribution of flows.</p>
           </article>
         </div>
       </div>
@@ -77,35 +93,39 @@
 
     <section id="publications" class="section">
       <div class="section-heading">
-        <p class="section-number">02</p>
-        <h2>Publications sélectionnées</h2>
+        <span>02</span>
+        <h2>Selected publications</h2>
       </div>
+
       <div class="publication-list">
         <article class="publication">
-          <p class="publication-year">2026</p>
+          <p class="year">2026</p>
           <div>
-            <h3>Titre de votre publication la plus récente</h3>
-            <p>Jean Cacheux, Coauteur A., Coauteur B. · <em>Nom de la revue</em></p>
-            <a href="#" aria-label="Ouvrir la publication">Article ↗</a>
+            <h3>Title of your most recent publication</h3>
+            <p>Jean Cacheux, Co-author A., Co-author B. · <em>Journal name</em></p>
+            <a href="#">Read article ↗</a>
           </div>
         </article>
+
         <article class="publication">
-          <p class="publication-year">2025</p>
+          <p class="year">2025</p>
           <div>
-            <h3>Titre d'une publication importante</h3>
-            <p>Jean Cacheux, Coauteur A. · <em>Nom de la revue</em></p>
-            <a href="#" aria-label="Ouvrir la publication">Article ↗</a>
+            <h3>Title of an important publication</h3>
+            <p>Jean Cacheux, Co-author A. · <em>Journal name</em></p>
+            <a href="#">Read article ↗</a>
           </div>
         </article>
+
         <article class="publication">
-          <p class="publication-year">2024</p>
+          <p class="year">2024</p>
           <div>
-            <h3>Titre d'une publication importante</h3>
-            <p>Jean Cacheux et al. · <em>Nom de la revue</em></p>
-            <a href="#" aria-label="Ouvrir la publication">Article ↗</a>
+            <h3>Title of an important publication</h3>
+            <p>Jean Cacheux et al. · <em>Journal name</em></p>
+            <a href="#">Read article ↗</a>
           </div>
         </article>
       </div>
+
       <div class="external-links">
         <a href="#" target="_blank" rel="noreferrer">HAL ↗</a>
         <a href="#" target="_blank" rel="noreferrer">Google Scholar ↗</a>
@@ -113,53 +133,57 @@
       </div>
     </section>
 
-    <section id="equipe" class="section">
+    <section id="team" class="section">
       <div class="section-heading">
-        <p class="section-number">03</p>
-        <h2>Équipe</h2>
+        <span>03</span>
+        <h2>Team</h2>
       </div>
+
       <div class="card-grid">
         <article class="person-card">
-          <div class="avatar" aria-hidden="true">JC</div>
+          <div class="avatar">JC</div>
           <h3>Jean Cacheux</h3>
-          <p>Chercheur au CNRS</p>
-          <p class="muted">Mécanique du vivant · Transport dans les tissus</p>
+          <p>CNRS Researcher</p>
+          <p class="muted">Mechanics of living systems · Transport in tissues</p>
         </article>
+
         <article class="person-card placeholder">
-          <div class="avatar" aria-hidden="true">+</div>
-          <h3>Nom Prénom</h3>
-          <p>Doctorant·e / Postdoctorant·e</p>
-          <p class="muted">Thème de recherche</p>
+          <div class="avatar">+</div>
+          <h3>First name Last name</h3>
+          <p>PhD candidate / Postdoctoral researcher</p>
+          <p class="muted">Research topic</p>
         </article>
+
         <article class="person-card placeholder">
-          <div class="avatar" aria-hidden="true">+</div>
-          <h3>Nom Prénom</h3>
-          <p>Collaborateur·rice</p>
-          <p class="muted">Thème de recherche</p>
+          <div class="avatar">+</div>
+          <h3>First name Last name</h3>
+          <p>Collaborator</p>
+          <p class="muted">Research topic</p>
         </article>
       </div>
     </section>
 
-    <section id="projets" class="section">
+    <section id="projects" class="section">
       <div class="section-heading">
-        <p class="section-number">04</p>
-        <h2>Projets de recherche</h2>
+        <span>04</span>
+        <h2>Research projects</h2>
       </div>
+
       <div class="project-list">
         <article>
-          <p class="project-meta">Projet en cours · 2025–2028</p>
-          <h3>Titre public du projet</h3>
+          <p class="project-meta">Ongoing project · 2025–2028</p>
+          <h3>Public project title</h3>
           <p>
-            Une courte description du projet, de sa question scientifique et de son
-            approche. Cette section peut rester volontairement générale.
+            A concise public description of the scientific question, approach and
+            expected impact, without disclosing confidential material.
           </p>
         </article>
+
         <article>
           <p class="project-meta">Collaboration · 2024–2027</p>
-          <h3>Titre public du projet</h3>
+          <h3>Public project title</h3>
           <p>
-            Une ou deux phrases pour présenter l'objectif, les partenaires et les
-            méthodes sans dévoiler d'éléments confidentiels.
+            A short presentation of the objectives, partners and methods used in the project.
           </p>
         </article>
       </div>
@@ -167,18 +191,21 @@
 
     <section id="contact" class="section contact">
       <div class="section-heading">
-        <p class="section-number">05</p>
+        <span>05</span>
         <h2>Contact</h2>
       </div>
+
       <div class="contact-layout">
         <p class="contact-intro">
-          Pour une collaboration, une invitation scientifique ou une question à propos
-          de mes travaux :
+          For collaborations, scientific invitations or questions about my work:
         </p>
+
         <div class="contact-details">
-          <a href="mailto:prenom.nom@cnrs.fr">prenom.nom@cnrs.fr</a>
-          <p>Nom du laboratoire</p>
-          <p>Adresse du laboratoire, France</p>
+          <a href="mailto:firstname.lastname@laas.fr">firstname.lastname@laas.fr</a>
+          <p>LAAS-CNRS</p>
+          <p>7 avenue du Colonel Roche</p>
+          <p>31031 Toulouse Cedex 4, France</p>
+          <a href="https://www.laas.fr/en/" target="_blank" rel="noreferrer">LAAS-CNRS website ↗</a>
         </div>
       </div>
     </section>
@@ -186,7 +213,7 @@
 
   <footer>
     <p>© <span id="year"></span> Jean Cacheux</p>
-    <p>Site hébergé avec GitHub Pages</p>
+    <p>LAAS-CNRS · Hosted with GitHub Pages</p>
   </footer>
 
   <script src="script.js"></script>
