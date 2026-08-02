@@ -165,3 +165,24 @@ The collaboration section is now organised in two clearly separated stages:
 - no visible white rectangle;
 - no shadow;
 - the portrait remains small and secondary to the research title.
+
+
+## SEO and Google indexing
+
+This package adds:
+
+- descriptive page title and meta description;
+- canonical URL: `https://jeancacheux.github.io/`;
+- Open Graph and Twitter metadata;
+- Schema.org `Person` structured data;
+- `robots.txt`;
+- `sitemap.xml`;
+- favicon and Apple touch icon.
+
+### After uploading
+
+1. Upload every file in this ZIP to the repository root.
+2. Wait for GitHub Pages to deploy.
+3. Open Google Search Console and add `https://jeancacheux.github.io/`.
+4. Submit `https://jeancacheux.github.io/sitemap.xml`.
+5. Add a link to this website from your LAAS-CNRS, HAL and ORCID profiles.
