@@ -44,7 +44,7 @@ function resize() {
   canvas.style.height = `${height}px`;
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-  const count = Math.min(165, Math.floor((width * height) / 10000));
+  const count = Math.min(210, Math.floor((width * height) / 7600));
   particles = Array.from({ length: count }, () => ({
     x: Math.random() * width,
     y: Math.random() * height,
@@ -95,8 +95,8 @@ function animate(time) {
     ctx.beginPath();
     ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
     ctx.fillStyle = i % 13 === 0
-      ? "rgba(239, 51, 78, 0.24)"
-      : "rgba(80, 189, 211, 0.19)";
+      ? "rgba(239, 51, 78, 0.34)"
+      : "rgba(80, 189, 211, 0.29)";
     ctx.fill();
   });
 
@@ -111,3 +111,201 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
 } else {
   document.querySelectorAll(".reveal").forEach((el) => el.classList.add("visible"));
 }
+
+
+// Automatic publications: fast, non-blocking and failure-safe.
+(() => {
+  const ORCID = "0000-0001-6671-5533";
+  const list = document.getElementById("publication-list");
+  const status = document.getElementById("publication-update-status");
+  if (!list || list.dataset.autoPublications !== "true") return;
+
+  const escapeHtml = (value = "") =>
+    String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+
+  const authorName = (authorship) => authorship?.author?.display_name || "";
+
+  function jeanPosition(work) {
+    const authors = work.authorships || [];
+    const index = authors.findIndex((entry) => {
+      const orcid = entry?.author?.orcid || "";
+      return orcid.endsWith(ORCID);
+    });
+
+    if (index < 0) return { priority: 0, label: "" };
+    if (index === 0) return { priority: 3, label: "First author" };
+    if (index === authors.length - 1) return { priority: 3, label: "Last author" };
+    if (index === authors.length - 2) return { priority: 2, label: "Penultimate author" };
+    return { priority: 1, label: "" };
+  }
+
+  function isJournalArticle(work) {
+    const locations = work.locations || [];
+    const source = work.primary_location?.source;
+    const journal =
+      source?.type === "journal" ||
+      locations.some((location) => location?.source?.type === "journal");
+
+    return work.type === "article" && journal && !work.is_retracted;
+  }
+
+  function journalName(work) {
+    return (
+      work.primary_location?.source?.display_name ||
+      work.locations?.find((location) => location?.source?.type === "journal")
+        ?.source?.display_name ||
+      "International journal"
+    );
+  }
+
+  function workUrl(work) {
+    return (
+      work.doi ||
+      work.primary_location?.landing_page_url ||
+      work.primary_location?.pdf_url ||
+      work.id ||
+      "#"
+    );
+  }
+
+  function formattedAuthors(work) {
+    const names = (work.authorships || []).map(authorName).filter(Boolean);
+    return names.length <= 6
+      ? names.join(", ")
+      : `${names.slice(0, 5).join(", ")} et al.`;
+  }
+
+  function chooseWorks(works) {
+    const eligible = works.filter(isJournalArticle);
+    const lead = eligible
+      .filter((work) => jeanPosition(work).priority >= 2)
+      .sort((a, b) =>
+        String(b.publication_date || "").localeCompare(String(a.publication_date || ""))
+      );
+
+    const newest = eligible
+      .sort((a, b) =>
+        String(b.publication_date || "").localeCompare(String(a.publication_date || ""))
+      );
+
+    const selected = [];
+    const seen = new Set();
+
+    // First take the newest first/last/penultimate-author papers.
+    for (const work of lead) {
+      if (selected.length >= 4) break;
+      const key = work.doi || work.id;
+      if (!seen.has(key)) {
+        selected.push(work);
+        seen.add(key);
+      }
+    }
+
+    // Complete with the newest journal papers if fewer than four qualify.
+    for (const work of newest) {
+      if (selected.length >= 4) break;
+      const key = work.doi || work.id;
+      if (!seen.has(key)) {
+        selected.push(work);
+        seen.add(key);
+      }
+    }
+
+    // Keep the final selection chronologically ordered.
+    return selected.sort((a, b) =>
+      String(b.publication_date || "").localeCompare(String(a.publication_date || ""))
+    );
+  }
+
+  function render(works) {
+    list.innerHTML = works
+      .map((work) => {
+        const position = jeanPosition(work);
+        const positionHtml = position.label
+          ? `<span class="authorship-role">${escapeHtml(position.label)}</span>`
+          : "";
+
+        return `
+          <article class="publication">
+            <div class="pub-year">${escapeHtml(work.publication_year || "")}</div>
+            <div>
+              <h3>${escapeHtml(work.title || "Untitled publication")}</h3>
+              <p>${escapeHtml(formattedAuthors(work))} · <em>${escapeHtml(journalName(work))}</em></p>
+              ${positionHtml ? `<div class="publication-meta">${positionHtml}</div>` : ""}
+            </div>
+            <a href="${escapeHtml(workUrl(work))}" target="_blank" rel="noreferrer" aria-label="Open publication">↗</a>
+          </article>
+        `;
+      })
+      .join("");
+  }
+
+  async function refreshPublications() {
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 4000);
+
+    const filter = [
+      `author.orcid:${ORCID}`,
+      "type:article",
+      "is_retracted:false"
+    ].join(",");
+
+    const fields = [
+      "id",
+      "doi",
+      "title",
+      "publication_year",
+      "publication_date",
+      "type",
+      "is_retracted",
+      "authorships",
+      "primary_location",
+      "locations"
+    ].join(",");
+
+    const url =
+      `https://api.openalex.org/works?filter=${encodeURIComponent(filter)}` +
+      `&sort=publication_date:desc&per-page=40` +
+      `&select=${encodeURIComponent(fields)}` +
+      `&mailto=${encodeURIComponent("jean.cacheux@laas.fr")}`;
+
+    try {
+      const response = await fetch(url, {
+        signal: controller.signal,
+        headers: { Accept: "application/json" }
+      });
+      if (!response.ok) throw new Error(`OpenAlex HTTP ${response.status}`);
+
+      const data = await response.json();
+      const chosen = chooseWorks(data.results || []);
+
+      if (chosen.length) {
+        render(chosen);
+        if (status) {
+          status.textContent =
+            "Automatically refreshed from OpenAlex. Full publication record available on Google Scholar.";
+        }
+      }
+    } catch (error) {
+      console.warn("Automatic publication refresh unavailable; keeping fallback list.", error);
+      if (status) {
+        status.textContent =
+          "Curated publications shown. Automatic refresh is temporarily unavailable.";
+      }
+    } finally {
+      window.clearTimeout(timeout);
+    }
+  }
+
+  // The static list is already visible; refresh quietly after the page has loaded.
+  if ("requestIdleCallback" in window) {
+    requestIdleCallback(refreshPublications, { timeout: 1200 });
+  } else {
+    window.setTimeout(refreshPublications, 250);
+  }
+})();

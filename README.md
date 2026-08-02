@@ -63,3 +63,29 @@ section contents stayed invisible.
 
 This version removes that error and makes all content visible by default, even if
 JavaScript is disabled or fails to load.
+
+
+## Homepage and particle update
+
+- portrait removed from the homepage
+- portrait retained only in section 04, About
+- header now displays “Jean Cacheux — Senior Researcher · LAAS–CNRS”
+- particle canvas moved above the page background and below the content
+- particles made slightly more visible while remaining subtle
+
+
+## Automatic publication refresh
+
+The page always displays four curated publications immediately. After loading, it makes
+one lightweight OpenAlex request using ORCID `0000-0001-6671-5533`.
+
+Selection rules:
+
+1. journal articles only;
+2. retracted works excluded;
+3. first, last and penultimate-author papers are prioritised;
+4. remaining places are completed with the newest journal articles;
+5. four publications are displayed;
+6. if the API is slow or unavailable after four seconds, the static list remains visible.
+
+This avoids an empty or permanently loading Publications section.
