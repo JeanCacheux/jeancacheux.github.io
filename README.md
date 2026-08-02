@@ -105,7 +105,7 @@ This avoids an empty or permanently loading Publications section.
 
 The collaboration section is now organised in two clearly separated stages:
 
-1. **LAAS–CNRS · MechaBiofluidics**
+1. **LAAS–CNRS · MechaBioFluidics**
    - primary affiliation
    - Aurélien Abancaud
    - Thomas Quenan
@@ -122,7 +122,7 @@ The collaboration section is now organised in two clearly separated stages:
 ## Final collaboration layout correction
 
 - Jean Cacheux and “CNRS Researcher” now appear prominently on the homepage.
-- Team name corrected to **MechaBiofluidics**.
+- Team name corrected to **MechaBioFluidics**.
 - LAAS–CNRS appears first with its four collaborators.
 - The CRCT logo and CRCT collaborators appear only after the complete LAAS–CNRS list.
 - LAAS–CNRS and CRCT are visually separated into two sequential blocks.
@@ -130,9 +130,18 @@ The collaboration section is now organised in two clearly separated stages:
 
 ## Final polished version
 
-- the homepage now starts with Jean Cacheux, CNRS Researcher, and the MechaBiofluidics affiliation;
+- the homepage now starts with Jean Cacheux, CNRS Researcher, and the MechaBioFluidics affiliation;
 - a concise About-style research profile appears directly with the main research title;
-- every occurrence of the team name has been normalised to **MechaBiofluidics**;
+- every occurrence of the team name has been normalised to **MechaBioFluidics**;
 - LAAS–CNRS collaborators remain first, followed by the CRCT logo and CRCT collaborators;
 - final visual spacing, hover effects and typography have been refined;
 - the homepage contains no portrait; the portrait remains only in the Profile section.
+
+
+## Requested changes
+
+- About content moved to the homepage instead of a separate section.
+- Small cut-out portrait added on the right side of the homepage.
+- Secondary research tagline removed.
+- Aurélie Gomes listed as Research Engineer.
+- Team name standardised everywhere as **MechaBioFluidics**.
