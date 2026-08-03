@@ -1,323 +1,530 @@
+:root {
+  --ink: #08111f;
+  --blue: #0e2d5c;
+  --cyan: #50bdd3;
+  --red: #ef334e;
+  --paper: #f8fafc;
+  --white: #ffffff;
+  --muted: #677383;
+  --line: rgba(8, 17, 31, .15);
+  --max: 1280px;
+  --portrait-size: 112px;
+  --team-image-scale: 80%;
+}
 
-:root{--ink:#08111f;--blue:#0e2d5c;--cyan:#50bdd3;--red:#ef334e;--paper:#f8fafc;--white:#fff;--muted:#677383;--line:rgba(8,17,31,.15);--max:1280px}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:128px}body{margin:0;color:var(--ink);background:var(--paper);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}a{color:inherit}#particles{position:fixed;inset:0;z-index:0;width:100%;height:100%;pointer-events:none;background:linear-gradient(180deg,#fff 0%,#f8fafc 100%)}.site-header,main,footer{position:relative;z-index:1}
-.site-header{position:sticky;top:0;background:rgba(248,250,252,.985);border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}.header-inner{width:min(calc(100% - 2rem),var(--max));min-height:116px;margin:auto;display:grid;grid-template-columns:130px minmax(260px,1fr) auto;align-items:center;gap:1.4rem}.laas-logo{width:118px;height:76px;object-fit:contain}.identity{display:flex;align-items:center;gap:1rem}.identity img{width:78px;height:92px;object-fit:contain;object-position:center bottom}.identity div{display:grid}.identity strong{font-family:Georgia,serif;font-size:1.65rem;font-weight:500;line-height:1}.identity span{margin-top:.35rem;color:var(--red);font-size:.76rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.identity small{color:var(--muted)}nav{display:flex;gap:1.2rem}nav a{text-decoration:none;color:var(--muted);font-size:.9rem}.profiles{grid-column:2/4;display:flex;justify-content:flex-end;gap:.55rem;margin-top:-.8rem;padding-bottom:.6rem}.profiles a{padding:.42rem .68rem;border:1px solid var(--line);border-radius:999px;text-decoration:none;background:#fff;color:var(--blue);font-size:.74rem;font-weight:700}
-main,footer{width:min(calc(100% - 3rem),var(--max));margin-inline:auto}.hero{min-height:68vh;display:grid;align-content:center;padding:7rem 0 5rem;border-bottom:1px solid var(--line)}.eyebrow,.chapter-label{color:var(--red);font-size:.76rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}h1{max-width:1180px;margin:.8rem 0 1.7rem;font-family:Georgia,serif;font-size:clamp(3.5rem,8vw,8rem);font-weight:500;letter-spacing:-.065em;line-height:.9}.hero-copy{max-width:820px;margin:0;color:var(--muted);font-size:clamp(1.15rem,2vw,1.45rem)}
-.carousel-section{padding:3rem 0 6rem}.carousel-heading{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;margin-bottom:1rem}.carousel-heading h2{margin:0;font-size:1rem;color:var(--red);letter-spacing:.1em;text-transform:uppercase}.carousel-heading p{margin:0;color:var(--muted);font-size:.82rem}.carousel{overflow:hidden;cursor:grab}.carousel.dragging{cursor:grabbing}.carousel-track{display:flex;gap:1rem;will-change:transform}.slide{flex:0 0 clamp(360px,48vw,680px);border:1px solid var(--line);background:#fff}.slide img{display:block;width:100%;height:clamp(300px,38vw,500px);object-fit:contain;padding:1rem;background:#fff}.slide div{padding:1.1rem 1.25rem 1.35rem}.slide strong{color:var(--red);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase}.slide p{margin:.5rem 0 0;color:var(--muted)}
-.chapter{padding:7.5rem 0;border-top:1px solid var(--line)}.chapter-label{margin-bottom:3.5rem}.chapter-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,7vw,7rem)}.chapter h2{margin:0;font-family:Georgia,serif;font-size:clamp(2.7rem,5vw,5rem);font-weight:500;letter-spacing:-.045em;line-height:1.02}.chapter-grid p,.team-intro{color:var(--muted);font-size:1.08rem}.axes{display:grid;grid-template-columns:repeat(3,1fr);margin-top:5rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.axes article{min-height:250px;padding:1.5rem;border-right:1px solid var(--line)}.axes article:last-child{border-right:0}.axes span{color:var(--cyan);font-weight:800}.axes h3{margin:4rem 0 .6rem}.axes p{margin:0;color:var(--muted)}
-.dark{position:relative;width:100vw;margin-left:calc(50% - 50vw);padding-inline:max(1.5rem,calc((100vw - var(--max))/2));color:#fff;background:var(--ink)}.dark .chapter-label{color:var(--cyan)}.dark h2{color:#fff}.dark .chapter-grid p{color:rgba(255,255,255,.65)}.publications{border-top:1px solid rgba(255,255,255,.2)}.publications article{display:grid;grid-template-columns:78px 1fr 24px;gap:1rem;padding:1.7rem 0;border-bottom:1px solid rgba(255,255,255,.2)}.publications time{color:var(--cyan)}.publications h3{margin:0 0 .35rem;font-size:1.15rem}.publications p{margin:0;color:rgba(255,255,255,.62)}.publications a{color:var(--red);text-decoration:none}
-.team-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}.team-grid article{min-height:260px;padding:1.25rem;border:1px solid var(--line);background:rgba(255,255,255,.72)}.badge{display:grid;place-items:center;width:62px;height:62px;margin-bottom:4.3rem;border-radius:50%;color:#fff;font-weight:800}.badge.laas{background:linear-gradient(135deg,var(--blue),var(--cyan))}.badge.crct{background:linear-gradient(135deg,#f39a1f,#7dbb43)}.team-grid h3{margin:0 0 .35rem}.team-grid p{margin:0 0 .45rem;color:var(--muted)}.team-grid span{color:var(--red);font-size:.84rem}.affiliations{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:3rem}.affiliations div{display:flex;align-items:center;gap:1rem;padding:1rem;border:1px solid var(--line);background:#fff}.affiliations img{width:150px;height:72px;object-fit:contain}
-footer{display:flex;justify-content:space-between;padding:1.5rem 0 2.5rem;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
-@media(max-width:1000px){.header-inner{grid-template-columns:110px 1fr}nav{display:none}.profiles{grid-column:1/3}.team-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:700px){html{scroll-padding-top:170px}.header-inner{grid-template-columns:90px 1fr;min-height:150px}.laas-logo{width:82px;height:58px}.identity img{width:60px;height:70px}.identity strong{font-size:1.25rem}.profiles{justify-content:center;flex-wrap:wrap}.carousel-heading{align-items:flex-start;flex-direction:column}.slide{flex-basis:86vw}.slide img{height:62vw;min-height:270px}.chapter-grid,.axes,.team-grid,.affiliations{grid-template-columns:1fr}.axes article{border-right:0;border-bottom:1px solid var(--line);min-height:180px}.axes article:last-child{border-bottom:0}.axes h3{margin-top:2.5rem}.publications article{grid-template-columns:54px 1fr 20px}.hero{min-height:auto;padding:5rem 0 4rem}main,footer{width:min(calc(100% - 2rem),var(--max))}footer{flex-direction:column;gap:.25rem}}
+* {
+  box-sizing: border-box;
+}
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 132px;
+}
 
-/* Final visual corrections */
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.55;
+}
+
+a {
+  color: inherit;
+}
+
+#particles {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(180deg, #fff 0%, #f8fafc 100%);
+}
+
+.site-header,
+main,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------------- Header ---------------- */
+
 .site-header {
+  position: sticky;
+  top: 0;
   z-index: 1000;
-  background: #f8fafc;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  box-shadow: 0 8px 24px rgba(8, 17, 31, .08);
+  background: rgba(248, 250, 252, .60);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(16px) saturate(135%);
+  -webkit-backdrop-filter: blur(16px) saturate(135%);
+  box-shadow: 0 6px 22px rgba(8, 17, 31, .055);
 }
 
 .header-inner {
-  position: relative;
-  z-index: 1001;
+  width: min(calc(100% - 2rem), var(--max));
+  min-height: 120px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 130px minmax(320px, 1fr) auto;
+  align-items: center;
+  gap: 1.4rem;
 }
 
-.identity img {
-  width: 74px;
-  height: 74px;
-  padding: 2px;
+.laas-logo {
+  display: block;
+  width: 118px;
+  height: 76px;
+  object-fit: contain;
+  background: transparent;
+}
+
+.identity {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  gap: 1rem;
+}
+
+.identity-photo-frame {
+  position: relative;
+  display: block;
+  flex: 0 0 var(--portrait-size);
+  width: var(--portrait-size);
+  height: var(--portrait-size);
+  overflow: hidden;
   border-radius: 50%;
+  background: transparent;
+}
+
+.identity-photo-frame > img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
   object-fit: cover;
-  object-position: center 22%;
-  background: rgba(255,255,255,.95);
-  border: 1px solid rgba(14,45,92,.12);
+  object-position: center 28%;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: none;
+  clip-path: circle(50% at 50% 50%);
+}
+
+.identity > div {
+  display: grid;
+  min-width: 0;
+}
+
+.identity strong {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.65rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.identity span:not(.identity-photo-frame) {
+  margin-top: .35rem;
+  color: var(--red);
+  font-size: .76rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.identity small {
+  color: var(--muted);
+}
+
+nav {
+  display: flex;
+  gap: 1.2rem;
+}
+
+nav a {
+  color: var(--muted);
+  font-size: .9rem;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: var(--red);
+}
+
+.profiles {
+  grid-column: 2 / 4;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: .72rem;
+  margin-top: -1rem;
+  padding-bottom: .7rem;
+}
+
+.profiles a:not(.cv-download) {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  background: transparent;
+  text-decoration: none;
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+.profiles a:not(.cv-download):hover {
+  transform: translateY(-2px) scale(1.05);
+  opacity: .86;
+}
+
+.profiles a img {
+  display: block;
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.cv-download {
+  display: inline-flex;
+  align-items: center;
+  gap: .36rem;
+  height: 34px;
+  padding: 0 .2rem;
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+.cv-download:hover {
+  transform: translateY(-2px);
+  opacity: .86;
+}
+
+.pdf-badge {
+  position: relative;
+  display: grid;
+  place-items: end center;
+  width: 24px;
+  height: 28px;
+  padding-bottom: 3px;
+  border: 1.8px solid #d82727;
+  border-radius: 2px;
+  color: #d82727;
+  line-height: 1;
+}
+
+.pdf-badge::before {
+  content: "";
+  position: absolute;
+  top: -1.8px;
+  right: -1.8px;
+  width: 8px;
+  height: 8px;
+  border-left: 1.8px solid #d82727;
+  border-bottom: 1.8px solid #d82727;
+  background: rgba(248, 250, 252, .82);
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+}
+
+.pdf-badge span {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 6.3px;
+  font-weight: 800;
+}
+
+.cv-download > span:last-child {
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+}
+
+/* ---------------- Main layout ---------------- */
+
+main,
+footer {
+  width: min(calc(100% - 3rem), var(--max));
+  margin-inline: auto;
 }
 
 .hero {
-  width: 100%;
+  min-height: 68vh;
+  display: grid;
+  align-content: center;
+  padding: 7rem 0 5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.eyebrow,
+.chapter-label {
+  color: var(--red);
+  font-size: .76rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
 }
 
 h1 {
   width: 100%;
   max-width: none;
+  margin: .8rem 0 1.7rem;
+  font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(3rem, 6.2vw, 6.3rem);
+  font-weight: 500;
+  letter-spacing: -.06em;
   line-height: .96;
 }
 
-.chapter h2 {
-  font-size: clamp(2.25rem, 4.2vw, 4.25rem);
-}
-
-/* Keep publication content below, never over the sticky header. */
-.dark {
-  z-index: 1;
-}
-
-/* LAAS initials: navy, light blue and red from the logo. */
-.badge.laas {
-  background:
-    conic-gradient(
-      from 220deg,
-      #0e2d5c 0deg 175deg,
-      #50bdd3 175deg 285deg,
-      #ef334e 285deg 360deg
-    );
-}
-
-
-
-@media (max-width: 700px) {
-  h1 {
-    font-size: clamp(2.65rem, 12vw, 4.5rem);
-  }
-
-  .identity img {
-    width: 62px;
-    height: 62px;
-  }
-}
-
-
-/* Header, portrait and logo refinements */
-.site-header {
-  background: rgba(248, 250, 252, .92);
-  backdrop-filter: blur(22px) saturate(118%);
-  -webkit-backdrop-filter: blur(22px) saturate(118%);
-  box-shadow: 0 8px 28px rgba(8,17,31,.08);
-}
-
-.laas-logo {
-  object-fit: contain;
-  background: transparent;
-}
-
-.identity img {
-  width: 76px;
-  height: 76px;
-  padding: 0;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: center center;
-  background: transparent;
-  border: 1px solid rgba(14,45,92,.14);
-}
-
-.profiles {
-  align-items: center;
-}
-
-.profiles a {
-  display: grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  padding: 0;
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,.82);
-}
-
-.profiles img {
-  display: block;
-  width: 23px;
-  height: 23px;
-  object-fit: contain;
-}
-
-/* Firefox: research introduction spans the available width cleanly. */
 .hero-copy {
   width: 100%;
   max-width: none;
+  margin: 0;
   padding-right: clamp(0rem, 12vw, 9rem);
+  color: var(--muted);
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
 }
 
-/* Team grid with six members. */
-.team-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+/* ---------------- Research carousel ---------------- */
+
+.carousel-section {
+  padding: 3rem 0 6rem;
 }
 
-/* Ring-only institutional badges, with perfectly centred initials. */
-.badge {
-  position: relative;
-  display: grid;
-  place-items: center;
-  width: 66px;
-  height: 66px;
-  padding: 7px;
-  border-radius: 50%;
-  background: transparent !important;
-  color: var(--ink);
+.carousel-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.carousel-heading h2 {
+  margin: 0;
+  color: var(--red);
   font-size: 1rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.carousel-heading p {
+  margin: 0;
+  color: var(--muted);
+  font-size: .82rem;
+}
+
+.carousel {
+  overflow: hidden;
+  cursor: grab;
+}
+
+.carousel.dragging {
+  cursor: grabbing;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 1rem;
+  will-change: transform;
+}
+
+.slide {
+  flex: 0 0 clamp(360px, 48vw, 680px);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.slide img {
+  display: block;
+  width: 100%;
+  height: clamp(300px, 38vw, 500px);
+  padding: 1rem;
+  object-fit: contain;
+  background: #fff;
+  transition: transform .45s ease, filter .45s ease;
+  transform: translate3d(0, var(--parallax-y, 0), 0) scale(1.01);
+}
+
+.slide:hover img {
+  transform: translate3d(0, var(--parallax-y, 0), 0) scale(1.035);
+  filter: contrast(1.04) saturate(1.04);
+}
+
+.slide div {
+  padding: 1.1rem 1.25rem 1.35rem;
+}
+
+.slide strong {
+  color: var(--red);
+  font-size: .8rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.slide p {
+  margin: .5rem 0 0;
+  color: var(--muted);
+}
+
+/* ---------------- Sections ---------------- */
+
+.chapter {
+  padding: 7.5rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.chapter-label {
+  margin-bottom: 3.5rem;
+}
+
+.chapter-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: clamp(2rem, 7vw, 7rem);
+}
+
+.chapter h2 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.25rem, 4.2vw, 4.25rem);
+  font-weight: 500;
+  letter-spacing: -.045em;
+  line-height: 1.02;
+}
+
+.chapter-grid p,
+.team-intro {
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+.axes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 5rem;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.axes article {
+  min-height: 250px;
+  padding: 1.5rem;
+  border-right: 1px solid var(--line);
+}
+
+.axes article:last-child {
+  border-right: 0;
+}
+
+.axes span {
+  color: var(--cyan);
   font-weight: 800;
-  isolation: isolate;
 }
 
-.badge::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  z-index: -2;
+.axes h3 {
+  margin: 4rem 0 .6rem;
 }
 
-.badge::after {
-  content: "";
-  position: absolute;
-  inset: 7px;
-  border-radius: inherit;
-  background: rgba(255,255,255,.96);
-  z-index: -1;
+.axes p {
+  margin: 0;
+  color: var(--muted);
 }
 
-.badge.laas::before {
-  background: conic-gradient(
-    from 215deg,
-    #0e2d5c 0deg 150deg,
-    #50bdd3 150deg 275deg,
-    #ef334e 275deg 360deg
-  );
-}
+/* ---------------- Publications ---------------- */
 
-.badge.crct::before {
-  background: conic-gradient(
-    from 205deg,
-    #f39a1f 0deg 55deg,
-    #f5e61c 55deg 105deg,
-    #7dbb43 105deg 185deg,
-    #58bde0 185deg 255deg,
-    #7dbb43 255deg 315deg,
-    #f39a1f 315deg 360deg
-  );
-}
-
-.team-grid span a {
-  text-underline-offset: .2rem;
-}
-
-.affiliations img {
-  background: transparent;
-  mix-blend-mode: multiply;
-}
-
-@media (max-width: 1000px) {
-  .team-grid {
-    grid-template-columns: repeat(2, minmax(0,1fr));
-  }
-}
-
-@media (max-width: 700px) {
-  .hero-copy {
-    padding-right: 0;
-  }
-
-  .team-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .identity img {
-    width: 64px;
-    height: 64px;
-  }
-}
-
-
-/* Final header and team corrections */
-.site-header {
-  background: rgba(248, 250, 252, .84);
-  backdrop-filter: blur(24px) saturate(120%);
-  -webkit-backdrop-filter: blur(24px) saturate(120%);
-  box-shadow: 0 7px 24px rgba(8,17,31,.07);
-}
-
-.identity img {
-  width: 76px;
-  height: 76px;
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: center center;
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
-/* Remove all legacy pseudo-elements that interfered with the CRCT initials. */
-.badge::before,
-.badge::after {
-  display: none !important;
-  content: none !important;
-}
-
-.badge {
-  display: grid !important;
-  place-items: center !important;
-  width: 66px;
-  height: 66px;
-  padding: 0 !important;
-  border: 0;
-  border-radius: 50%;
-  font-size: 1rem !important;
-  line-height: 1 !important;
-  font-weight: 800;
-  color: var(--ink) !important;
-  text-shadow: none !important;
-  isolation: auto !important;
-}
-
-/* LAAS: navy, cyan and red ring with a clean white centre. */
-.badge.laas {
-  background:
-    radial-gradient(circle at center, rgba(255,255,255,.98) 0 55%, transparent 57%),
-    conic-gradient(from 215deg,
-      #0e2d5c 0deg 150deg,
-      #50bdd3 150deg 275deg,
-      #ef334e 275deg 360deg
-    ) !important;
-}
-
-/* CRCT: multicolour ring inspired by the left arc of the logo. */
-.badge.crct {
-  background:
-    radial-gradient(circle at center, rgba(255,255,255,.98) 0 55%, transparent 57%),
-    conic-gradient(from 205deg,
-      #f39a1f 0deg 55deg,
-      #f5e61c 55deg 105deg,
-      #7dbb43 105deg 185deg,
-      #58bde0 185deg 255deg,
-      #7dbb43 255deg 315deg,
-      #f39a1f 315deg 360deg
-    ) !important;
-}
-
-
-/* Downloadable CV in the top profile controls. */
-.profiles .cv-download {
-  width: auto;
-  min-width: 42px;
-  padding: 0 .62rem;
+.dark {
+  position: relative;
+  z-index: 1;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding-inline: max(1.5rem, calc((100vw - var(--max)) / 2));
   color: #fff;
-  background: var(--blue);
-  border-color: var(--blue);
-  font-size: .72rem;
-  font-weight: 800;
-  letter-spacing: .06em;
+  background: var(--ink);
+}
+
+.dark .chapter-label {
+  color: var(--cyan);
+}
+
+.dark h2 {
+  color: #fff;
+}
+
+.dark .chapter-grid p {
+  color: rgba(255, 255, 255, .65);
+}
+
+.publications {
+  border-top: 1px solid rgba(255, 255, 255, .2);
+}
+
+.publications article {
+  display: grid;
+  grid-template-columns: 78px 1fr 24px;
+  gap: 1rem;
+  padding: 1.7rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, .2);
+  transition: transform .25s ease;
+}
+
+.publications article:hover {
+  transform: translateX(5px);
+}
+
+.publications time {
+  color: var(--cyan);
+}
+
+.publications h3 {
+  margin: 0 0 .35rem;
+  font-size: 1.15rem;
+}
+
+.publications p {
+  margin: 0;
+  color: rgba(255, 255, 255, .62);
+}
+
+.publications a {
+  color: var(--red);
   text-decoration: none;
 }
 
-/* Uploaded team portraits with a subtle blue filter and lab-colour rings. */
+/* ---------------- Team ---------------- */
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.team-grid > article {
+  min-height: 310px;
+  padding: 1.35rem;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, .72);
+  transition: transform .25s ease, border-color .25s ease, background-color .25s ease;
+}
+
+.team-grid > article:hover {
+  transform: translateY(-4px);
+  border-color: rgba(80, 189, 211, .42);
+  background: rgba(255, 255, 255, .9);
+}
+
 .team-photo {
   position: relative;
   display: grid;
-  place-items: end center;
-  width: 96px;
-  height: 96px;
-  margin-bottom: 2.4rem;
-  border-radius: 50%;
+  place-items: center;
+  width: var(--portrait-size);
+  height: var(--portrait-size);
+  margin-bottom: 2.2rem;
   overflow: hidden;
-  background: rgba(255,255,255,.82);
+  border-radius: 50%;
+  background: transparent;
 }
 
 .team-photo::before {
@@ -325,16 +532,15 @@ h1 {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  z-index: 0;
 }
 
 .team-photo::after {
   content: "";
   position: absolute;
   inset: 5px;
-  border-radius: inherit;
-  background: rgba(248,250,252,.92);
   z-index: 1;
+  border-radius: inherit;
+  background: rgba(248, 250, 252, .96);
 }
 
 .team-photo.laas-photo::before {
@@ -362,71 +568,95 @@ h1 {
   position: relative;
   z-index: 2;
   display: block;
-  width: 92%;
-  height: 92%;
+  width: var(--team-image-scale);
+  height: var(--team-image-scale);
   object-fit: contain;
   object-position: center bottom;
-  transform: translateY(2px);
+  border-radius: 50%;
+  filter: grayscale(100%) sepia(18%) hue-rotate(175deg) saturate(240%) brightness(1.06) contrast(1.08);
+  transition: filter .3s ease, transform .3s ease;
 }
 
-@media (max-width: 700px) {
-  .team-photo {
-    width: 104px;
-    height: 104px;
-  }
-}
-
-
-/* Final visual polish */
-
-/* Subtle parallax and hover treatment for research figures. */
-.slide,
-.research-slide {
-  perspective: 1000px;
-}
-
-.slide img,
-.research-slide img {
-  transition: transform .45s ease, filter .45s ease;
-  transform: translate3d(0, var(--parallax-y, 0px), 0) scale(1.01);
-}
-
-.slide:hover img,
-.research-slide:hover img {
-  transform: translate3d(0, var(--parallax-y, 0px), 0) scale(1.035);
-  filter: contrast(1.04) saturate(1.04);
-}
-
-/* Team portraits: blue-toned at rest, natural colour on hover. */
-.team-photo img {
-  filter: saturate(.7) hue-rotate(168deg) contrast(1.03);
-  transition: filter .35s ease, transform .35s ease;
-}
-
-.team-grid article:hover .team-photo img {
+.team-grid > article:hover .team-photo img {
   filter: none;
-  transform: translateY(2px) scale(1.035);
+  transform: scale(1.03);
 }
 
-/* Compact journal marks in the publication list. */
-.journal-mark {
-  display: inline-grid;
+.team-grid h3 {
+  margin: 0 0 .35rem;
+}
+
+.team-grid p {
+  margin: 0 0 .45rem;
+  color: var(--muted);
+}
+
+.team-grid > article > span {
+  color: var(--red);
+  font-size: .84rem;
+}
+
+.team-grid > article > span a {
+  text-underline-offset: .2rem;
+}
+
+.team-profiles {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  min-height: 29px;
+  margin-top: 1rem;
+}
+
+.team-profiles a {
+  display: grid;
   place-items: center;
-  min-width: 2.3rem;
-  height: 1.5rem;
-  margin-right: .45rem;
-  padding: 0 .35rem;
-  border: 1px solid rgba(255,255,255,.28);
-  border-radius: .3rem;
-  color: var(--cyan);
-  font-size: .66rem;
-  font-style: normal;
-  font-weight: 850;
-  letter-spacing: .04em;
-  vertical-align: .08rem;
+  width: 29px;
+  height: 29px;
+  border: 0;
+  background: transparent;
+  text-decoration: none;
+  opacity: .9;
+  transition: transform .2s ease, opacity .2s ease;
 }
 
-/* Contact map. */
+.team-profiles a:hover {
+  transform: translateY(-2px) scale(1.06);
+  opacity: 1;
+}
+
+.team-profiles img {
+  display: block;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.affiliations {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.affiliations > div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.affiliations img {
+  width: 150px;
+  height: 72px;
+  object-fit: contain;
+  background: transparent;
+}
+
+/* ---------------- Contact ---------------- */
+
 .contact-layout {
   display: grid;
   grid-template-columns: minmax(0, .88fr) minmax(420px, 1.12fr);
@@ -474,546 +704,145 @@ h1 {
   filter: grayscale(.18) saturate(.85) contrast(1.02);
 }
 
-/* More refined publication and team hover states. */
-.publications article,
-.publication,
-.team-grid article {
-  transition: transform .25s ease, border-color .25s ease, background-color .25s ease;
+/* ---------------- Footer ---------------- */
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 0 2.5rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: .85rem;
 }
 
-.publications article:hover,
-.publication:hover {
-  transform: translateX(5px);
-}
+/* ---------------- Responsive ---------------- */
 
-.team-grid article:hover {
-  transform: translateY(-4px);
-  border-color: rgba(80,189,211,.42);
-  background: rgba(255,255,255,.9);
-}
+@media (max-width: 1000px) {
+  .header-inner {
+    grid-template-columns: 110px 1fr;
+  }
 
-@media (max-width: 900px) {
+  nav {
+    display: none;
+  }
+
+  .profiles {
+    grid-column: 1 / 3;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .contact-layout {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  :root {
+    --portrait-size: 96px;
+  }
+
+  html {
+    scroll-padding-top: 178px;
+  }
+
+  .header-inner {
+    min-height: 160px;
+    grid-template-columns: 90px 1fr;
+    gap: .8rem;
+  }
+
+  .laas-logo {
+    width: 82px;
+    height: 58px;
+  }
+
+  .identity strong {
+    font-size: 1.25rem;
+  }
+
+  .profiles {
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: -.35rem;
+  }
+
+  main,
+  footer {
+    width: min(calc(100% - 2rem), var(--max));
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 5rem 0 4rem;
+  }
+
+  .hero-copy {
+    padding-right: 0;
+  }
+
+  .carousel-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .slide {
+    flex-basis: 86vw;
+  }
+
+  .slide img {
+    height: 62vw;
+    min-height: 270px;
+  }
+
+  .chapter {
+    padding: 5rem 0;
+  }
+
+  .chapter-grid,
+  .axes,
+  .team-grid,
+  .affiliations {
+    grid-template-columns: 1fr;
+  }
+
+  .axes article {
+    min-height: 180px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .axes article:last-child {
+    border-bottom: 0;
+  }
+
+  .axes h3 {
+    margin-top: 2.5rem;
+  }
+
+  .publications article {
+    grid-template-columns: 54px 1fr 20px;
   }
 
   .map-frame,
   .map-frame iframe {
     min-height: 340px;
   }
+
+  footer {
+    flex-direction: column;
+    gap: .25rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .slide img,
-  .research-slide img,
   .team-photo img,
-  .publications article,
-  .publication,
-  .team-grid article {
+  .team-grid > article,
+  .publications article {
     transition: none;
     transform: none !important;
   }
-}
-
-
-/* Larger team portraits: the photograph now fills almost the complete circle. */
-.team-photo {
-  width: 112px;
-  height: 112px;
-  margin-bottom: 2.1rem;
-}
-
-.team-photo::after {
-  inset: 4px;
-}
-
-.team-photo img {
-  width: calc(100% - 8px);
-  height: calc(100% - 8px);
-  object-fit: cover;
-  object-position: center 18%;
-  border-radius: 50%;
-  transform: none;
-}
-
-.team-grid article:hover .team-photo img {
-  transform: scale(1.035);
-}
-
-/* Individual crop adjustments for the supplied portraits. */
-.team-photo img[alt="Thomas Quénan"] {
-  object-position: center 12%;
-}
-
-.team-photo img[alt="Adélie Barnetche"] {
-  object-position: center 15%;
-}
-
-.team-photo img[alt="Amélie Albon"] {
-  object-position: center 14%;
-}
-
-.team-photo img[alt="Daniel Alcaide"] {
-  object-position: center 10%;
-}
-
-.team-photo img[alt="Silvia Ferrer Royo"] {
-  object-position: center 12%;
-}
-
-.team-photo img[alt="Aurélie Gomes"] {
-  object-position: center 10%;
-}
-
-/* PDF-style icon for the downloadable CV. */
-.profiles .cv-download {
-  display: inline-flex;
-  align-items: center;
-  gap: .38rem;
-  min-width: 58px;
-  width: auto;
-  padding: 0 .6rem;
-}
-
-.cv-download svg {
-  width: 19px;
-  height: 19px;
-  overflow: visible;
-}
-
-.cv-download svg path {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.7;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.cv-download svg text {
-  fill: currentColor;
-  stroke: none;
-  font-family: Arial, sans-serif;
-  font-size: 5.4px;
-  font-weight: 800;
-  letter-spacing: .15px;
-}
-
-@media (max-width: 700px) {
-  .team-photo {
-    width: 118px;
-    height: 118px;
-  }
-}
-
-
-/* Final portrait sizing */
-.team-photo{
-  width:120px !important;
-  height:120px !important;
-}
-
-.team-photo img{
-  width:100% !important;
-  height:100% !important;
-  object-fit:cover !important;
-  border-radius:50%;
-  transform:none !important;
-}
-
-/* Individual framing */
-.team-photo img[alt="Thomas Quénan"]{object-position:center 8% !important;}
-.team-photo img[alt="Adélie Barnetche"]{object-position:center 12% !important;}
-.team-photo img[alt="Amélie Albon"]{object-position:center 10% !important;}
-.team-photo img[alt="Aurélie Gomes"]{object-position:center 10% !important;}
-.team-photo img[alt="Silvia Ferrer Royo"]{object-position:center 10% !important;}
-.team-photo img[alt="Daniel Alcaide"]{
-  object-position:center top !important;
-  transform:scale(1.18) translateY(-8px) !important;
-}
-
-
-/* Final glass-header and icon cleanup */
-.site-header {
-  background: rgba(248, 250, 252, .75) !important;
-  backdrop-filter: blur(18px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
-  box-shadow: 0 6px 22px rgba(8, 17, 31, .055) !important;
-}
-
-/* Academic profile marks: larger, borderless and visually lighter. */
-.profiles {
-  gap: .72rem !important;
-}
-
-.profiles a:not(.cv-download) {
-  width: 34px !important;
-  min-width: 34px !important;
-  height: 34px !important;
-  padding: 0 !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  transition: transform .2s ease, opacity .2s ease !important;
-}
-
-.profiles a:not(.cv-download):hover {
-  transform: translateY(-2px) scale(1.05);
-  opacity: .86;
-}
-
-.profiles a img {
-  width: 26px !important;
-  height: 26px !important;
-}
-
-/* Clean PDF CV control. */
-.profiles .cv-download {
-  display: inline-flex !important;
-  align-items: center;
-  gap: .32rem;
-  width: auto !important;
-  min-width: 0 !important;
-  height: 34px !important;
-  padding: 0 .2rem !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  color: var(--ink) !important;
-  text-decoration: none;
-  transition: transform .2s ease, opacity .2s ease;
-}
-
-.profiles .cv-download:hover {
-  transform: translateY(-2px);
-  opacity: .86;
-}
-
-.pdf-icon {
-  width: 27px;
-  height: 27px;
-  overflow: visible;
-}
-
-.pdf-icon .pdf-page,
-.pdf-icon .pdf-fold {
-  fill: none;
-  stroke: #d82727;
-  stroke-width: 1.75;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.pdf-icon text {
-  fill: #d82727;
-  font-family: Arial, sans-serif;
-  font-size: 5.3px;
-  font-weight: 800;
-  letter-spacing: .08px;
-}
-
-.cv-download span {
-  font-size: .72rem;
-  font-weight: 800;
-  letter-spacing: .06em;
-}
-
-/* Journal names remain plain text: no initial badges. */
-.journal-mark {
-  display: none !important;
-}
-
-
-/* === Portrait refinement === */
-:root{--team-portrait-scale:.80;}
-
-.team-photo{
-overflow:hidden;
-border-radius:50%;
-display:grid;
-place-items:center;
-}
-
-.team-photo img{
-width:calc(100% * var(--team-portrait-scale)) !important;
-height:calc(100% * var(--team-portrait-scale)) !important;
-object-fit:contain !important;
-object-position:center bottom !important;
-border-radius:50% !important;
-filter:grayscale(100%) sepia(18%) hue-rotate(175deg) saturate(240%) brightness(1.06) contrast(1.08);
-transition:filter .25s ease,transform .25s ease;
-}
-
-.team-grid article:hover .team-photo img{
-filter:none;
-transform:scale(1.03);
-}
-
-.team-photo img[alt="Thomas Quénan"]{object-position:center 12%;}
-.team-photo img[alt="Adélie Barnetche"]{object-position:center 14%;}
-.team-photo img[alt="Amélie Albon"]{object-position:center 12%;}
-.team-photo img[alt="Daniel Alcaide"]{object-position:center 18%;}
-.team-photo img[alt="Silvia Ferrer Royo"]{object-position:center 10%;}
-.team-photo img[alt="Aurélie Gomes"]{object-position:center 12%;}
-
-
-/* ===== Academic profile links on individual team cards ===== */
-.team-profiles {
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-  margin-top: 1rem;
-  min-height: 28px;
-}
-
-.team-profiles a {
-  display: grid;
-  place-items: center;
-  width: 28px;
-  height: 28px;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  text-decoration: none;
-  opacity: .9;
-  transition: transform .2s ease, opacity .2s ease;
-}
-
-.team-profiles a:hover {
-  transform: translateY(-2px) scale(1.06);
-  opacity: 1;
-}
-
-.team-profiles img {
-  display: block;
-  width: 23px;
-  height: 23px;
-  object-fit: contain;
-}
-
-/* ===== Firefox-safe CV/PDF icon ===== */
-.profiles .cv-download {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: .36rem !important;
-}
-
-.pdf-badge {
-  position: relative;
-  display: grid;
-  place-items: end center;
-  width: 24px;
-  height: 28px;
-  padding-bottom: 3px;
-  border: 1.8px solid #d82727;
-  border-radius: 2px;
-  color: #d82727;
-  background: transparent;
-  line-height: 1;
-}
-
-.pdf-badge::before {
-  content: "";
-  position: absolute;
-  top: -1.8px;
-  right: -1.8px;
-  width: 8px;
-  height: 8px;
-  border-left: 1.8px solid #d82727;
-  border-bottom: 1.8px solid #d82727;
-  background: rgba(248,250,252,.82);
-  clip-path: polygon(0 0, 100% 100%, 0 100%);
-}
-
-.pdf-badge span {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 6.3px;
-  font-weight: 800;
-  letter-spacing: .12px;
-}
-
-.cv-download > span:last-child {
-  font-size: .72rem;
-  font-weight: 800;
-  letter-spacing: .06em;
-}
-
-/* Hide the former SVG implementation, should an old browser cache retain it. */
-.cv-download .pdf-icon {
-  display: none !important;
-}
-
-@media (max-width: 700px) {
-  .team-profiles a {
-    width: 30px;
-    height: 30px;
-  }
-
-  .team-profiles img {
-    width: 25px;
-    height: 25px;
-  }
-}
-
-
-/* Jean Cacheux portrait: circular crop only.
-   Team portrait styling remains unchanged. */
-.identity-photo-frame {
-  position: relative;
-  flex: 0 0 88px;
-  width: 88px;
-  height: 88px;
-  overflow: hidden;
-  border-radius: 50%;
-  background: transparent;
-}
-
-.identity-photo-frame img {
-  display: block;
-  width: 100% !important;
-  height: 100% !important;
-  max-width: none !important;
-  object-fit: cover !important;
-  object-position: center 28% !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  transform: none !important;
-}
-
-@media (max-width: 700px) {
-  .identity-photo-frame {
-    flex-basis: 68px;
-    width: 68px;
-    height: 68px;
-  }
-}
-
-
-/* ===== Final tweaks ===== */
-
-/* Header transparency ~60% */
-.site-header{
-  background: rgba(248,250,252,0.60) !important;
-  backdrop-filter: blur(16px) saturate(135%) !important;
-  -webkit-backdrop-filter: blur(16px) saturate(135%) !important;
-}
-
-/* Jean portrait: same size as team, circular crop */
-.identity-photo-frame{
-  width:112px !important;
-  height:112px !important;
-  flex:0 0 112px !important;
-  border-radius:50% !important;
-  overflow:hidden !important;
-  background:transparent !important;
-}
-
-.identity-photo-frame img{
-  width:100% !important;
-  height:100% !important;
-  object-fit:cover !important;
-  object-position:center 25% !important;
-  border-radius:50% !important;
-  background:transparent !important;
-  box-shadow:none !important;
-}
-
-@media (max-width:700px){
-  .identity-photo-frame{
-    width:96px !important;
-    height:96px !important;
-    flex-basis:96px !important;
-  }
-}
-
-
-/* Verified academic-profile links for team members */
-.team-profiles {
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-  margin-top: 1rem;
-  min-height: 28px;
-}
-
-.team-profiles a {
-  display: grid;
-  place-items: center;
-  width: 29px;
-  height: 29px;
-  border: 0;
-  background: transparent;
-  text-decoration: none;
-  opacity: .88;
-  transition: transform .2s ease, opacity .2s ease;
-}
-
-.team-profiles a:hover {
-  transform: translateY(-2px) scale(1.06);
-  opacity: 1;
-}
-
-.team-profiles img {
-  display: block;
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-}
-
-
-/* ===== Compiled final header and portrait rules ===== */
-.site-header {
-  background: rgba(248, 250, 252, .60) !important;
-  backdrop-filter: blur(16px) saturate(135%) !important;
-  -webkit-backdrop-filter: blur(16px) saturate(135%) !important;
-}
-
-.identity-photo-frame {
-  position: relative !important;
-  display: block !important;
-  flex: 0 0 112px !important;
-  width: 112px !important;
-  height: 112px !important;
-  overflow: hidden !important;
-  border-radius: 50% !important;
-  background: transparent !important;
-}
-
-.identity-photo-frame > img {
-  position: absolute !important;
-  inset: 0 !important;
-  display: block !important;
-  width: 100% !important;
-  height: 100% !important;
-  max-width: none !important;
-  object-fit: cover !important;
-  object-position: center 25% !important;
-  border: 0 !important;
-  border-radius: 50% !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  transform: none !important;
-  clip-path: circle(50% at 50% 50%) !important;
-}
-
-/* Neutralise older direct-image rules that could override the circular frame. */
-.identity > img {
-  border-radius: 50% !important;
-}
-
-@media (max-width: 700px) {
-  .identity-photo-frame {
-    flex-basis: 96px !important;
-    width: 96px !important;
-    height: 96px !important;
-  }
-}
-
-
-/* LinkedIn icon in team profile rows */
-.team-profiles a[aria-label*="LinkedIn"] img {
-  width: 24px;
-  height: 24px;
 }
