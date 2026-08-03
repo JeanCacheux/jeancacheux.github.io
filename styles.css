@@ -854,3 +854,38 @@ transform:scale(1.03);
     height: 25px;
   }
 }
+
+
+/* Jean Cacheux portrait: circular crop only.
+   Team portrait styling remains unchanged. */
+.identity-photo-frame {
+  position: relative;
+  flex: 0 0 88px;
+  width: 88px;
+  height: 88px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.identity-photo-frame img {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  object-fit: cover !important;
+  object-position: center 28% !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+@media (max-width: 700px) {
+  .identity-photo-frame {
+    flex-basis: 68px;
+    width: 68px;
+    height: 68px;
+  }
+}
