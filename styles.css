@@ -845,3 +845,17 @@ footer {
     transform: none !important;
   }
 }
+
+
+/* Thomas Quénan — fill and centre the portrait inside the circle. */
+.team-photo img[alt="Thomas Quénan"] {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 36%;
+  transform: none;
+}
+
+.team-grid > article:hover .team-photo img[alt="Thomas Quénan"] {
+  transform: scale(1.03);
+}
