@@ -724,33 +724,133 @@ h1 {
 }
 
 
-/* ===== Team portraits: use original PNGs at 75% size ===== */
-:root{
-  --team-portrait-scale: .75;
-}
+/* === Portrait refinement === */
+:root{--team-portrait-scale:.80;}
 
 .team-photo{
-  display:grid;
-  place-items:center;
+overflow:hidden;
+border-radius:50%;
+display:grid;
+place-items:center;
 }
 
 .team-photo img{
-  width:calc(100% * var(--team-portrait-scale)) !important;
-  height:calc(100% * var(--team-portrait-scale)) !important;
-  object-fit:contain !important;
-  object-position:center bottom !important;
-  border-radius:0 !important;
-  transform:none !important;
-  transition:transform .25s ease, filter .25s ease;
+width:calc(100% * var(--team-portrait-scale)) !important;
+height:calc(100% * var(--team-portrait-scale)) !important;
+object-fit:contain !important;
+object-position:center bottom !important;
+border-radius:50% !important;
+filter:grayscale(100%) sepia(18%) hue-rotate(175deg) saturate(240%) brightness(1.06) contrast(1.08);
+transition:filter .25s ease,transform .25s ease;
 }
 
 .team-grid article:hover .team-photo img{
-  width:calc(100% * .78) !important;
-  height:calc(100% * .78) !important;
-  transform:none !important;
+filter:none;
+transform:scale(1.03);
 }
 
-/* Daniel only: slightly higher framing */
-.team-photo img[alt="Daniel Alcaide"]{
-  object-position:center 20% !important;
+.team-photo img[alt="Thomas Quénan"]{object-position:center 12%;}
+.team-photo img[alt="Adélie Barnetche"]{object-position:center 14%;}
+.team-photo img[alt="Amélie Albon"]{object-position:center 12%;}
+.team-photo img[alt="Daniel Alcaide"]{object-position:center 18%;}
+.team-photo img[alt="Silvia Ferrer Royo"]{object-position:center 10%;}
+.team-photo img[alt="Aurélie Gomes"]{object-position:center 12%;}
+
+
+/* ===== Academic profile links on individual team cards ===== */
+.team-profiles {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: 1rem;
+  min-height: 28px;
+}
+
+.team-profiles a {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  text-decoration: none;
+  opacity: .9;
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+.team-profiles a:hover {
+  transform: translateY(-2px) scale(1.06);
+  opacity: 1;
+}
+
+.team-profiles img {
+  display: block;
+  width: 23px;
+  height: 23px;
+  object-fit: contain;
+}
+
+/* ===== Firefox-safe CV/PDF icon ===== */
+.profiles .cv-download {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: .36rem !important;
+}
+
+.pdf-badge {
+  position: relative;
+  display: grid;
+  place-items: end center;
+  width: 24px;
+  height: 28px;
+  padding-bottom: 3px;
+  border: 1.8px solid #d82727;
+  border-radius: 2px;
+  color: #d82727;
+  background: transparent;
+  line-height: 1;
+}
+
+.pdf-badge::before {
+  content: "";
+  position: absolute;
+  top: -1.8px;
+  right: -1.8px;
+  width: 8px;
+  height: 8px;
+  border-left: 1.8px solid #d82727;
+  border-bottom: 1.8px solid #d82727;
+  background: rgba(248,250,252,.82);
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+}
+
+.pdf-badge span {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 6.3px;
+  font-weight: 800;
+  letter-spacing: .12px;
+}
+
+.cv-download > span:last-child {
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+}
+
+/* Hide the former SVG implementation, should an old browser cache retain it. */
+.cv-download .pdf-icon {
+  display: none !important;
+}
+
+@media (max-width: 700px) {
+  .team-profiles a {
+    width: 30px;
+    height: 30px;
+  }
+
+  .team-profiles img {
+    width: 25px;
+    height: 25px;
+  }
 }
