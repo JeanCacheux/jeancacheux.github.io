@@ -55,3 +55,12 @@ The collagen image is now described as:
 - removed conflicting legacy CRCT badge rules;
 - restored centred SF and AG initials with the previous clean appearance;
 - kept ring-only LAAS and CRCT colour motifs.
+
+
+## CV and team portraits
+
+- downloadable English CV added to the top profile controls;
+- team portraits added for Thomas Quénan, Adélie Barnetche, Amélie Albon,
+  Daniel Alcaide, Silvia Ferrer Royo and Aurélie Gomes;
+- portraits use a subtle blue tone;
+- LAAS and CRCT institutional colour rings remain visible around each portrait.
