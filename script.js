@@ -93,3 +93,35 @@ if (carousel && track) {
   render();
   requestAnimationFrame(tick);
 }
+
+
+// Subtle parallax for research images.
+const parallaxCards = document.querySelectorAll(".parallax-card");
+
+function updateParallax() {
+  const viewportCenter = window.innerHeight / 2;
+
+  parallaxCards.forEach((card) => {
+    const rect = card.getBoundingClientRect();
+    const cardCenter = rect.top + rect.height / 2;
+    const normalized = Math.max(-1, Math.min(1, (cardCenter - viewportCenter) / window.innerHeight));
+    card.style.setProperty("--parallax-y", `${normalized * -12}px`);
+  });
+}
+
+let parallaxScheduled = false;
+function scheduleParallax() {
+  if (parallaxScheduled) return;
+  parallaxScheduled = true;
+
+  requestAnimationFrame(() => {
+    updateParallax();
+    parallaxScheduled = false;
+  });
+}
+
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  window.addEventListener("scroll", scheduleParallax, { passive: true });
+  window.addEventListener("resize", scheduleParallax);
+  updateParallax();
+}

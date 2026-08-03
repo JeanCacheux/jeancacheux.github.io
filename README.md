@@ -64,3 +64,21 @@ The collagen image is now described as:
   Daniel Alcaide, Silvia Ferrer Royo and Aurélie Gomes;
 - portraits use a subtle blue tone;
 - LAAS and CRCT institutional colour rings remain visible around each portrait.
+
+
+## Map and final visual polish
+
+- embedded Google map added to the Contact section;
+- external Google Maps directions link added;
+- subtle parallax movement added to research illustrations;
+- research images receive a small hover enlargement;
+- team portraits transition from a blue tone to natural colour on hover;
+- compact journal marks added to the publication list;
+- publication and team-card hover transitions refined.
+
+
+## Portrait and CV control adjustments
+
+- team photographs enlarged so they fill nearly the whole institutional ring;
+- individual crop positions refined for each portrait;
+- CV download button now includes a recognisable PDF document icon.

@@ -375,3 +375,232 @@ h1 {
     height: 104px;
   }
 }
+
+
+/* Final visual polish */
+
+/* Subtle parallax and hover treatment for research figures. */
+.slide,
+.research-slide {
+  perspective: 1000px;
+}
+
+.slide img,
+.research-slide img {
+  transition: transform .45s ease, filter .45s ease;
+  transform: translate3d(0, var(--parallax-y, 0px), 0) scale(1.01);
+}
+
+.slide:hover img,
+.research-slide:hover img {
+  transform: translate3d(0, var(--parallax-y, 0px), 0) scale(1.035);
+  filter: contrast(1.04) saturate(1.04);
+}
+
+/* Team portraits: blue-toned at rest, natural colour on hover. */
+.team-photo img {
+  filter: saturate(.7) hue-rotate(168deg) contrast(1.03);
+  transition: filter .35s ease, transform .35s ease;
+}
+
+.team-grid article:hover .team-photo img {
+  filter: none;
+  transform: translateY(2px) scale(1.035);
+}
+
+/* Compact journal marks in the publication list. */
+.journal-mark {
+  display: inline-grid;
+  place-items: center;
+  min-width: 2.3rem;
+  height: 1.5rem;
+  margin-right: .45rem;
+  padding: 0 .35rem;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: .3rem;
+  color: var(--cyan);
+  font-size: .66rem;
+  font-style: normal;
+  font-weight: 850;
+  letter-spacing: .04em;
+  vertical-align: .08rem;
+}
+
+/* Contact map. */
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, .88fr) minmax(420px, 1.12fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: stretch;
+}
+
+.contact-copy {
+  display: grid;
+  align-content: start;
+  gap: 2.2rem;
+}
+
+.contact-details {
+  display: grid;
+  gap: 1rem;
+}
+
+.contact-details address {
+  color: var(--muted);
+  font-style: normal;
+  line-height: 1.7;
+}
+
+.directions-link {
+  width: fit-content;
+  color: var(--red);
+  font-size: .95rem;
+  text-underline-offset: .2rem;
+}
+
+.map-frame {
+  min-height: 390px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #eef2f5;
+}
+
+.map-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 390px;
+  border: 0;
+  filter: grayscale(.18) saturate(.85) contrast(1.02);
+}
+
+/* More refined publication and team hover states. */
+.publications article,
+.publication,
+.team-grid article {
+  transition: transform .25s ease, border-color .25s ease, background-color .25s ease;
+}
+
+.publications article:hover,
+.publication:hover {
+  transform: translateX(5px);
+}
+
+.team-grid article:hover {
+  transform: translateY(-4px);
+  border-color: rgba(80,189,211,.42);
+  background: rgba(255,255,255,.9);
+}
+
+@media (max-width: 900px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .map-frame,
+  .map-frame iframe {
+    min-height: 340px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide img,
+  .research-slide img,
+  .team-photo img,
+  .publications article,
+  .publication,
+  .team-grid article {
+    transition: none;
+    transform: none !important;
+  }
+}
+
+
+/* Larger team portraits: the photograph now fills almost the complete circle. */
+.team-photo {
+  width: 112px;
+  height: 112px;
+  margin-bottom: 2.1rem;
+}
+
+.team-photo::after {
+  inset: 4px;
+}
+
+.team-photo img {
+  width: calc(100% - 8px);
+  height: calc(100% - 8px);
+  object-fit: cover;
+  object-position: center 18%;
+  border-radius: 50%;
+  transform: none;
+}
+
+.team-grid article:hover .team-photo img {
+  transform: scale(1.035);
+}
+
+/* Individual crop adjustments for the supplied portraits. */
+.team-photo img[alt="Thomas Quénan"] {
+  object-position: center 12%;
+}
+
+.team-photo img[alt="Adélie Barnetche"] {
+  object-position: center 15%;
+}
+
+.team-photo img[alt="Amélie Albon"] {
+  object-position: center 14%;
+}
+
+.team-photo img[alt="Daniel Alcaide"] {
+  object-position: center 10%;
+}
+
+.team-photo img[alt="Silvia Ferrer Royo"] {
+  object-position: center 12%;
+}
+
+.team-photo img[alt="Aurélie Gomes"] {
+  object-position: center 10%;
+}
+
+/* PDF-style icon for the downloadable CV. */
+.profiles .cv-download {
+  display: inline-flex;
+  align-items: center;
+  gap: .38rem;
+  min-width: 58px;
+  width: auto;
+  padding: 0 .6rem;
+}
+
+.cv-download svg {
+  width: 19px;
+  height: 19px;
+  overflow: visible;
+}
+
+.cv-download svg path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.cv-download svg text {
+  fill: currentColor;
+  stroke: none;
+  font-family: Arial, sans-serif;
+  font-size: 5.4px;
+  font-weight: 800;
+  letter-spacing: .15px;
+}
+
+@media (max-width: 700px) {
+  .team-photo {
+    width: 118px;
+    height: 118px;
+  }
+}
