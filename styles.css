@@ -1010,3 +1010,10 @@ transform:scale(1.03);
     height: 96px !important;
   }
 }
+
+
+/* LinkedIn icon in team profile rows */
+.team-profiles a[aria-label*="LinkedIn"] img {
+  width: 24px;
+  height: 24px;
+}
