@@ -82,3 +82,17 @@ The collagen image is now described as:
 - team photographs enlarged so they fill nearly the whole institutional ring;
 - individual crop positions refined for each portrait;
 - CV download button now includes a recognisable PDF document icon.
+
+
+## Filename case correction
+
+GitHub Pages is case-sensitive. Team portraits now use uppercase `.PNG`
+extensions in both the filenames and every HTML reference.
+
+
+## Final header and publication cleanup
+
+- header made more transparent with a stronger frosted-glass effect;
+- publication journal-initial badges removed;
+- Scholar, ResearchGate, HAL and ORCID marks enlarged and shown without button outlines;
+- CV control replaced with a compact red PDF document icon plus “CV”.

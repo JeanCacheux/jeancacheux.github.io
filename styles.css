@@ -630,3 +630,95 @@ h1 {
   object-position:center top !important;
   transform:scale(1.18) translateY(-8px) !important;
 }
+
+
+/* Final glass-header and icon cleanup */
+.site-header {
+  background: rgba(248, 250, 252, .75) !important;
+  backdrop-filter: blur(18px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
+  box-shadow: 0 6px 22px rgba(8, 17, 31, .055) !important;
+}
+
+/* Academic profile marks: larger, borderless and visually lighter. */
+.profiles {
+  gap: .72rem !important;
+}
+
+.profiles a:not(.cv-download) {
+  width: 34px !important;
+  min-width: 34px !important;
+  height: 34px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  transition: transform .2s ease, opacity .2s ease !important;
+}
+
+.profiles a:not(.cv-download):hover {
+  transform: translateY(-2px) scale(1.05);
+  opacity: .86;
+}
+
+.profiles a img {
+  width: 26px !important;
+  height: 26px !important;
+}
+
+/* Clean PDF CV control. */
+.profiles .cv-download {
+  display: inline-flex !important;
+  align-items: center;
+  gap: .32rem;
+  width: auto !important;
+  min-width: 0 !important;
+  height: 34px !important;
+  padding: 0 .2rem !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--ink) !important;
+  text-decoration: none;
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+.profiles .cv-download:hover {
+  transform: translateY(-2px);
+  opacity: .86;
+}
+
+.pdf-icon {
+  width: 27px;
+  height: 27px;
+  overflow: visible;
+}
+
+.pdf-icon .pdf-page,
+.pdf-icon .pdf-fold {
+  fill: none;
+  stroke: #d82727;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.pdf-icon text {
+  fill: #d82727;
+  font-family: Arial, sans-serif;
+  font-size: 5.3px;
+  font-weight: 800;
+  letter-spacing: .08px;
+}
+
+.cv-download span {
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+}
+
+/* Journal names remain plain text: no initial badges. */
+.journal-mark {
+  display: none !important;
+}
