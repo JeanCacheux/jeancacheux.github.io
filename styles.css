@@ -570,7 +570,7 @@ h1 {
   width: var(--team-image-scale);
   height: var(--team-image-scale);
   object-fit: contain;
-  object-position: center bottom;
+  object-position: center center;
   border-radius: 50%;
   filter: grayscale(100%) sepia(18%) hue-rotate(175deg) saturate(240%) brightness(1.06) contrast(1.08);
   transition: filter .3s ease, transform .3s ease;
