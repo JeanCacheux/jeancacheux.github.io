@@ -31,3 +31,17 @@ No `?v=3` is required. That suffix was only a temporary cache-busting trick.
 The collagen image is now described as:
 
 “Remodelling of the collagen matrix (red) by senescent fibroblasts (green).”
+
+
+## Header and team corrections
+
+- portrait recropped and centred in a transparent circular frame;
+- subtle blue tint preserved;
+- LAAS logo converted to transparent PNG;
+- sticky header uses a stronger frosted-glass effect;
+- academic profile icons restored;
+- Firefox hero text uses the full available width;
+- Aurélien Bancaud and Pierre Cordelier Scholar links restored;
+- Amélie Albon changed to Postdoctoral Researcher;
+- Daniel Alcaide added as Postdoctoral Researcher;
+- LAAS and CRCT initials use ring-only institutional colour motifs and centred text.

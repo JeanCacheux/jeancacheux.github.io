@@ -130,3 +130,145 @@ h1 {
     height: 62px;
   }
 }
+
+
+/* Header, portrait and logo refinements */
+.site-header {
+  background: rgba(248, 250, 252, .92);
+  backdrop-filter: blur(22px) saturate(118%);
+  -webkit-backdrop-filter: blur(22px) saturate(118%);
+  box-shadow: 0 8px 28px rgba(8,17,31,.08);
+}
+
+.laas-logo {
+  object-fit: contain;
+  background: transparent;
+}
+
+.identity img {
+  width: 76px;
+  height: 76px;
+  padding: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center center;
+  background: transparent;
+  border: 1px solid rgba(14,45,92,.14);
+}
+
+.profiles {
+  align-items: center;
+}
+
+.profiles a {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.82);
+}
+
+.profiles img {
+  display: block;
+  width: 23px;
+  height: 23px;
+  object-fit: contain;
+}
+
+/* Firefox: research introduction spans the available width cleanly. */
+.hero-copy {
+  width: 100%;
+  max-width: none;
+  padding-right: clamp(0rem, 12vw, 9rem);
+}
+
+/* Team grid with six members. */
+.team-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* Ring-only institutional badges, with perfectly centred initials. */
+.badge {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 66px;
+  height: 66px;
+  padding: 7px;
+  border-radius: 50%;
+  background: transparent !important;
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 800;
+  isolation: isolate;
+}
+
+.badge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: -2;
+}
+
+.badge::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border-radius: inherit;
+  background: rgba(255,255,255,.96);
+  z-index: -1;
+}
+
+.badge.laas::before {
+  background: conic-gradient(
+    from 215deg,
+    #0e2d5c 0deg 150deg,
+    #50bdd3 150deg 275deg,
+    #ef334e 275deg 360deg
+  );
+}
+
+.badge.crct::before {
+  background: conic-gradient(
+    from 205deg,
+    #f39a1f 0deg 55deg,
+    #f5e61c 55deg 105deg,
+    #7dbb43 105deg 185deg,
+    #58bde0 185deg 255deg,
+    #7dbb43 255deg 315deg,
+    #f39a1f 315deg 360deg
+  );
+}
+
+.team-grid span a {
+  text-underline-offset: .2rem;
+}
+
+.affiliations img {
+  background: transparent;
+  mix-blend-mode: multiply;
+}
+
+@media (max-width: 1000px) {
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .hero-copy {
+    padding-right: 0;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .identity img {
+    width: 64px;
+    height: 64px;
+  }
+}
