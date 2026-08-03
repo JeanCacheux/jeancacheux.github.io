@@ -604,3 +604,29 @@ h1 {
     height: 118px;
   }
 }
+
+
+/* Final portrait sizing */
+.team-photo{
+  width:120px !important;
+  height:120px !important;
+}
+
+.team-photo img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  border-radius:50%;
+  transform:none !important;
+}
+
+/* Individual framing */
+.team-photo img[alt="Thomas Quénan"]{object-position:center 8% !important;}
+.team-photo img[alt="Adélie Barnetche"]{object-position:center 12% !important;}
+.team-photo img[alt="Amélie Albon"]{object-position:center 10% !important;}
+.team-photo img[alt="Aurélie Gomes"]{object-position:center 10% !important;}
+.team-photo img[alt="Silvia Ferrer Royo"]{object-position:center 10% !important;}
+.team-photo img[alt="Daniel Alcaide"]{
+  object-position:center top !important;
+  transform:scale(1.18) translateY(-8px) !important;
+}
