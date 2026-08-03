@@ -722,3 +722,35 @@ h1 {
 .journal-mark {
   display: none !important;
 }
+
+
+/* ===== Team portraits: use original PNGs at 75% size ===== */
+:root{
+  --team-portrait-scale: .75;
+}
+
+.team-photo{
+  display:grid;
+  place-items:center;
+}
+
+.team-photo img{
+  width:calc(100% * var(--team-portrait-scale)) !important;
+  height:calc(100% * var(--team-portrait-scale)) !important;
+  object-fit:contain !important;
+  object-position:center bottom !important;
+  border-radius:0 !important;
+  transform:none !important;
+  transition:transform .25s ease, filter .25s ease;
+}
+
+.team-grid article:hover .team-photo img{
+  width:calc(100% * .78) !important;
+  height:calc(100% * .78) !important;
+  transform:none !important;
+}
+
+/* Daniel only: slightly higher framing */
+.team-photo img[alt="Daniel Alcaide"]{
+  object-position:center 20% !important;
+}
