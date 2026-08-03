@@ -89,30 +89,22 @@ footer {
 }
 
 .identity-photo-frame {
-  position: relative;
   display: block;
   flex: 0 0 var(--portrait-size);
   width: var(--portrait-size);
   height: var(--portrait-size);
-  overflow: hidden;
   border-radius: 50%;
   background: transparent;
 }
 
 .identity-photo-frame > img {
-  position: absolute;
-  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
-  max-width: none;
-  object-fit: cover;
-  object-position: center 28%;
-  border: 0;
+  object-fit: contain;
+  object-position: center;
   border-radius: 50%;
   background: transparent;
-  box-shadow: none;
-  clip-path: circle(50% at 50% 50%);
 }
 
 .identity > div {

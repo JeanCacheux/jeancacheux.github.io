@@ -1,2 +1,3 @@
-1. Replace your portrait with portrait-jean-cacheux-circular.png
-2. Replace the .identity-photo-frame CSS with styles-patch.css content.
+Final GitHub Pages repository.
+The site uses one portrait file only: portrait-jean-cacheux-clean.png.
+It is made directly from the user-supplied jean.png, with a transparent circular mask.
