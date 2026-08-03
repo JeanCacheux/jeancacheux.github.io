@@ -45,3 +45,13 @@ The collagen image is now described as:
 - Amélie Albon changed to Postdoctoral Researcher;
 - Daniel Alcaide added as Postdoctoral Researcher;
 - LAAS and CRCT initials use ring-only institutional colour motifs and centred text.
+
+
+## Final cleanup
+
+- removed the remaining white halo beneath the portrait;
+- rebuilt the portrait as a cleaner transparent PNG with a blue tint;
+- increased header transparency while keeping the frosted blur;
+- removed conflicting legacy CRCT badge rules;
+- restored centred SF and AG initials with the previous clean appearance;
+- kept ring-only LAAS and CRCT colour motifs.
