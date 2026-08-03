@@ -105,6 +105,13 @@ footer {
   object-position: center;
   border-radius: 50%;
   background: transparent;
+  filter:
+    grayscale(100%)
+    sepia(18%)
+    hue-rotate(175deg)
+    saturate(240%)
+    brightness(1.06)
+    contrast(1.08);
 }
 
 .identity > div {
