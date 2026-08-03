@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://jeancacheux.github.io/sitemap.xml
