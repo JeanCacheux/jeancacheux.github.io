@@ -1,1 +1,38 @@
 document.getElementById("year").textContent=new Date().getFullYear();const c=document.getElementById("particles"),x=c.getContext("2d");let w=0,h=0,d=Math.min(devicePixelRatio||1,2),p=[];function r(){w=innerWidth;h=innerHeight;c.width=w*d;c.height=h*d;c.style.width=w+"px";c.style.height=h+"px";x.setTransform(d,0,0,d,0,0);const n=Math.min(180,Math.floor(w*h/8500));p=Array.from({length:n},()=>({x:Math.random()*w,y:Math.random()*h,s:.18+Math.random()*.35,q:Math.random()*Math.PI*2,z:.6+Math.random()*1.4}))}function a(t){x.clearRect(0,0,w,h);p.forEach((o,i)=>{const f=Math.sin((o.y+t*.025)*.008+o.q)+Math.cos((o.x-t*.018)*.006);o.x+=Math.cos(f)*o.s;o.y+=Math.sin(f)*o.s;if(o.x<-10)o.x=w+10;if(o.x>w+10)o.x=-10;if(o.y<-10)o.y=h+10;if(o.y>h+10)o.y=-10;x.beginPath();x.arc(o.x,o.y,o.z,0,Math.PI*2);x.fillStyle=i%15===0?"rgba(239,51,78,.22)":"rgba(80,189,211,.19)";x.fill()});requestAnimationFrame(a)}r();addEventListener("resize",r);if(!matchMedia("(prefers-reduced-motion: reduce)").matches)requestAnimationFrame(a);
+
+// Drag-to-scroll research carousel.
+const carousel = document.querySelector(".carousel-viewport");
+if (carousel) {
+  let isDown = false;
+  let startX = 0;
+  let scrollLeft = 0;
+
+  carousel.addEventListener("pointerdown", (event) => {
+    isDown = true;
+    carousel.setPointerCapture(event.pointerId);
+    startX = event.clientX;
+    scrollLeft = carousel.scrollLeft;
+    carousel.style.cursor = "grabbing";
+    carousel.querySelector(".carousel-track")?.style.setProperty("animation-play-state", "paused");
+  });
+
+  carousel.addEventListener("pointermove", (event) => {
+    if (!isDown) return;
+    const walk = event.clientX - startX;
+    carousel.scrollLeft = scrollLeft - walk;
+  });
+
+  const endDrag = (event) => {
+    if (!isDown) return;
+    isDown = false;
+    carousel.style.cursor = "grab";
+    carousel.releasePointerCapture?.(event.pointerId);
+    carousel.querySelector(".carousel-track")?.style.removeProperty("animation-play-state");
+  };
+
+  carousel.addEventListener("pointerup", endDrag);
+  carousel.addEventListener("pointercancel", endDrag);
+  carousel.addEventListener("pointerleave", (event) => {
+    if (isDown) endDrag(event);
+  });
+}
