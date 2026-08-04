@@ -1150,3 +1150,27 @@ body.modal-open {
     transform: rotate(var(--paw-rotation)) scale(.82);
   }
 }
+
+
+/* Open-access links in research highlights */
+.highlight-paper-link {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin-top: .85rem;
+  color: var(--red);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .025em;
+  line-height: 1.35;
+  text-decoration: none;
+  text-underline-offset: .2rem;
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+.highlight-paper-link:hover,
+.highlight-paper-link:focus-visible {
+  transform: translateX(3px);
+  opacity: .78;
+  text-decoration: underline;
+}
