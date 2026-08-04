@@ -106,7 +106,7 @@
 }
   </script>
 
-  <link rel="stylesheet" href="styles.css?v=20260803-4">
+  <link rel="stylesheet" href="styles.css?v=20260804-cat2">
 </head>
 <body>
   <canvas id="particles" aria-hidden="true"></canvas>
@@ -378,7 +378,7 @@
 
       const closeButtons = modal.querySelectorAll('[data-close-modal]');
       let previousFocus = null;
-      let clickTimer = null;
+      let singleClickTimer = null;
 
       const openModal = () => {
         previousFocus = document.activeElement;
@@ -394,8 +394,7 @@
       };
 
       const launchPaws = () => {
-        const oldTrail = document.querySelector('.paw-trail');
-        oldTrail?.remove();
+        document.querySelector('.paw-trail')?.remove();
 
         const layer = document.createElement('div');
         layer.className = 'paw-trail';
@@ -428,27 +427,27 @@
         window.setTimeout(() => layer.remove(), 3000);
       };
 
-      /* A short delay distinguishes a single click from a double-click:
-         single click = photo; double-click = paws on the page only. */
-      trigger.addEventListener('click', () => {
-        if (clickTimer) return;
-
-        clickTimer = window.setTimeout(() => {
-          clickTimer = null;
-          openModal();
-        }, 280);
-      });
-
-      trigger.addEventListener('dblclick', event => {
+      /*
+       * One click opens the photo, but only after 450 ms.
+       * A second click arriving within that interval cancels the photo
+       * and launches the paw trail on the page.
+       */
+      trigger.addEventListener('click', event => {
         event.preventDefault();
 
-        if (clickTimer) {
-          window.clearTimeout(clickTimer);
-          clickTimer = null;
+        if (singleClickTimer !== null) {
+          window.clearTimeout(singleClickTimer);
+          singleClickTimer = null;
+
+          if (!modal.hidden) closeModal();
+          launchPaws();
+          return;
         }
 
-        if (!modal.hidden) closeModal();
-        launchPaws();
+        singleClickTimer = window.setTimeout(() => {
+          singleClickTimer = null;
+          openModal();
+        }, 450);
       });
 
       closeButtons.forEach(button => button.addEventListener('click', closeModal));
