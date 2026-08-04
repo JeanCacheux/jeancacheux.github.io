@@ -106,7 +106,7 @@
 }
   </script>
 
-  <link rel="stylesheet" href="styles.css?v=20260804-firefox-links">
+  <link rel="stylesheet" href="styles.css?v=20260804-cat-linear-people">
 </head>
 <body>
   <canvas id="particles" aria-hidden="true"></canvas>
@@ -376,7 +376,7 @@
       <span>Outside research...</span>
     </button>
 </footer>
-  <script src="script.js?v=20260804-firefox-links"></script>
+  <script src="script.js?v=20260804-cat-linear-people"></script>
 
   <div class="outside-modal" id="outside-research-modal" role="dialog" aria-modal="true" aria-labelledby="outside-research-title" hidden>
     <div class="outside-modal__backdrop" data-close-modal></div>
@@ -459,29 +459,25 @@
 
           mark.style.left = `${x}vw`;
           mark.style.top = `${y}vh`;
-          mark.style.animationDelay = `${progress * duration * .82}ms`;
-          mark.style.animationDuration = `${900 + Math.random() * 450}ms`;
+          mark.style.animationDelay = `${progress * duration * .96}ms`;
+          mark.style.animationDuration = `${1200 + Math.random() * 500}ms`;
           mark.style.setProperty('--paw-rotation', `${rotation}deg`);
           layer.appendChild(mark);
         }
 
         document.body.appendChild(layer);
-        window.setTimeout(() => layer.remove(), duration + 1800);
+        window.setTimeout(() => layer.remove(), duration + 2200);
       };
 
-      const slowScrollToTop = (duration = 5600) => {
+      const slowScrollToTop = (duration = 6200) => {
         const startY = window.scrollY;
         const startTime = performance.now();
 
-        const easeInOut = t =>
-          t < .5
-            ? 4 * t * t * t
-            : 1 - Math.pow(-2 * t + 2, 3) / 2;
-
         const step = now => {
           const progress = Math.min((now - startTime) / duration, 1);
-          const eased = easeInOut(progress);
-          window.scrollTo(0, Math.round(startY * (1 - eased)));
+
+          // Linear interpolation: constant speed from start to finish.
+          window.scrollTo(0, Math.round(startY * (1 - progress)));
 
           if (progress < 1) requestAnimationFrame(step);
         };
@@ -498,7 +494,7 @@
 
           if (!modal.hidden) closeModal();
 
-          const animationDuration = 5600;
+          const animationDuration = 6200;
           launchPaws(animationDuration);
           slowScrollToTop(animationDuration);
           return;

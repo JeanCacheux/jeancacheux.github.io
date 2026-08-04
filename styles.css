@@ -1228,3 +1228,34 @@ body.modal-open {
     transform: rotate(var(--paw-rotation)) scale(.82);
   }
 }
+
+
+/* Cat trail refinements: larger prints and steady pacing */
+.paw-mark {
+  width: clamp(24px, 2.6vw, 38px) !important;
+  height: clamp(24px, 2.6vw, 38px) !important;
+}
+
+.paw-mark svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes paw-wandering-step {
+  0% {
+    opacity: 0;
+    transform: rotate(var(--paw-rotation)) scale(.72);
+  }
+  18% {
+    opacity: .34;
+    transform: rotate(var(--paw-rotation)) scale(1);
+  }
+  82% {
+    opacity: .25;
+    transform: rotate(var(--paw-rotation)) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(var(--paw-rotation)) scale(.88);
+  }
+}
