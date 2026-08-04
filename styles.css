@@ -1504,3 +1504,50 @@ nav a {
  fill:#d32f2f;
  letter-spacing:.2px;
 }
+
+
+/* ===== Final CV download icon ===== */
+.cv-download {
+  display: inline-flex;
+  align-items: center;
+  gap: .42rem;
+  min-height: 34px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.cv-download .pdf-badge,
+.cv-download .pdf-icon {
+  display: none !important;
+}
+
+.cv-icon {
+  display: block;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  fill: none;
+  stroke: var(--red);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform .2s ease, stroke .2s ease;
+}
+
+.cv-download > span:last-child {
+  font-size: .78rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: .02em;
+}
+
+.cv-download:hover .cv-icon,
+.cv-download:focus-visible .cv-icon {
+  transform: translateY(1px);
+  stroke: #b91f35;
+}
+
+.cv-download:hover,
+.cv-download:focus-visible {
+  color: var(--red);
+}
