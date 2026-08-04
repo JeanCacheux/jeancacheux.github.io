@@ -106,7 +106,7 @@
 }
   </script>
 
-  <link rel="stylesheet" href="styles.css?v=20260804-mobile-scroll-fix">
+  <link rel="stylesheet" href="styles.css?v=20260804-mobile-header-clean">
 </head>
 <body>
   <canvas id="particles" aria-hidden="true"></canvas>
@@ -424,7 +424,7 @@
       </svg>
     </button>
 </footer>
-  <script src="script.js?v=20260804-mobile-scroll-fix"></script>
+  <script src="script.js?v=20260804-mobile-header-clean"></script>
 
   <div class="outside-modal" id="outside-research-modal" role="dialog" aria-modal="true" aria-labelledby="outside-research-title" hidden>
     <div class="outside-modal__backdrop" data-close-modal></div>
@@ -564,63 +564,6 @@
         requestAnimationFrame(step);
       };
 
-      const launchTail = finalX => {
-        document.querySelector('.cat-tail')?.remove();
-
-        const tail = document.createElement('div');
-        tail.className = 'cat-tail';
-        tail.setAttribute('aria-hidden', 'true');
-        tail.style.left = `clamp(12px, calc(${finalX}vw - 41px), calc(100vw - 94px))`;
-        tail.innerHTML = `
-          <svg viewBox="0 0 110 330" aria-hidden="true" focusable="false">
-            <path
-              d="M57 322
-                 C25 286, 18 236, 57 203
-                 C91 174, 91 126, 59 99
-                 C33 77, 34 39, 60 8"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="10"
-              stroke-linecap="round"
-            />
-          </svg>
-        `;
-
-        document.body.appendChild(tail);
-
-        const svg = tail.querySelector('svg');
-
-        tail.animate(
-          [
-            { opacity: 0, transform: 'translate3d(0, 190px, 0)' },
-            { opacity: 1, transform: 'translate3d(0, 155px, 0)', offset: .12 },
-            { opacity: 1, transform: 'translate3d(0, 22px, 0)', offset: .62 },
-            { opacity: .72, transform: 'translate3d(0, -92px, 0)', offset: .84 },
-            { opacity: 0, transform: 'translate3d(0, -340px, 0)' }
-          ],
-          {
-            duration: 2450,
-            easing: 'cubic-bezier(.18,.67,.16,1)',
-            fill: 'forwards'
-          }
-        );
-
-        svg.animate(
-          [
-            { transform: 'rotate(-2deg) translateX(-2px)' },
-            { transform: 'rotate(2.5deg) translateX(3px)', offset: .5 },
-            { transform: 'rotate(-.5deg) translateX(0)' }
-          ],
-          {
-            duration: 2450,
-            easing: 'ease-in-out',
-            fill: 'forwards'
-          }
-        );
-
-        window.setTimeout(() => tail.remove(), 2550);
-      };
-
       trigger.addEventListener('click', event => {
         event.preventDefault();
 
@@ -637,7 +580,7 @@
             ? Math.max(850, Math.min(1900, scrollDistance * .42))
             : Math.max(1400, Math.min(3800, scrollDistance * .72));
 
-          const finalPawX = launchPaws(duration);
+          launchPaws(duration);
           scrollToTopAtConstantSpeed(duration);
           return;
         }

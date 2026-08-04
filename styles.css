@@ -65,32 +65,38 @@ footer {
 
 .header-inner {
   width: min(calc(100% - 2rem), var(--max));
-  min-height: 120px;
-  margin: auto;
+  min-height: 132px;
+  margin-inline: auto;
+  padding-block: .7rem;
   display: grid;
-  grid-template-columns: 130px minmax(320px, 1fr) auto;
+  grid-template-columns: 152px minmax(0, 1fr) auto;
   align-items: center;
-  gap: 1.4rem;
+  column-gap: 1.5rem;
 }
 
 .laas-logo {
   display: block;
-  width: 118px;
-  height: 76px;
+  width: 144px;
+  height: 94px;
   object-fit: contain;
-  background: transparent;
+  align-self: center;
 }
 
 .identity {
-  display: flex;
-  align-items: center;
   min-width: 0;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: var(--portrait-size) minmax(0, 1fr);
+  grid-template-areas:
+    "photo text"
+    "profiles profiles";
+  align-items: center;
+  column-gap: 1rem;
+  row-gap: .5rem;
 }
 
 .identity-photo-frame {
+  grid-area: photo;
   display: block;
-  flex: 0 0 var(--portrait-size);
   width: var(--portrait-size);
   height: var(--portrait-size);
   border-radius: 50%;
@@ -114,9 +120,11 @@ footer {
     contrast(1.08);
 }
 
-.identity > div {
+.identity > div:not(.profiles) {
+  grid-area: text;
   display: grid;
   min-width: 0;
+  align-self: center;
 }
 
 .identity strong {
@@ -139,36 +147,22 @@ footer {
   color: var(--muted);
 }
 
-nav {
-  display: flex;
-  gap: 1.2rem;
-}
-
-nav a {
-  color: var(--muted);
-  font-size: .9rem;
-  text-decoration: none;
-}
-
-nav a:hover {
-  color: var(--red);
-}
-
 .profiles {
-  grid-column: 2 / 4;
+  grid-area: profiles;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: .72rem;
-  margin-top: -1rem;
-  padding-bottom: .7rem;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: .62rem;
+  margin: 0;
+  padding: 0;
 }
 
 .profiles a:not(.cv-download) {
   display: grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   border: 0;
   background: transparent;
   text-decoration: none;
@@ -182,17 +176,17 @@ nav a:hover {
 
 .profiles a img {
   display: block;
-  width: 26px;
-  height: 26px;
+  width: 25px;
+  height: 25px;
   object-fit: contain;
 }
 
 .cv-download {
   display: inline-flex;
   align-items: center;
-  gap: .36rem;
-  height: 34px;
-  padding: 0 .2rem;
+  gap: .42rem;
+  min-height: 32px;
+  padding-inline: .15rem;
   color: var(--ink);
   text-decoration: none;
   transition: transform .2s ease, opacity .2s ease;
@@ -203,44 +197,147 @@ nav a:hover {
   opacity: .86;
 }
 
-.pdf-badge {
-  position: relative;
-  display: grid;
-  place-items: end center;
-  width: 24px;
-  height: 28px;
-  padding-bottom: 3px;
-  border: 1.8px solid #d82727;
-  border-radius: 2px;
-  color: #d82727;
-  line-height: 1;
-}
-
-.pdf-badge::before {
-  content: "";
-  position: absolute;
-  top: -1.8px;
-  right: -1.8px;
-  width: 8px;
-  height: 8px;
-  border-left: 1.8px solid #d82727;
-  border-bottom: 1.8px solid #d82727;
-  background: rgba(248, 250, 252, .82);
-  clip-path: polygon(0 0, 100% 100%, 0 100%);
-}
-
-.pdf-badge span {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 6.3px;
-  font-weight: 800;
+.cv-icon {
+  display: block;
+  width: 21px;
+  height: 21px;
+  flex: 0 0 21px;
+  overflow: visible;
+  fill: none;
+  stroke: var(--red);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .cv-download > span:last-child {
-  font-size: .72rem;
+  font-size: .76rem;
   font-weight: 800;
-  letter-spacing: .06em;
+  letter-spacing: .04em;
 }
 
+nav {
+  display: flex;
+  align-items: center;
+  gap: 1.35rem;
+}
+
+nav a {
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: var(--red);
+}
+
+@media (max-width: 1000px) {
+  .header-inner {
+    grid-template-columns: 118px minmax(0, 1fr);
+    min-height: 126px;
+  }
+
+  .laas-logo {
+    width: 110px;
+    height: 82px;
+  }
+
+  nav {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  :root {
+    --portrait-size: 80px;
+  }
+
+  html {
+    scroll-padding-top: 154px;
+  }
+
+  .header-inner {
+    width: min(calc(100% - 1rem), var(--max));
+    min-height: auto;
+    padding-block: .65rem;
+    grid-template-columns: 76px minmax(0, 1fr);
+    column-gap: .7rem;
+  }
+
+  .laas-logo {
+    width: 72px;
+    height: 62px;
+  }
+
+  .identity {
+    grid-template-columns: var(--portrait-size) minmax(0, 1fr);
+    column-gap: .7rem;
+    row-gap: .35rem;
+  }
+
+  .identity strong {
+    font-size: 1.2rem;
+  }
+
+  .identity span:not(.identity-photo-frame) {
+    margin-top: .2rem;
+    font-size: .66rem;
+    letter-spacing: .075em;
+  }
+
+  .identity small {
+    font-size: .76rem;
+    line-height: 1.25;
+  }
+
+  .profiles {
+    gap: .42rem;
+  }
+
+  .profiles a:not(.cv-download) {
+    width: 29px;
+    height: 29px;
+  }
+
+  .profiles a img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .cv-download {
+    min-height: 29px;
+    gap: .3rem;
+  }
+
+  .cv-icon {
+    width: 19px;
+    height: 19px;
+    flex-basis: 19px;
+  }
+
+  .cv-download > span:last-child {
+    font-size: .7rem;
+  }
+}
+
+@media (max-width: 430px) {
+  :root {
+    --portrait-size: 72px;
+  }
+
+  .header-inner {
+    grid-template-columns: 66px minmax(0, 1fr);
+    column-gap: .55rem;
+  }
+
+  .laas-logo {
+    width: 62px;
+    height: 56px;
+  }
+}
 /* ---------------- Main layout ---------------- */
 
 main,
@@ -717,19 +814,7 @@ footer {
 /* ---------------- Responsive ---------------- */
 
 @media (max-width: 1000px) {
-  .header-inner {
-    grid-template-columns: 110px 1fr;
-  }
-
-  nav {
-    display: none;
-  }
-
-  .profiles {
-    grid-column: 1 / 3;
-  }
-
-  .team-grid {
+.team-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -739,36 +824,7 @@ footer {
 }
 
 @media (max-width: 700px) {
-  :root {
-    --portrait-size: 96px;
-  }
-
-  html {
-    scroll-padding-top: 178px;
-  }
-
-  .header-inner {
-    min-height: 160px;
-    grid-template-columns: 90px 1fr;
-    gap: .8rem;
-  }
-
-  .laas-logo {
-    width: 82px;
-    height: 58px;
-  }
-
-  .identity strong {
-    font-size: 1.25rem;
-  }
-
-  .profiles {
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: -.35rem;
-  }
-
-  main,
+main,
   footer {
     width: min(calc(100% - 2rem), var(--max));
   }
@@ -1153,28 +1209,6 @@ body.modal-open {
   }
 }
 
-/* One smooth tail, shown only after the final footprint. */
-14% {
-    opacity: 1;
-  }
-  48% {
-    opacity: .95;
-    transform: translateY(70px) rotate(4deg);
-  }
-  78% {
-    opacity: .72;
-    transform: translateY(-45px) rotate(-2deg);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-285px) rotate(1deg);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .paw-mark,
-  }
-
 
 /* Supervisor profile links */
 .supervisor-link {
@@ -1204,84 +1238,7 @@ body.modal-open {
   transform: translate(2px, -2px);
 }
 
-/* Tail motion is driven by the Web Animations API for a smoother glide. */
-/* Tail position follows the final footprint. */
-/* Balance the complete two-row header vertically.
-   The previous negative margin pulled the profile row upward and made
-   the portrait appear stuck to the top in Firefox. */
-.header-inner {
-  padding-top: .65rem;
-  padding-bottom: .65rem;
-  row-gap: .2rem;
-}
-
-.profiles {
-  margin-top: 0;
-  padding-bottom: 0;
-}
-
-
-/* ===== Header refinement ===== */
-.header-inner {
-  grid-template-columns: 142px minmax(320px, 1fr) auto;
-  align-items: center;
-}
-
-.laas-logo {
-  width: 132px;
-  height: 92px;
-  object-fit: contain;
-  align-self: center;
-}
-
-.identity {
-  display: grid;
-  grid-template-columns: var(--portrait-size) minmax(0, 1fr);
-  grid-template-areas:
-    "photo text"
-    "profiles profiles";
-  align-items: center;
-  column-gap: 1rem;
-  row-gap: .55rem;
-}
-
-.identity-photo-frame {
-  grid-area: photo;
-  align-self: center;
-}
-
-.identity > div {
-  grid-area: text;
-  align-self: center;
-}
-
-.identity .profiles {
-  grid-area: profiles;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: .72rem;
-  margin: 0;
-  padding: 0;
-}
-
-.identity .profiles a:not(.cv-download) {
-  display: grid;
-  place-items: center;
-  width: 34px;
-  height: 34px;
-}
-
-.identity .profiles a img {
-  width: 26px;
-  height: 26px;
-}
-
-.identity .cv-download {
-  height: 34px;
-}
-
-/* ===== Clean white-and-tabby European cat icon ===== */
+/* Clean white-and-tabby European cat icon */
 .cat-trigger {
   display: inline-grid;
   place-items: center;
@@ -1308,7 +1265,7 @@ body.modal-open {
 .cat-body,
 .cat-head,
 .cat-leg {
-  fill: #ffffff;
+  fill: #fff;
   stroke: #18222d;
   stroke-width: 1.8;
   stroke-linejoin: round;
@@ -1328,6 +1285,13 @@ body.modal-open {
   stroke-linecap: round;
 }
 
+.cat-tail-line {
+  fill: none;
+  stroke: #18222d;
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
 .cat-eye {
   fill: #18222d;
 }
@@ -1339,260 +1303,13 @@ body.modal-open {
   stroke-linecap: round;
 }
 
-@media (max-width: 1000px) {
-  .header-inner {
-    grid-template-columns: 120px minmax(0, 1fr);
-  }
-
-  .identity {
-    grid-template-columns: var(--portrait-size) minmax(0, 1fr);
-  }
-
-  .identity .profiles {
-    justify-content: flex-start;
-  }
-}
-
-@media (max-width: 700px) {
-  .header-inner {
-    grid-template-columns: 92px minmax(0, 1fr);
-  }
-
-  .laas-logo {
-    width: 88px;
-    height: 68px;
-  }
-
-  .identity {
-    grid-template-columns: var(--portrait-size) minmax(0, 1fr);
-    row-gap: .4rem;
-  }
-
-  .identity .profiles {
-    flex-wrap: wrap;
-    gap: .55rem;
-  }
-}
-
-
-/* ===== Final header refinements ===== */
-
-/* Slightly larger LAAS logo while preserving header proportions */
-.header-inner {
-  grid-template-columns: 158px minmax(360px, 1fr) auto;
-}
-
-.laas-logo {
-  width: 148px !important;
-  height: 102px !important;
-  object-fit: contain;
-}
-
-/* More readable navigation in Firefox and other browsers */
-nav {
-  gap: 1.35rem;
-}
-
-nav a {
-  font-size: 1rem !important;
-  font-weight: 600;
-  line-height: 1.2;
-}
-
-/* Stable PDF icon across Firefox, Chrome and Safari */
-.cv-download {
-  display: inline-flex;
-  align-items: center;
-  gap: .4rem;
-  min-height: 36px;
-}
-
-.pdf-badge {
-  position: relative;
-  display: inline-flex;
-  align-items: flex-end;
-  justify-content: center;
-  flex: 0 0 26px;
-  width: 26px !important;
-  height: 30px !important;
-  padding: 0 0 4px;
-  border: 1.8px solid #d82727;
-  border-radius: 3px;
-  color: #d82727;
-  background: transparent;
-  overflow: hidden;
-  line-height: 1;
-}
-
-.pdf-badge::before {
-  content: "";
-  position: absolute;
-  top: -1px;
-  right: -1px;
-  width: 9px;
-  height: 9px;
-  border-left: 1.8px solid #d82727;
-  border-bottom: 1.8px solid #d82727;
-  background: var(--paper);
-  clip-path: polygon(0 0, 100% 100%, 0 100%);
-}
-
-.pdf-badge span {
-  position: relative;
-  z-index: 1;
-  display: block;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 6.5px;
-  font-weight: 800;
-  letter-spacing: .02em;
-}
-
-.cv-download > span:last-child {
-  font-size: .76rem;
-  font-weight: 800;
-  line-height: 1;
-}
-
-/* Responsive safeguards */
-@media (max-width: 1000px) {
-  .header-inner {
-    grid-template-columns: 126px minmax(0, 1fr);
-  }
-
-  .laas-logo {
-    width: 116px !important;
-    height: 84px !important;
-  }
-
-  nav a {
-    font-size: .96rem !important;
-  }
-}
-
-@media (max-width: 700px) {
-  .header-inner {
-    grid-template-columns: 94px minmax(0, 1fr);
-  }
-
-  .laas-logo {
-    width: 90px !important;
-    height: 68px !important;
-  }
-
-  nav a {
-    font-size: .92rem !important;
-  }
-}
-
-
-/* Clean inline PDF icon */
-.cv-download{
- display:inline-flex;
- align-items:center;
- gap:.45rem;
- color:inherit;
- text-decoration:none;
-}
-.cv-download .pdf-badge{display:none!important;}
-.pdf-icon{
- width:22px;
- height:22px;
- color:#d32f2f;
- flex:0 0 auto;
-}
-.pdf-icon text{
- fill:#d32f2f;
- letter-spacing:.2px;
-}
-
-
-/* ===== Final CV download icon ===== */
-.cv-download {
-  display: inline-flex;
-  align-items: center;
-  gap: .42rem;
-  min-height: 34px;
-  color: var(--ink);
-  text-decoration: none;
-}
-
-.cv-download .pdf-badge,
-.cv-download .pdf-icon {
-  display: none !important;
-}
-
-.cv-icon {
-  display: block;
-  width: 22px;
-  height: 22px;
-  flex: 0 0 22px;
-  fill: none;
-  stroke: var(--red);
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  transition: transform .2s ease, stroke .2s ease;
-}
-
-.cv-download > span:last-child {
-  font-size: .78rem;
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: .02em;
-}
-
-.cv-download:hover .cv-icon,
-.cv-download:focus-visible .cv-icon {
-  transform: translateY(1px);
-  stroke: #b91f35;
-}
-
-.cv-download:hover,
-.cv-download:focus-visible {
-  color: var(--red);
-}
-
-
-/* Final polish */
-.header-inner{grid-template-columns:170px minmax(380px,1fr) auto;}
-.laas-logo{
- width:158px!important;
- height:auto!important;
- object-fit:contain;
-}
-nav a{
- font-size:1.04rem!important;
- font-weight:600;
-}
-.cv-download{
- display:inline-flex;
- align-items:center;
- gap:.45rem;
- text-decoration:none;
-}
-.cv-icon{
- width:21px;
- height:21px;
- flex:none;
- stroke:var(--red);
- fill:none;
- stroke-width:1.9;
- stroke-linecap:round;
- stroke-linejoin:round;
- overflow:visible;
-}
-.cv-download:hover .cv-icon{
- transform:translateY(1px);
-}
-
-
-/* Mobile paw animation: smoother and faster */
+/* Mobile paw animation */
 @media (max-width: 700px) {
   html {
-    scroll-behavior: auto !important;
+    scroll-behavior: auto;
   }
 
   .paw-mark {
-    animation-timing-function: linear !important;
+    animation-timing-function: linear;
   }
 }
