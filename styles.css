@@ -1079,11 +1079,13 @@ body.modal-open {
 }
 
 
-/* ===== Five-click paw trail ===== */
+
+
+/* ===== Double-click paw trail on the page ===== */
 .paw-trail {
   position: fixed;
   inset: 0;
-  z-index: 3500;
+  z-index: 2500;
   pointer-events: none;
   overflow: hidden;
 }
@@ -1094,6 +1096,7 @@ body.modal-open {
   opacity: 0;
   color: var(--ink);
   filter: grayscale(1);
+  transform: rotate(var(--paw-rotation));
   animation: paw-step 1.65s ease-in-out forwards;
   text-shadow: 0 2px 10px rgba(8, 17, 31, .12);
 }
@@ -1101,19 +1104,19 @@ body.modal-open {
 @keyframes paw-step {
   0% {
     opacity: 0;
-    scale: .72;
+    transform: rotate(var(--paw-rotation)) scale(.68);
   }
-  22% {
-    opacity: .28;
-    scale: 1;
+  24% {
+    opacity: .30;
+    transform: rotate(var(--paw-rotation)) scale(1);
   }
-  72% {
+  70% {
     opacity: .22;
-    scale: 1;
+    transform: rotate(var(--paw-rotation)) scale(1);
   }
   100% {
     opacity: 0;
-    scale: .86;
+    transform: rotate(var(--paw-rotation)) scale(.88);
   }
 }
 

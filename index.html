@@ -378,7 +378,7 @@
 
       const closeButtons = modal.querySelectorAll('[data-close-modal]');
       let previousFocus = null;
-      let clickCount = 0;
+      let clickTimer = null;
 
       const openModal = () => {
         previousFocus = document.activeElement;
@@ -394,19 +394,22 @@
       };
 
       const launchPaws = () => {
+        const oldTrail = document.querySelector('.paw-trail');
+        oldTrail?.remove();
+
         const layer = document.createElement('div');
         layer.className = 'paw-trail';
         layer.setAttribute('aria-hidden', 'true');
 
         const paws = [
-          { left: 8,  bottom: 8,  delay: 0.00, rotate: -18 },
-          { left: 17, bottom: 17, delay: 0.16, rotate: 12 },
-          { left: 28, bottom: 26, delay: 0.32, rotate: -10 },
-          { left: 39, bottom: 37, delay: 0.48, rotate: 14 },
-          { left: 52, bottom: 49, delay: 0.64, rotate: -8 },
-          { left: 65, bottom: 62, delay: 0.80, rotate: 12 },
-          { left: 78, bottom: 75, delay: 0.96, rotate: -10 },
-          { left: 89, bottom: 87, delay: 1.12, rotate: 10 }
+          { left: 6,  top: 86, delay: 0.00, rotate: -20 },
+          { left: 17, top: 75, delay: 0.14, rotate: 13 },
+          { left: 28, top: 65, delay: 0.28, rotate: -11 },
+          { left: 40, top: 54, delay: 0.42, rotate: 15 },
+          { left: 53, top: 43, delay: 0.56, rotate: -9 },
+          { left: 66, top: 32, delay: 0.70, rotate: 12 },
+          { left: 78, top: 21, delay: 0.84, rotate: -11 },
+          { left: 89, top: 10, delay: 0.98, rotate: 10 }
         ];
 
         paws.forEach((paw, index) => {
@@ -414,21 +417,37 @@
           mark.className = 'paw-mark';
           mark.textContent = '🐾';
           mark.style.left = `${paw.left}vw`;
-          mark.style.bottom = `${paw.bottom}vh`;
+          mark.style.top = `${paw.top}vh`;
           mark.style.animationDelay = `${paw.delay}s`;
-          mark.style.transform = `rotate(${paw.rotate}deg)`;
-          mark.style.fontSize = `${index % 2 === 0 ? 28 : 24}px`;
+          mark.style.setProperty('--paw-rotation', `${paw.rotate}deg`);
+          mark.style.fontSize = `${index % 2 === 0 ? 30 : 25}px`;
           layer.appendChild(mark);
         });
 
         document.body.appendChild(layer);
-        window.setTimeout(() => layer.remove(), 3200);
+        window.setTimeout(() => layer.remove(), 3000);
       };
 
-      trigger.addEventListener('click', openModal);
+      /* A short delay distinguishes a single click from a double-click:
+         single click = photo; double-click = paws on the page only. */
+      trigger.addEventListener('click', () => {
+        if (clickTimer) return;
 
-      trigger.addEventListener('dblclick', (event) => {
+        clickTimer = window.setTimeout(() => {
+          clickTimer = null;
+          openModal();
+        }, 280);
+      });
+
+      trigger.addEventListener('dblclick', event => {
         event.preventDefault();
+
+        if (clickTimer) {
+          window.clearTimeout(clickTimer);
+          clickTimer = null;
+        }
+
+        if (!modal.hidden) closeModal();
         launchPaws();
       });
 
