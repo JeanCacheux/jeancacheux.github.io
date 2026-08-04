@@ -67,28 +67,80 @@ if (carousel && track) {
   carousel.addEventListener('touchstart', () => paused = true, {passive:true});
   carousel.addEventListener('touchend', () => paused = false, {passive:true});
 
+  let pointerActive = false;
+  let dragMoved = false;
+  const dragThreshold = 7;
+
   carousel.addEventListener('pointerdown', e => {
-    dragging = true; paused = true; startX = e.clientX; startOffset = offset;
-    carousel.classList.add('dragging'); carousel.setPointerCapture(e.pointerId);
+    // Do not capture clicks that begin on a link or another interactive control.
+    // Firefox may otherwise treat the pointer capture as a drag and cancel navigation.
+    if (e.button !== 0 || e.target.closest('a, button, input, select, textarea')) {
+      paused = true;
+      return;
+    }
+
+    pointerActive = true;
+    dragMoved = false;
+    startX = e.clientX;
+    startOffset = offset;
   });
 
   carousel.addEventListener('pointermove', e => {
-    if (!dragging) return;
-    offset = startOffset - (e.clientX - startX);
+    if (!pointerActive) return;
+
+    const deltaX = e.clientX - startX;
+
+    if (!dragging && Math.abs(deltaX) < dragThreshold) return;
+
+    if (!dragging) {
+      dragging = true;
+      dragMoved = true;
+      paused = true;
+      carousel.classList.add('dragging');
+      try { carousel.setPointerCapture(e.pointerId); } catch {}
+    }
+
+    offset = startOffset - deltaX;
     const limit = halfWidth();
-    while (offset < 0) offset += limit;
-    while (offset >= limit) offset -= limit;
+    if (limit > 0) {
+      while (offset < 0) offset += limit;
+      while (offset >= limit) offset -= limit;
+    }
     render();
+    e.preventDefault();
   });
 
   function endDrag(e) {
-    if (!dragging) return;
-    dragging = false; paused = false; carousel.classList.remove('dragging');
-    try { carousel.releasePointerCapture(e.pointerId); } catch {}
+    pointerActive = false;
+
+    if (dragging) {
+      dragging = false;
+      carousel.classList.remove('dragging');
+      try { carousel.releasePointerCapture(e.pointerId); } catch {}
+    }
+
+    paused = false;
   }
 
   carousel.addEventListener('pointerup', endDrag);
   carousel.addEventListener('pointercancel', endDrag);
+
+  // Keep the carousel paused while a highlight link is hovered or focused.
+  carousel.addEventListener('focusin', e => {
+    if (e.target.closest('a')) paused = true;
+  });
+
+  carousel.addEventListener('focusout', e => {
+    if (e.target.closest('a')) paused = false;
+  });
+
+  carousel.addEventListener('click', e => {
+    if (dragMoved) {
+      e.preventDefault();
+      e.stopPropagation();
+      dragMoved = false;
+    }
+  }, true);
 
   render();
   requestAnimationFrame(tick);
