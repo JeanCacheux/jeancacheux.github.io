@@ -106,7 +106,7 @@
 }
   </script>
 
-  <link rel="stylesheet" href="styles.css?v=20260804-cat-linear-people">
+  <link rel="stylesheet" href="styles.css?v=20260804-cat-wander-visible">
 </head>
 <body>
   <canvas id="particles" aria-hidden="true"></canvas>
@@ -265,7 +265,7 @@
     </section>
 
     <section id="team" class="chapter">
-      <div class="chapter-label">03 — My team</div>
+      <div class="chapter-label">03 — People</div>
       <p class="team-intro">A cross-institutional team investigating poromechanics and transport in microphysiological systems, with applications to cancer biology and translational research.</p>
 
       <div class="team-grid">
@@ -376,7 +376,7 @@
       <span>Outside research...</span>
     </button>
 </footer>
-  <script src="script.js?v=20260804-cat-linear-people"></script>
+  <script src="script.js?v=20260804-cat-wander-visible"></script>
 
   <div class="outside-modal" id="outside-research-modal" role="dialog" aria-modal="true" aria-labelledby="outside-research-title" hidden>
     <div class="outside-modal__backdrop" data-close-modal></div>
@@ -411,39 +411,41 @@
         previousFocus?.focus();
       };
 
-      const launchPaws = (duration = 5600) => {
+      const launchPaws = (duration = 4200) => {
         document.querySelector('.paw-trail')?.remove();
 
         const layer = document.createElement('div');
         layer.className = 'paw-trail';
         layer.setAttribute('aria-hidden', 'true');
 
-        const pawCount = 38;
-        let x = 12 + Math.random() * 16;
-        let direction = 1;
-        let nextTurn = 4 + Math.floor(Math.random() * 4);
+        const pawCount = 44;
+        const segmentLength = 5;
+        let currentX = 12 + Math.random() * 18;
+        let targetX = 65 + Math.random() * 25;
 
         for (let index = 0; index < pawCount; index += 1) {
           const progress = index / (pawCount - 1);
+          const segmentProgress = (index % segmentLength) / segmentLength;
 
-          if (index === nextTurn) {
-            direction *= -1;
-            nextTurn += 4 + Math.floor(Math.random() * 5);
+          if (index > 0 && index % segmentLength === 0) {
+            currentX = targetX;
+
+            // Pick a target far enough away to make the trail roam
+            // through the full width rather than hugging one side.
+            let candidate;
+            do {
+              candidate = 8 + Math.random() * 84;
+            } while (Math.abs(candidate - currentX) < 28);
+
+            targetX = candidate;
           }
 
-          x += direction * (3.5 + Math.random() * 7);
-          if (x < 7) {
-            x = 7 + Math.random() * 7;
-            direction = 1;
-          } else if (x > 90) {
-            x = 90 - Math.random() * 7;
-            direction = -1;
-          }
-
-          const y = 91 - progress * 80 + (Math.random() * 4 - 2);
-          const rotation = direction > 0
-            ? -22 + Math.random() * 20
-            : 22 - Math.random() * 20;
+          const smoothSegment = segmentProgress * segmentProgress * (3 - 2 * segmentProgress);
+          const x = currentX + (targetX - currentX) * smoothSegment
+            + (Math.random() * 5 - 2.5);
+          const y = 91 - progress * 80 + (Math.random() * 3 - 1.5);
+          const heading = Math.atan2(-80 / pawCount, (targetX - currentX) / segmentLength);
+          const rotation = heading * 180 / Math.PI + 90 + (Math.random() * 14 - 7);
 
           const mark = document.createElement('span');
           mark.className = 'paw-mark';
@@ -457,26 +459,24 @@
             </svg>
           `;
 
-          mark.style.left = `${x}vw`;
+          mark.style.left = `${Math.max(5, Math.min(93, x))}vw`;
           mark.style.top = `${y}vh`;
-          mark.style.animationDelay = `${progress * duration * .96}ms`;
-          mark.style.animationDuration = `${1200 + Math.random() * 500}ms`;
+          mark.style.animationDelay = `${progress * duration * .97}ms`;
+          mark.style.animationDuration = `${1050 + Math.random() * 350}ms`;
           mark.style.setProperty('--paw-rotation', `${rotation}deg`);
           layer.appendChild(mark);
         }
 
         document.body.appendChild(layer);
-        window.setTimeout(() => layer.remove(), duration + 2200);
+        window.setTimeout(() => layer.remove(), duration + 1800);
       };
 
-      const slowScrollToTop = (duration = 6200) => {
+      const scrollToTopAtConstantSpeed = (duration = 4200) => {
         const startY = window.scrollY;
         const startTime = performance.now();
 
         const step = now => {
           const progress = Math.min((now - startTime) / duration, 1);
-
-          // Linear interpolation: constant speed from start to finish.
           window.scrollTo(0, Math.round(startY * (1 - progress)));
 
           if (progress < 1) requestAnimationFrame(step);
@@ -494,9 +494,9 @@
 
           if (!modal.hidden) closeModal();
 
-          const animationDuration = 6200;
+          const animationDuration = 4200;
           launchPaws(animationDuration);
-          slowScrollToTop(animationDuration);
+          scrollToTopAtConstantSpeed(animationDuration);
           return;
         }
 
