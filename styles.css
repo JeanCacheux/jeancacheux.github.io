@@ -1551,3 +1551,48 @@ nav a {
 .cv-download:focus-visible {
   color: var(--red);
 }
+
+
+/* Final polish */
+.header-inner{grid-template-columns:170px minmax(380px,1fr) auto;}
+.laas-logo{
+ width:158px!important;
+ height:auto!important;
+ object-fit:contain;
+}
+nav a{
+ font-size:1.04rem!important;
+ font-weight:600;
+}
+.cv-download{
+ display:inline-flex;
+ align-items:center;
+ gap:.45rem;
+ text-decoration:none;
+}
+.cv-icon{
+ width:21px;
+ height:21px;
+ flex:none;
+ stroke:var(--red);
+ fill:none;
+ stroke-width:1.9;
+ stroke-linecap:round;
+ stroke-linejoin:round;
+ overflow:visible;
+}
+.cv-download:hover .cv-icon{
+ transform:translateY(1px);
+}
+
+
+/* Mobile paw animation: smoother and faster */
+@media (max-width: 700px) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  .paw-mark {
+    animation-timing-function: linear !important;
+  }
+}
