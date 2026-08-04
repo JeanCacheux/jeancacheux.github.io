@@ -1078,80 +1078,6 @@ body.modal-open {
   }
 }
 
-
-
-
-/* ===== Double-click paw trail on the page ===== */
-.paw-trail {
-  position: fixed;
-  inset: 0;
-  z-index: 2500;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.paw-mark {
-  position: absolute;
-  display: block;
-  opacity: 0;
-  color: var(--ink);
-  filter: grayscale(1);
-  transform: rotate(var(--paw-rotation));
-  animation: paw-step 1.65s ease-in-out forwards;
-  text-shadow: 0 2px 10px rgba(8, 17, 31, .12);
-}
-
-@keyframes paw-step {
-  0% {
-    opacity: 0;
-    transform: rotate(var(--paw-rotation)) scale(.68);
-  }
-  24% {
-    opacity: .30;
-    transform: rotate(var(--paw-rotation)) scale(1);
-  }
-  70% {
-    opacity: .22;
-    transform: rotate(var(--paw-rotation)) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: rotate(var(--paw-rotation)) scale(.88);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .paw-mark {
-    animation-duration: .35s;
-  }
-}
-
-
-/* More numerous, smaller paw prints spread across the viewport */
-.paw-mark {
-  opacity: 0;
-}
-
-@keyframes paw-step {
-  0% {
-    opacity: 0;
-    transform: rotate(var(--paw-rotation)) scale(.6);
-  }
-  22% {
-    opacity: .22;
-    transform: rotate(var(--paw-rotation)) scale(1);
-  }
-  72% {
-    opacity: .16;
-    transform: rotate(var(--paw-rotation)) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: rotate(var(--paw-rotation)) scale(.82);
-  }
-}
-
-
 /* Open-access links in research highlights */
 .highlight-paper-link {
   display: inline-flex;
@@ -1175,136 +1101,50 @@ body.modal-open {
   text-decoration: underline;
 }
 
+/* ===== Outside-research paw trail ===== */
+.paw-trail {
+  position: fixed;
+  inset: 0;
+  z-index: 3500;
+  pointer-events: none;
+  overflow: hidden;
+}
 
-/* ===== Vector paw-print refinement ===== */
 .paw-mark {
-  width: clamp(15px, 1.65vw, 24px);
-  height: clamp(15px, 1.65vw, 24px);
-  color: rgba(14, 45, 92, .22);
-  filter: none;
-  text-shadow: none;
+  position: absolute;
+  display: block;
+  width: clamp(28px, 2.5vw, 34px);
+  height: clamp(28px, 2.5vw, 34px);
+  color: rgba(14, 45, 92, .42);
+  opacity: 0;
+  transform: rotate(var(--paw-rotation));
+  animation: paw-natural-step 1s ease-in-out forwards;
+  filter: drop-shadow(0 1px 2px rgba(255, 255, 255, .18));
+}
+
+.paw-mark--dark-bg {
+  color: rgba(80, 189, 211, .52);
+  filter: drop-shadow(0 1px 2px rgba(8, 17, 31, .22));
 }
 
 .paw-mark svg {
   display: block;
   width: 100%;
   height: 100%;
-  overflow: visible;
   fill: currentColor;
 }
 
-/* Alternate a subtle blue-grey tone for a more natural trail. */
-.paw-mark:nth-child(3n) {
-  color: rgba(80, 189, 211, .20);
-}
-
-.paw-mark:nth-child(4n) {
-  color: rgba(8, 17, 31, .16);
-}
-
-
-/* Slow, wandering paw trail synchronized with page ascent. */
-.paw-mark {
-  animation-name: paw-wandering-step !important;
-  animation-timing-function: ease-in-out !important;
-  animation-fill-mode: forwards !important;
-}
-
-@keyframes paw-wandering-step {
-  0% {
-    opacity: 0;
-    transform: rotate(var(--paw-rotation)) scale(.62);
-  }
-  22% {
-    opacity: .25;
-    transform: rotate(var(--paw-rotation)) scale(1);
-  }
-  72% {
-    opacity: .18;
-    transform: rotate(var(--paw-rotation)) scale(.98);
-  }
-  100% {
-    opacity: 0;
-    transform: rotate(var(--paw-rotation)) scale(.82);
-  }
-}
-
-
-/* Cat trail refinements: larger prints and steady pacing */
-.paw-mark {
-  width: clamp(24px, 2.6vw, 38px) !important;
-  height: clamp(24px, 2.6vw, 38px) !important;
-}
-
-.paw-mark svg {
-  width: 100%;
-  height: 100%;
-}
-
-@keyframes paw-wandering-step {
+@keyframes paw-natural-step {
   0% {
     opacity: 0;
     transform: rotate(var(--paw-rotation)) scale(.72);
   }
-  18% {
-    opacity: .34;
+  20% {
+    opacity: 1;
     transform: rotate(var(--paw-rotation)) scale(1);
   }
-  82% {
-    opacity: .25;
-    transform: rotate(var(--paw-rotation)) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: rotate(var(--paw-rotation)) scale(.88);
-  }
-}
-
-
-/* Final cat trail: larger, high-contrast paws that wander across the viewport. */
-.paw-mark {
-  width: clamp(30px, 3.15vw, 46px) !important;
-  height: clamp(30px, 3.15vw, 46px) !important;
-  color: rgba(80, 189, 211, .78) !important;
-  filter:
-    drop-shadow(0 0 1.5px rgba(255, 255, 255, .95))
-    drop-shadow(0 0 4px rgba(255, 255, 255, .72))
-    drop-shadow(0 2px 3px rgba(8, 17, 31, .42)) !important;
-  mix-blend-mode: normal;
-  animation-name: paw-visible-step !important;
-  animation-timing-function: ease-in-out !important;
-  animation-fill-mode: forwards !important;
-}
-
-.paw-mark:nth-child(3n) {
-  color: rgba(239, 51, 78, .70) !important;
-}
-
-.paw-mark:nth-child(4n) {
-  color: rgba(14, 45, 92, .82) !important;
-}
-
-.paw-mark svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-  fill: currentColor;
-  stroke: rgba(255, 255, 255, .85);
-  stroke-width: 1.4px;
-  paint-order: stroke fill;
-}
-
-@keyframes paw-visible-step {
-  0% {
-    opacity: 0;
-    transform: rotate(var(--paw-rotation)) scale(.70);
-  }
-  16% {
-    opacity: .92;
-    transform: rotate(var(--paw-rotation)) scale(1);
-  }
-  82% {
-    opacity: .78;
+  76% {
+    opacity: .82;
     transform: rotate(var(--paw-rotation)) scale(1);
   }
   100% {
@@ -1313,39 +1153,22 @@ body.modal-open {
   }
 }
 
-
-20%{opacity:1}
-40%{transform:translateY(0) rotate(16deg)}
-65%{transform:rotate(-10deg)}
-100%{opacity:0;transform:translateY(-55px) rotate(8deg)}
-}
-
-
-/* Team labels below laboratory names */
-.person-team {
-  display: block;
-  margin-top: .18rem;
-  color: var(--red) !important;
-  font-size: .84rem;
-  font-weight: 700;
-}
-
-/* Tail appears at the end and slips upward out of view */
+/* One smooth tail, shown only after the final footprint. */
 .cat-tail {
   position: fixed;
-  top: -12px;
-  right: clamp(10vw, 18vw, 260px);
+  top: -18px;
+  right: clamp(8vw, 17vw, 240px);
   z-index: 3600;
-  width: 72px;
-  height: 210px;
-  color: rgba(80, 189, 211, .94);
+  width: 78px;
+  height: 270px;
+  color: rgba(14, 45, 92, .48);
   pointer-events: none;
   opacity: 0;
-  filter:
-    drop-shadow(0 0 2px rgba(255,255,255,.95))
-    drop-shadow(0 3px 5px rgba(8,17,31,.30));
   transform-origin: 50% 0%;
-  animation: tail-slip-away 1.65s cubic-bezier(.22,.72,.28,1) forwards;
+  animation: tail-glide-away 1.85s cubic-bezier(.25, .72, .22, 1) forwards;
+  filter:
+    drop-shadow(0 1px 2px rgba(255, 255, 255, .25))
+    drop-shadow(0 3px 5px rgba(8, 17, 31, .18));
 }
 
 .cat-tail svg {
@@ -1355,24 +1178,31 @@ body.modal-open {
   overflow: visible;
 }
 
-@keyframes tail-slip-away {
+@keyframes tail-glide-away {
   0% {
     opacity: 0;
-    transform: translateY(130px) rotate(-14deg) scale(.94);
+    transform: translateY(185px) rotate(-5deg);
   }
-  16% {
+  14% {
     opacity: 1;
   }
-  42% {
-    opacity: 1;
-    transform: translateY(54px) rotate(14deg) scale(1);
+  48% {
+    opacity: .95;
+    transform: translateY(70px) rotate(4deg);
   }
-  72% {
-    opacity: .92;
-    transform: translateY(-18px) rotate(-9deg) scale(1.02);
+  78% {
+    opacity: .72;
+    transform: translateY(-45px) rotate(-2deg);
   }
   100% {
     opacity: 0;
-    transform: translateY(-210px) rotate(8deg) scale(.96);
+    transform: translateY(-285px) rotate(1deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .paw-mark,
+  .cat-tail {
+    animation-duration: .35s !important;
   }
 }

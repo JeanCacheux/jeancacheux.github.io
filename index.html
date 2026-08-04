@@ -106,7 +106,7 @@
 }
   </script>
 
-  <link rel="stylesheet" href="styles.css?v=20260804-tail-teams">
+  <link rel="stylesheet" href="styles.css?v=20260804-v1-final">
 </head>
 <body>
   <canvas id="particles" aria-hidden="true"></canvas>
@@ -310,7 +310,7 @@
         <article>
           <div class="team-photo crct-photo"><img src="team-silvia.png" alt="Silvia Ferrer Royo"></div>
           <h3>Silvia Ferrer Royo</h3>
-          <p>PhD student</p>
+          <p>PhD student · CRCT</p>
           <span>Co-supervised with <a href="https://scholar.google.com/citations?user=6N9r4SIAAAAJ" target="_blank" rel="noreferrer">Pierre Cordelier</a></span>
         
           <div class="team-profiles" aria-label="Silvia Ferrer Royo academic profiles"><a href="https://es.linkedin.com/in/silvia-ferrer-royo-736558229/es" target="_blank" rel="noreferrer" aria-label="Silvia Ferrer Royo — LinkedIn"><img src="icon-linkedin.svg" alt=""></a></div>
@@ -370,7 +370,7 @@
   <footer><span>© <span id="year"></span> Jean Cacheux</span><span>CNRS Researcher · LAAS-CNRS</span>
     <button class="cat-trigger" type="button" aria-label="Outside research" aria-haspopup="dialog" aria-controls="outside-research-modal"><span aria-hidden="true">🐈</span></button>
 </footer>
-  <script src="script.js?v=20260804-tail-teams"></script>
+  <script src="script.js?v=20260804-v1-final"></script>
 
   <div class="outside-modal" id="outside-research-modal" role="dialog" aria-modal="true" aria-labelledby="outside-research-title" hidden>
     <div class="outside-modal__backdrop" data-close-modal></div>
@@ -405,81 +405,90 @@
         previousFocus?.focus();
       };
 
-      const launchPaws = (duration = 4200) => {
+      const pawSvg = `
+        <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <ellipse cx="32" cy="39" rx="13.5" ry="11.5"></ellipse>
+          <ellipse cx="13.5" cy="23" rx="6.2" ry="8.2" transform="rotate(-22 13.5 23)"></ellipse>
+          <ellipse cx="26" cy="14" rx="6.2" ry="8.2" transform="rotate(-8 26 14)"></ellipse>
+          <ellipse cx="39" cy="14" rx="6.2" ry="8.2" transform="rotate(8 39 14)"></ellipse>
+          <ellipse cx="51" cy="23" rx="6.2" ry="8.2" transform="rotate(22 51 23)"></ellipse>
+        </svg>
+      `;
+
+      const launchPaws = (duration = 3800) => {
         document.querySelector('.paw-trail')?.remove();
 
         const layer = document.createElement('div');
         layer.className = 'paw-trail';
         layer.setAttribute('aria-hidden', 'true');
 
-        const pawCount = 44;
-        const segmentLength = 5;
-        let currentX = 12 + Math.random() * 18;
-        let targetX = 65 + Math.random() * 25;
+        const pawCount = 38;
+        const pointsPerTurn = 4 + Math.floor(Math.random() * 3);
+        let currentX = 12 + Math.random() * 20;
+        let targetX = 60 + Math.random() * 28;
 
         for (let index = 0; index < pawCount; index += 1) {
           const progress = index / (pawCount - 1);
-          const segmentProgress = (index % segmentLength) / segmentLength;
+          const segmentIndex = index % pointsPerTurn;
+          const segmentProgress = segmentIndex / pointsPerTurn;
 
-          if (index > 0 && index % segmentLength === 0) {
+          if (index > 0 && segmentIndex === 0) {
             currentX = targetX;
 
-            // Pick a target far enough away to make the trail roam
-            // through the full width rather than hugging one side.
             let candidate;
             do {
-              candidate = 8 + Math.random() * 84;
-            } while (Math.abs(candidate - currentX) < 28);
+              candidate = 7 + Math.random() * 86;
+            } while (Math.abs(candidate - currentX) < 22);
 
             targetX = candidate;
           }
 
-          const smoothSegment = segmentProgress * segmentProgress * (3 - 2 * segmentProgress);
-          const x = currentX + (targetX - currentX) * smoothSegment
-            + (Math.random() * 5 - 2.5);
+          const easedSegment = segmentProgress * segmentProgress * (3 - 2 * segmentProgress);
+          const x = currentX + (targetX - currentX) * easedSegment
+            + (Math.random() * 4 - 2);
           const y = 91 - progress * 80 + (Math.random() * 3 - 1.5);
-          const heading = Math.atan2(-80 / pawCount, (targetX - currentX) / segmentLength);
-          const rotation = heading * 180 / Math.PI + 90 + (Math.random() * 14 - 7);
+
+          const dx = (targetX - currentX) / pointsPerTurn;
+          const rotation = Math.atan2(-80 / pawCount, dx) * 180 / Math.PI
+            + 90 + (Math.random() * 10 - 5);
 
           const mark = document.createElement('span');
           mark.className = 'paw-mark';
-          mark.innerHTML = `
-            <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-              <ellipse cx="32" cy="39" rx="13.5" ry="11.5"></ellipse>
-              <ellipse cx="13.5" cy="23" rx="6.2" ry="8.2" transform="rotate(-22 13.5 23)"></ellipse>
-              <ellipse cx="26" cy="14" rx="6.2" ry="8.2" transform="rotate(-8 26 14)"></ellipse>
-              <ellipse cx="39" cy="14" rx="6.2" ry="8.2" transform="rotate(8 39 14)"></ellipse>
-              <ellipse cx="51" cy="23" rx="6.2" ry="8.2" transform="rotate(22 51 23)"></ellipse>
-            </svg>
-          `;
-
-          mark.style.left = `${Math.max(5, Math.min(93, x))}vw`;
+          mark.innerHTML = pawSvg;
+          mark.style.left = `${Math.max(5, Math.min(94, x))}vw`;
           mark.style.top = `${y}vh`;
-          mark.style.animationDelay = `${progress * duration * .97}ms`;
-          mark.style.animationDuration = `${1050 + Math.random() * 350}ms`;
+          mark.style.animationDelay = `${progress * duration * .94}ms`;
+          mark.style.animationDuration = `${880 + Math.random() * 260}ms`;
           mark.style.setProperty('--paw-rotation', `${rotation}deg`);
+
+          mark.addEventListener('animationstart', () => {
+            const rect = mark.getBoundingClientRect();
+            const under = document.elementFromPoint(
+              rect.left + rect.width / 2,
+              rect.top + rect.height / 2
+            );
+            mark.classList.toggle('paw-mark--dark-bg', Boolean(under?.closest('.dark')));
+          }, { once: true });
+
           layer.appendChild(mark);
         }
 
         document.body.appendChild(layer);
-        
-window.setTimeout(() => layer.remove(), duration + 1800);
+        window.setTimeout(() => layer.remove(), duration + 1500);
       };
 
-      const scrollToTopAtConstantSpeed = (duration = 4200) => {
+      const scrollToTopAtConstantSpeed = (duration = 3800) => {
         const startY = window.scrollY;
         const startTime = performance.now();
 
         const step = now => {
           const progress = Math.min((now - startTime) / duration, 1);
           window.scrollTo(0, Math.round(startY * (1 - progress)));
-
           if (progress < 1) requestAnimationFrame(step);
         };
 
         requestAnimationFrame(step);
       };
-
 
       const launchTail = () => {
         document.querySelector('.cat-tail')?.remove();
@@ -488,22 +497,22 @@ window.setTimeout(() => layer.remove(), duration + 1800);
         tail.className = 'cat-tail';
         tail.setAttribute('aria-hidden', 'true');
         tail.innerHTML = `
-          <svg viewBox="0 0 90 240" aria-hidden="true" focusable="false">
+          <svg viewBox="0 0 100 300" aria-hidden="true" focusable="false">
             <path
-              d="M45 225
-                 C12 192, 20 150, 56 132
-                 C82 119, 78 82, 50 66
-                 C28 53, 31 24, 50 8"
+              d="M52 292
+                 C18 252, 20 203, 62 175
+                 C91 155, 86 111, 53 89
+                 C30 73, 30 37, 55 7"
               fill="none"
               stroke="currentColor"
-              stroke-width="11"
+              stroke-width="10"
               stroke-linecap="round"
             />
           </svg>
         `;
 
         document.body.appendChild(tail);
-        window.setTimeout(() => tail.remove(), 1700);
+        window.setTimeout(() => tail.remove(), 1900);
       };
 
       trigger.addEventListener('click', event => {
@@ -515,10 +524,10 @@ window.setTimeout(() => layer.remove(), duration + 1800);
 
           if (!modal.hidden) closeModal();
 
-          const animationDuration = 4200;
-          launchPaws(animationDuration);
-          scrollToTopAtConstantSpeed(animationDuration);
-          window.setTimeout(launchTail, animationDuration - 120);
+          const duration = 3800;
+          launchPaws(duration);
+          scrollToTopAtConstantSpeed(duration);
+          window.setTimeout(launchTail, duration + 300);
           return;
         }
 
