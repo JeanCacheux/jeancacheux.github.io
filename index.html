@@ -312,7 +312,7 @@
         <article>
           <div class="team-photo crct-photo"><img src="team-silvia.png" alt="Silvia Ferrer Royo"></div>
           <h3>Silvia Ferrer Royo</h3>
-          <p>PhD Candidate · CRCT</p>
+          <p>PhD student · CRCT</p>
           <span>Co-supervised with <a href="https://scholar.google.com/citations?user=sv9jucoAAAAJ" target="_blank" rel="noreferrer">Pierre Cordelier ↗</a></span>
         
           <div class="team-profiles" aria-label="Silvia Ferrer Royo academic profiles"><a href="https://es.linkedin.com/in/silvia-ferrer-royo-736558229/es" target="_blank" rel="noreferrer" aria-label="Silvia Ferrer Royo — LinkedIn"><img src="icon-linkedin.svg" alt=""></a></div>
@@ -468,7 +468,13 @@
         }
 
         document.body.appendChild(layer);
-        window.setTimeout(() => layer.remove(), duration + 1800);
+        const tail=document.createElement('div');
+tail.className='cat-tail';
+tail.style.left=`${Math.max(8,Math.min(92,targetX||50))}vw`;
+tail.innerHTML=`<svg viewBox="0 0 60 140"><path d="M30 5 C52 30 52 75 28 110 C20 122 26 132 36 136" fill="none" stroke="rgba(80,189,211,.9)" stroke-width="8" stroke-linecap="round"/></svg>`;
+document.body.appendChild(tail);
+window.setTimeout(()=>tail.remove(),900);
+window.setTimeout(() => layer.remove(), duration + 1800);
       };
 
       const scrollToTopAtConstantSpeed = (duration = 4200) => {
