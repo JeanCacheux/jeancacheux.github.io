@@ -1256,17 +1256,16 @@ body.modal-open {
 }
 
 
-/* Vertical centering of the existing header elements only.
-   No dimensions or layout columns are changed. */
+/* Balance the complete two-row header vertically.
+   The previous negative margin pulled the profile row upward and made
+   the portrait appear stuck to the top in Firefox. */
 .header-inner {
-  align-items: center !important;
+  padding-top: .65rem;
+  padding-bottom: .65rem;
+  row-gap: .2rem;
 }
 
-.header-inner > *,
-.identity,
-.identity-photo-frame,
-.identity > div,
-.laas-logo,
-nav {
-  align-self: center !important;
+.profiles {
+  margin-top: 0;
+  padding-bottom: 0;
 }
