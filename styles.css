@@ -573,7 +573,7 @@ h1 {
   object-position: center center;
   border-radius: 50%;
   filter: grayscale(100%) sepia(18%) hue-rotate(175deg) saturate(240%) brightness(1.06) contrast(1.08);
-  transition: filter .3s ease, transform .3s ease;
+  transition: transform .3s ease;
 }
 
 .team-grid > article:hover .team-photo img {
