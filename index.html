@@ -127,7 +127,7 @@
       <nav aria-label="Main navigation">
         <a href="#research">Research</a>
         <a href="#publications">Publications</a>
-        <a href="#team">Team</a>
+        <a href="#team">People</a>
         <a href="#contact">Contact</a>
       </nav>
 
@@ -425,14 +425,11 @@
         window.setTimeout(() => layer.remove(), 3200);
       };
 
-      trigger.addEventListener('click', () => {
-        clickCount += 1;
-        openModal();
+      trigger.addEventListener('click', openModal);
 
-        if (clickCount >= 5) {
-          clickCount = 0;
-          launchPaws();
-        }
+      trigger.addEventListener('dblclick', (event) => {
+        event.preventDefault();
+        launchPaws();
       });
 
       closeButtons.forEach(button => button.addEventListener('click', closeModal));
