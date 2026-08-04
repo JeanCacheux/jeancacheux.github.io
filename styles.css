@@ -1206,3 +1206,51 @@ body.modal-open {
     animation-duration: .35s !important;
   }
 }
+
+
+/* Supervisor profile links */
+.supervisor-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(239, 51, 78, .42);
+  text-underline-offset: .2rem;
+  transition: color .2s ease, text-decoration-color .2s ease;
+}
+
+.supervisor-link span {
+  display: inline-block;
+  margin-left: .12rem;
+  color: var(--red);
+  font-size: .82em;
+  transition: transform .2s ease;
+}
+
+.supervisor-link:hover,
+.supervisor-link:focus-visible {
+  color: var(--red);
+  text-decoration-color: var(--red);
+}
+
+.supervisor-link:hover span,
+.supervisor-link:focus-visible span {
+  transform: translate(2px, -2px);
+}
+
+/* Tail motion is driven by the Web Animations API for a smoother glide. */
+.cat-tail {
+  animation: none !important;
+  width: 82px;
+  height: 295px;
+  will-change: transform, opacity;
+}
+
+.cat-tail svg {
+  transform-origin: 50% 10%;
+  will-change: transform;
+}
+
+
+/* Tail position follows the final footprint. */
+.cat-tail {
+  right: auto !important;
+}
