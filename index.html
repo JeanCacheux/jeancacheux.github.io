@@ -106,7 +106,7 @@
 }
   </script>
 
-  <link rel="stylesheet" href="styles.css?v=20260804-cat2">
+  <link rel="stylesheet" href="styles.css?v=20260804-cat3">
 </head>
 <body>
   <canvas id="particles" aria-hidden="true"></canvas>
@@ -254,7 +254,7 @@
 
     <section id="team" class="chapter">
       <div class="chapter-label">03 — My team</div>
-      <p class="team-intro">A cross-institutional team investigating poromechanics and transport in microphysiological systems, with applications to cancer biology and translational research.</p>
+      <p class="team-intro">A cross-institutional team working at the interface of mechanics, microfluidics and cancer biology.</p>
 
       <div class="team-grid">
         <article>
@@ -400,31 +400,32 @@
         layer.className = 'paw-trail';
         layer.setAttribute('aria-hidden', 'true');
 
-        const paws = [
-          { left: 6,  top: 86, delay: 0.00, rotate: -20 },
-          { left: 17, top: 75, delay: 0.14, rotate: 13 },
-          { left: 28, top: 65, delay: 0.28, rotate: -11 },
-          { left: 40, top: 54, delay: 0.42, rotate: 15 },
-          { left: 53, top: 43, delay: 0.56, rotate: -9 },
-          { left: 66, top: 32, delay: 0.70, rotate: 12 },
-          { left: 78, top: 21, delay: 0.84, rotate: -11 },
-          { left: 89, top: 10, delay: 0.98, rotate: 10 }
-        ];
+        const pawCount = 28;
 
-        paws.forEach((paw, index) => {
+        for (let index = 0; index < pawCount; index += 1) {
           const mark = document.createElement('span');
           mark.className = 'paw-mark';
           mark.textContent = '🐾';
-          mark.style.left = `${paw.left}vw`;
-          mark.style.top = `${paw.top}vh`;
-          mark.style.animationDelay = `${paw.delay}s`;
-          mark.style.setProperty('--paw-rotation', `${paw.rotate}deg`);
-          mark.style.fontSize = `${index % 2 === 0 ? 30 : 25}px`;
+
+          const left = 3 + Math.random() * 92;
+          const top = 4 + Math.random() * 90;
+          const rotation = -32 + Math.random() * 64;
+          const size = 15 + Math.random() * 12;
+          const delay = Math.random() * 1.25;
+          const duration = 1.35 + Math.random() * .9;
+
+          mark.style.left = `${left}vw`;
+          mark.style.top = `${top}vh`;
+          mark.style.fontSize = `${size}px`;
+          mark.style.animationDelay = `${delay}s`;
+          mark.style.animationDuration = `${duration}s`;
+          mark.style.setProperty('--paw-rotation', `${rotation}deg`);
+
           layer.appendChild(mark);
-        });
+        }
 
         document.body.appendChild(layer);
-        window.setTimeout(() => layer.remove(), 3000);
+        window.setTimeout(() => layer.remove(), 4200);
       };
 
       /*

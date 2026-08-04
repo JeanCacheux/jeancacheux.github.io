@@ -1125,3 +1125,28 @@ body.modal-open {
     animation-duration: .35s;
   }
 }
+
+
+/* More numerous, smaller paw prints spread across the viewport */
+.paw-mark {
+  opacity: 0;
+}
+
+@keyframes paw-step {
+  0% {
+    opacity: 0;
+    transform: rotate(var(--paw-rotation)) scale(.6);
+  }
+  22% {
+    opacity: .22;
+    transform: rotate(var(--paw-rotation)) scale(1);
+  }
+  72% {
+    opacity: .16;
+    transform: rotate(var(--paw-rotation)) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(var(--paw-rotation)) scale(.82);
+  }
+}
