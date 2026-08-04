@@ -106,7 +106,7 @@
 }
   </script>
 
-  <link rel="stylesheet" href="styles.css?v=20260804-header-cat-clean">
+  <link rel="stylesheet" href="styles.css?v=20260804-header-pdf-nav">
 </head>
 <body>
   <canvas id="particles" aria-hidden="true"></canvas>
@@ -421,7 +421,7 @@
       </svg>
     </button>
 </footer>
-  <script src="script.js?v=20260804-v1-2"></script>
+  <script src="script.js?v=20260804-header-pdf-nav"></script>
 
   <div class="outside-modal" id="outside-research-modal" role="dialog" aria-modal="true" aria-labelledby="outside-research-title" hidden>
     <div class="outside-modal__backdrop" data-close-modal></div>
@@ -496,8 +496,8 @@
         layer.className = 'paw-trail';
         layer.setAttribute('aria-hidden', 'true');
 
-        const pawCount = 38;
-        const pointsPerTurn = 4 + Math.floor(Math.random() * 3);
+        const pawCount = 16;
+        const pointsPerTurn = 5 + Math.floor(Math.random() * 3);
         let currentX = 12 + Math.random() * 20;
         let targetX = 60 + Math.random() * 28;
         let finalX = targetX;
@@ -631,7 +631,6 @@
           const duration = 3800;
           const finalPawX = launchPaws(duration);
           scrollToTopAtConstantSpeed(duration);
-          window.setTimeout(() => launchTail(finalPawX), duration + 300);
           return;
         }
 
