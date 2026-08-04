@@ -106,7 +106,7 @@
 }
   </script>
 
-  <link rel="stylesheet" href="styles.css?v=20260804-header-balanced">
+  <link rel="stylesheet" href="styles.css?v=20260804-header-cat-clean">
 </head>
 <body>
   <canvas id="particles" aria-hidden="true"></canvas>
@@ -122,16 +122,8 @@
           <span>CNRS Researcher</span>
           <small>LAAS-CNRS · MechaBioFluidics</small>
         </div>
-      </div>
 
-      <nav aria-label="Main navigation">
-        <a href="#research">Research</a>
-        <a href="#publications">Publications</a>
-        <a href="#team">People</a>
-        <a href="#contact">Contact</a>
-      </nav>
-
-      <div class="profiles" aria-label="Academic profiles">
+        <div class="profiles" aria-label="Academic profiles">
         <a href="https://scholar.google.com/citations?user=5zyfPC8AAAAJ" target="_blank" rel="noreferrer" aria-label="Google Scholar"><img src="icon-scholar.svg" alt=""></a>
         <a href="https://www.researchgate.net/profile/Jean-Cacheux" target="_blank" rel="noreferrer" aria-label="ResearchGate"><img src="icon-researchgate.svg" alt=""></a>
         <a href="https://cv.hal.science/jean-cacheux" target="_blank" rel="noreferrer" aria-label="HAL"><img src="icon-hal.svg" alt=""></a>
@@ -141,6 +133,14 @@
           <span>CV</span>
         </a>
       </div>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#team">People</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
   </header>
 
@@ -368,7 +368,58 @@
   </main>
 
   <footer><span>© <span id="year"></span> Jean Cacheux</span><span>CNRS Researcher · LAAS-CNRS</span>
-    <button class="cat-trigger" type="button" aria-label="Outside research" aria-haspopup="dialog" aria-controls="outside-research-modal"><span aria-hidden="true">🐈</span></button>
+    <button class="cat-trigger" type="button" aria-label="Outside research" aria-haspopup="dialog" aria-controls="outside-research-modal">
+      <svg class="cat-icon" viewBox="0 0 120 72" aria-hidden="true" focusable="false">
+        <path class="cat-body"
+          d="M30 51
+             C20 48 16 40 19 31
+             C22 22 33 18 45 19
+             L69 19
+             C82 19 92 27 94 39
+             C95 48 89 54 79 54
+             L43 54
+             C38 54 34 53 30 51Z"/>
+        <path class="cat-head"
+          d="M81 22
+             L86 10
+             L94 18
+             L104 13
+             L105 28
+             C110 33 110 42 104 47
+             C98 52 88 51 82 45
+             C76 39 77 28 81 22Z"/>
+        <path class="cat-leg" d="M39 51 L38 66 L46 66 L48 52Z"/>
+        <path class="cat-leg" d="M71 51 L73 66 L81 66 L79 51Z"/>
+        <path class="cat-tail-line"
+          d="M24 45
+             C9 43 6 30 13 23
+             C20 17 28 21 25 30
+             C23 36 18 36 16 32"
+          fill="none"/>
+        <path class="cat-patch"
+          d="M43 19
+             C49 17 57 17 63 19
+             L60 31
+             L52 34
+             L43 29Z"/>
+        <path class="cat-patch"
+          d="M84 21
+             L86 11
+             L94 18
+             L98 16
+             L97 30
+             L90 34
+             L82 28Z"/>
+        <path class="cat-stripe" d="M47 20 L50 31"/>
+        <path class="cat-stripe" d="M54 19 L55 30"/>
+        <path class="cat-stripe" d="M61 20 L59 30"/>
+        <path class="cat-stripe" d="M87 21 L91 29"/>
+        <path class="cat-stripe" d="M95 19 L96 28"/>
+        <circle class="cat-eye" cx="88" cy="36" r="1.6"/>
+        <circle class="cat-eye" cx="101" cy="35" r="1.6"/>
+        <path class="cat-face" d="M93 41 Q96 44 99 41"/>
+      </svg>
+    </button>
 </footer>
   <script src="script.js?v=20260804-v1-2"></script>
 

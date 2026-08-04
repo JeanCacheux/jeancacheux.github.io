@@ -1269,3 +1269,163 @@ body.modal-open {
   margin-top: 0;
   padding-bottom: 0;
 }
+
+
+/* ===== Header refinement ===== */
+.header-inner {
+  grid-template-columns: 142px minmax(320px, 1fr) auto;
+  align-items: center;
+}
+
+.laas-logo {
+  width: 132px;
+  height: 92px;
+  object-fit: contain;
+  align-self: center;
+}
+
+.identity {
+  display: grid;
+  grid-template-columns: var(--portrait-size) minmax(0, 1fr);
+  grid-template-areas:
+    "photo text"
+    "profiles profiles";
+  align-items: center;
+  column-gap: 1rem;
+  row-gap: .55rem;
+}
+
+.identity-photo-frame {
+  grid-area: photo;
+  align-self: center;
+}
+
+.identity > div {
+  grid-area: text;
+  align-self: center;
+}
+
+.identity .profiles {
+  grid-area: profiles;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: .72rem;
+  margin: 0;
+  padding: 0;
+}
+
+.identity .profiles a:not(.cv-download) {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+}
+
+.identity .profiles a img {
+  width: 26px;
+  height: 26px;
+}
+
+.identity .cv-download {
+  height: 34px;
+}
+
+/* ===== Clean white-and-tabby European cat icon ===== */
+.cat-trigger {
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.cat-icon {
+  display: block;
+  width: 42px;
+  height: 28px;
+  overflow: visible;
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+.cat-trigger:hover .cat-icon,
+.cat-trigger:focus-visible .cat-icon {
+  transform: translateY(-2px) scale(1.05);
+}
+
+.cat-body,
+.cat-head,
+.cat-leg {
+  fill: #ffffff;
+  stroke: #18222d;
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+}
+
+.cat-patch {
+  fill: #7b8794;
+  stroke: #18222d;
+  stroke-width: 1.1;
+  stroke-linejoin: round;
+}
+
+.cat-stripe {
+  fill: none;
+  stroke: #18222d;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.cat-tail-line {
+  stroke: #18222d;
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+.cat-eye {
+  fill: #18222d;
+}
+
+.cat-face {
+  fill: none;
+  stroke: #18222d;
+  stroke-width: 1.25;
+  stroke-linecap: round;
+}
+
+@media (max-width: 1000px) {
+  .header-inner {
+    grid-template-columns: 120px minmax(0, 1fr);
+  }
+
+  .identity {
+    grid-template-columns: var(--portrait-size) minmax(0, 1fr);
+  }
+
+  .identity .profiles {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 700px) {
+  .header-inner {
+    grid-template-columns: 92px minmax(0, 1fr);
+  }
+
+  .laas-logo {
+    width: 88px;
+    height: 68px;
+  }
+
+  .identity {
+    grid-template-columns: var(--portrait-size) minmax(0, 1fr);
+    row-gap: .4rem;
+  }
+
+  .identity .profiles {
+    flex-wrap: wrap;
+    gap: .55rem;
+  }
+}
