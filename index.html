@@ -273,8 +273,7 @@
           <div class="team-photo laas-photo"><img src="team-thomas.png" alt="Thomas Quénan"></div>
           <h3>Thomas Quénan</h3>
           <p>PhD Student · LAAS-CNRS</p>
-          <span class="person-team">Team MechaBioFluidics</span>
-          <span>Co-supervised with Aurélien Bancaud</span>
+          <span>Co-supervised with <a href="https://scholar.google.com/citations?user=2I4M6QEAAAAJ" target="_blank" rel="noreferrer">Aurélien Bancaud</a></span>
         
           <div class="team-profiles" aria-label="Thomas Quénan academic profiles"><a href="https://scholar.google.com/citations?user=dklnf9IAAAAJ" target="_blank" rel="noreferrer" aria-label="Thomas Quénan — Google Scholar"><img src="icon-scholar.svg" alt=""></a><a href="https://fr.linkedin.com/in/thomas-qu%C3%A9nan-95626a209" target="_blank" rel="noreferrer" aria-label="Thomas Quénan — LinkedIn"><img src="icon-linkedin.svg" alt=""></a><a href="https://www.researchgate.net/profile/Thomas-Quenan" target="_blank" rel="noreferrer" aria-label="Thomas Quénan — ResearchGate"><img src="icon-researchgate.svg" alt=""></a></div>
         </article>
@@ -283,8 +282,7 @@
           <div class="team-photo laas-photo"><img src="team-adelie.png" alt="Adélie Barnetche"></div>
           <h3>Adélie Barnetche</h3>
           <p>PhD Student · LAAS-CNRS</p>
-          <span class="person-team">Team MechaBioFluidics</span>
-          <span>Co-supervised with Aurélien Bancaud</span>
+          <span>Co-supervised with <a href="https://scholar.google.com/citations?user=2I4M6QEAAAAJ" target="_blank" rel="noreferrer">Aurélien Bancaud</a></span>
 
           <div class="team-profiles" aria-label="Adélie Barnetche academic profiles">
             <a href="https://fr.linkedin.com/in/ad%C3%A9lie-barnetche-53496024a" target="_blank" rel="noreferrer" aria-label="Adélie Barnetche — LinkedIn">
@@ -315,8 +313,7 @@
           <div class="team-photo crct-photo"><img src="team-silvia.png" alt="Silvia Ferrer Royo"></div>
           <h3>Silvia Ferrer Royo</h3>
           <p>PhD student</p>
-          <span class="person-team">Team IMPACT</span>
-          <span>Co-supervised with Pierre Cordelier</span>
+          <span>Co-supervised with <a href="https://scholar.google.com/citations?user=6N9r4SIAAAAJ" target="_blank" rel="noreferrer">Pierre Cordelier</a></span>
         
           <div class="team-profiles" aria-label="Silvia Ferrer Royo academic profiles"><a href="https://es.linkedin.com/in/silvia-ferrer-royo-736558229/es" target="_blank" rel="noreferrer" aria-label="Silvia Ferrer Royo — LinkedIn"><img src="icon-linkedin.svg" alt=""></a></div>
         </article>
@@ -374,10 +371,7 @@
   </main>
 
   <footer><span>© <span id="year"></span> Jean Cacheux</span><span>CNRS Researcher · LAAS-CNRS</span>
-    <button class="cat-trigger" type="button" aria-haspopup="dialog" aria-controls="outside-research-modal">
-      <span aria-hidden="true">🐈</span>
-      <span>Outside research...</span>
-    </button>
+    <button class="cat-trigger" type="button" aria-label="Outside research" aria-haspopup="dialog" aria-controls="outside-research-modal"><span aria-hidden="true">🐈</span></button>
 </footer>
   <script src="script.js?v=20260804-tail-teams"></script>
 
@@ -471,12 +465,7 @@
         }
 
         document.body.appendChild(layer);
-        const tail=document.createElement('div');
-tail.className='cat-tail';
-tail.style.left=`${Math.max(8,Math.min(92,targetX||50))}vw`;
-tail.innerHTML=`<svg viewBox="0 0 60 140"><path d="M30 5 C52 30 52 75 28 110 C20 122 26 132 36 136" fill="none" stroke="rgba(80,189,211,.9)" stroke-width="8" stroke-linecap="round"/></svg>`;
-document.body.appendChild(tail);
-window.setTimeout(()=>tail.remove(),900);
+        
 window.setTimeout(() => layer.remove(), duration + 1800);
       };
 
