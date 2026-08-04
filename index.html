@@ -106,7 +106,7 @@
 }
   </script>
 
-  <link rel="stylesheet" href="styles.css?v=20260804-cat-wander-visible">
+  <link rel="stylesheet" href="styles.css?v=20260804-tail-teams">
 </head>
 <body>
   <canvas id="particles" aria-hidden="true"></canvas>
@@ -273,7 +273,8 @@
           <div class="team-photo laas-photo"><img src="team-thomas.png" alt="Thomas Quénan"></div>
           <h3>Thomas Quénan</h3>
           <p>PhD Student · LAAS-CNRS</p>
-          <span>Co-supervised with <a href="https://scholar.google.com/citations?user=j7NBkdAAAAAJ" target="_blank" rel="noreferrer">Aurélien Bancaud ↗</a></span>
+          <span class="person-team">Team MechaBioFluidics</span>
+          <span>Co-supervised with Aurélien Bancaud</span>
         
           <div class="team-profiles" aria-label="Thomas Quénan academic profiles"><a href="https://scholar.google.com/citations?user=dklnf9IAAAAJ" target="_blank" rel="noreferrer" aria-label="Thomas Quénan — Google Scholar"><img src="icon-scholar.svg" alt=""></a><a href="https://fr.linkedin.com/in/thomas-qu%C3%A9nan-95626a209" target="_blank" rel="noreferrer" aria-label="Thomas Quénan — LinkedIn"><img src="icon-linkedin.svg" alt=""></a><a href="https://www.researchgate.net/profile/Thomas-Quenan" target="_blank" rel="noreferrer" aria-label="Thomas Quénan — ResearchGate"><img src="icon-researchgate.svg" alt=""></a></div>
         </article>
@@ -282,7 +283,8 @@
           <div class="team-photo laas-photo"><img src="team-adelie.png" alt="Adélie Barnetche"></div>
           <h3>Adélie Barnetche</h3>
           <p>PhD Student · LAAS-CNRS</p>
-          <span>Co-supervised with <a href="https://scholar.google.com/citations?user=j7NBkdAAAAAJ" target="_blank" rel="noreferrer">Aurélien Bancaud ↗</a></span>
+          <span class="person-team">Team MechaBioFluidics</span>
+          <span>Co-supervised with Aurélien Bancaud</span>
 
           <div class="team-profiles" aria-label="Adélie Barnetche academic profiles">
             <a href="https://fr.linkedin.com/in/ad%C3%A9lie-barnetche-53496024a" target="_blank" rel="noreferrer" aria-label="Adélie Barnetche — LinkedIn">
@@ -312,8 +314,9 @@
         <article>
           <div class="team-photo crct-photo"><img src="team-silvia.png" alt="Silvia Ferrer Royo"></div>
           <h3>Silvia Ferrer Royo</h3>
-          <p>PhD student · CRCT</p>
-          <span>Co-supervised with <a href="https://scholar.google.com/citations?user=sv9jucoAAAAJ" target="_blank" rel="noreferrer">Pierre Cordelier ↗</a></span>
+          <p>PhD student</p>
+          <span class="person-team">Team IMPACT</span>
+          <span>Co-supervised with Pierre Cordelier</span>
         
           <div class="team-profiles" aria-label="Silvia Ferrer Royo academic profiles"><a href="https://es.linkedin.com/in/silvia-ferrer-royo-736558229/es" target="_blank" rel="noreferrer" aria-label="Silvia Ferrer Royo — LinkedIn"><img src="icon-linkedin.svg" alt=""></a></div>
         </article>
@@ -376,7 +379,7 @@
       <span>Outside research...</span>
     </button>
 </footer>
-  <script src="script.js?v=20260804-cat-wander-visible"></script>
+  <script src="script.js?v=20260804-tail-teams"></script>
 
   <div class="outside-modal" id="outside-research-modal" role="dialog" aria-modal="true" aria-labelledby="outside-research-title" hidden>
     <div class="outside-modal__backdrop" data-close-modal></div>
@@ -491,6 +494,32 @@ window.setTimeout(() => layer.remove(), duration + 1800);
         requestAnimationFrame(step);
       };
 
+
+      const launchTail = () => {
+        document.querySelector('.cat-tail')?.remove();
+
+        const tail = document.createElement('div');
+        tail.className = 'cat-tail';
+        tail.setAttribute('aria-hidden', 'true');
+        tail.innerHTML = `
+          <svg viewBox="0 0 90 240" aria-hidden="true" focusable="false">
+            <path
+              d="M45 225
+                 C12 192, 20 150, 56 132
+                 C82 119, 78 82, 50 66
+                 C28 53, 31 24, 50 8"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="11"
+              stroke-linecap="round"
+            />
+          </svg>
+        `;
+
+        document.body.appendChild(tail);
+        window.setTimeout(() => tail.remove(), 1700);
+      };
+
       trigger.addEventListener('click', event => {
         event.preventDefault();
 
@@ -503,6 +532,7 @@ window.setTimeout(() => layer.remove(), duration + 1800);
           const animationDuration = 4200;
           launchPaws(animationDuration);
           scrollToTopAtConstantSpeed(animationDuration);
+          window.setTimeout(launchTail, animationDuration - 120);
           return;
         }
 
